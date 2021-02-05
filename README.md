@@ -63,6 +63,7 @@ Build
 ```
     sudo apt-get install build-essential clang bison flex \
 	libreadline-dev gawk tcl-dev libffi-dev git \
+    libboost1.71-dev libboost-system1.71-dev \
 	graphviz xdot pkg-config python3 libboost-system-dev \
 	libboost-python-dev libboost-filesystem-dev zlib1g-dev
 
@@ -73,21 +74,21 @@ Build
 
     mkdir build
     cd build
-    make ../Makefile
+    make -f ../Makefile
 
-    sudo make install
+    sudo make install -f ../Makefile
 ```
 
 3. Download benchmarks for test, and we test [Yosys-bench](https://github.com/fpga-tool-org/yosys-bench) for now stage!
 ```
     /* jump to the  fpga-map-tool/data folder*/
-    cd ../../data
+    cd ../../../data
     git clone https://github.com/fpga-tool-org/yosys-bench.git
 ```
 4. Now we can test the verilog file using yosys!
 ```
 for example: 
-    cd verilog/benchmarks_small/
+    cd yosys-bench/verilog/benchmarks_small/
     /* there are many small RTL  filefolders, and choose one*/
     cd decoder
     /* you have to run the generate.py script to generate many decoder-verilog files， and choose one*/
