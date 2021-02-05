@@ -72,7 +72,7 @@ Build
 
     sudo make install
 ```
-2. setup our whole project
+2. Setup our whole project
 ```
     git clone https://github.com/fpga-tool-org/fpga-map-tool.git
     cd fpga-map-tool
