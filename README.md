@@ -53,16 +53,21 @@ Environment
 ---
 Build
 
-1. Install Logic Synthesis tool - [Yosys](https://github.com/YosysHQ/yosys)
+1. Setup our whole project
+```
+    git clone https://github.com/fpga-tool-org/fpga-map-tool.git
+    cd fpga-map-tool
+```
+
+2. Install Logic Synthesis tool - [Yosys](src/yosys)
 ```
     sudo apt-get install build-essential clang bison flex \
 	libreadline-dev gawk tcl-dev libffi-dev git \
 	graphviz xdot pkg-config python3 libboost-system-dev \
 	libboost-python-dev libboost-filesystem-dev zlib1g-dev
 
-    git clone https://github.com/fpga-tool-org/yosys.git
-
-    cd yosys
+    /* jump to the yosys fpga-map-tool/src folder*/
+    cd src/yosys
 
     make config-clang
 
@@ -72,15 +77,11 @@ Build
 
     sudo make install
 ```
-2. Setup our whole project
-```
-    git clone https://github.com/fpga-tool-org/fpga-map-tool.git
-    cd fpga-map-tool
-```
 
 3. Download benchmarks for test, and we test [Yosys-bench](https://github.com/fpga-tool-org/yosys-bench) for now stage!
 ```
-    cd data
+    /* jump to the  fpga-map-tool/data folder*/
+    cd ../../data
     git clone https://github.com/fpga-tool-org/yosys-bench.git
 ```
 4. Now we can test the verilog file using yosys!
