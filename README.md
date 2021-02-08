@@ -109,10 +109,11 @@ for asic example:
 ### The following has not been completed and cannot be tested！
 
 ---
-### Daily Regression
+### Regression
 
-*We use python+tcl scripts for our daily regression*
+*We use python+tcl scripts for our daily regression!*
 
+* PCL-test
 ```
   /* install tkinter for using python-tcl*/
   sudo apt-get install python3-tk
@@ -121,9 +122,18 @@ for asic example:
   cd fpga-map-tool/test 
   python3 test_yosys_flow.py -s fpga -t true
 
+  /* later ported to the server for daily build automatically*/
+
+```
+
+* Anlu-test
+```
+  /* Completed by Anlu!*/
 ```
 
 ---
-### Daily Code-review
+### Code-review
 
 *We temporarily use github to review our code!*
+
+```
