@@ -45,13 +45,13 @@ you can also find the benchmarks introduce in [doc/benchmarks_intro.pdf](doc/ben
       - 30 from ISCAS 85 and 89
 
 ---
-Environment
+### Environment
 
 * OS: ubuntu 18.04 WSL(Windows Subsystem for Linux)
 * Ram: 16GB
 
 ---
-Build
+### Build
 
 1. Setup our whole project
 ```
@@ -87,7 +87,7 @@ Build
 ```
 4. Now we can test the verilog file using yosys!
 ```
-for example: 
+for asic example: 
     cd yosys-bench/verilog/benchmarks_small/
     /* there are many small RTL  filefolders, and choose one*/
     cd decoder
@@ -106,6 +106,26 @@ for example:
     write_verilog synth.v
 ```
 
-5. daily regression
-6. daily code-review
+### The following has not been completed and cannot be tested！
 
+---
+### Daily Regression
+
+*We use python+tcl scripts for our daily regression*
+
+*and how to generate the log files? -- there is a command log in yosys*
+
+```
+  /* install tkinter for using python-tcl*/
+  sudo apt-get install python3-tk
+  
+  /* then run!*/
+  cd fpga-map-tool/test 
+  python3 test_yosys_flow.py -s fpga -t true
+
+```
+
+---
+### Daily Code-review
+
+*We temporarily use github to review our code!*
