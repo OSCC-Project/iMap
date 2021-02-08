@@ -113,8 +113,6 @@ for asic example:
 
 *We use python+tcl scripts for our daily regression*
 
-*and how to generate the log files? -- there is a command log in yosys*
-
 ```
   /* install tkinter for using python-tcl*/
   sudo apt-get install python3-tk
