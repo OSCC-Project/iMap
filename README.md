@@ -106,8 +106,6 @@ for asic example:
     write_verilog synth.v
 ```
 
-### The following has not been completed and cannot be tested！
-
 ---
 ### Regression
 
@@ -119,11 +117,13 @@ for asic example:
   sudo apt-get install python3-tk
   
   /* then run!*/
-  cd fpga-map-tool/test 
-  python3 test_yosys_flow.py -s fpga -t true
+  cd fpga-map-tool/test/pcl_test/ 
+  python3 test_yosys_flow.py --style asic
+  /* it will generate the log file and result files*/
+  ls log/
+  ls result/
 
   /* later ported to the server for daily build automatically*/
-
 ```
 
 * Anlu-test
