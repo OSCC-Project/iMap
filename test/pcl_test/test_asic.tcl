@@ -7,7 +7,7 @@ set TIME_STR [clock seconds]
 foreach verilog_file $VERILOG_FILES module_name $DESIGN_NAMES {
     read_verilog -sv $verilog_file
     hierarchy -check
-    proc  这个和 TCL 的关键词重名
+    proc
     opt
     fsm
     opt
