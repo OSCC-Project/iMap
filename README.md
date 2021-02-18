@@ -49,6 +49,7 @@ you can also find the benchmarks introduce in [doc/benchmarks_intro.pdf](doc/ben
 
 * OS: ubuntu 18.04 WSL(Windows Subsystem for Linux)
 * Ram: 16GB
+* cpu cores: 12
 
 ---
 ### Build
@@ -105,7 +106,6 @@ for asic example:
     /* write synthesized design*/
     write_verilog synth.v
 ```
-
 ---
 ### Regression
 
@@ -136,4 +136,31 @@ for asic example:
 
 *We temporarily use github to review our code!*
 
+---
+### Daily Build
+*We use Jenkins for auto daily build and regression*
+
+- Our Server: ubuntu 20.04.2 LTS
+- RAM: 64GB
+- cpu cores: 64
+
 ```
+  
+  /* isntall java for jenkins dependency*/
+  sudo apt install openjdk-11-jdk
+  /* check*/
+  java -version
+
+  /* install Weekly releaseed jenkins */
+  wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+  sudo sh -c 'echo deb https://pkg.jenkins.io/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
+  sudo apt-get update
+  sudo apt-get install jenkins
+  
+  /* check*/
+  systemctl start jenkins
+
+  /* start jenkins*/
+  open your browser, and input http://localhost:8080 to install plugins and config it!
+```
+
