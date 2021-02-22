@@ -1,0 +1,8 @@
+.idea
+.vscode
+src/yosys/build
+src/yosys/Makefile.conf
+data/yosys-bench
+test/pcl_test/log
+test/pcl_test/result
+
