@@ -52,7 +52,7 @@ you can also find the benchmarks introduce in [doc/benchmarks_intro.pdf](doc/ben
 * cpu cores: 12
 
 ---
-### Build
+### Build-Yosys
 
 1. Setup our whole project
 ```
@@ -106,6 +106,17 @@ for asic example:
     /* write synthesized design*/
     write_verilog synth.v
 ```
+---
+### Build-iFPGA
+
+1. cd src/iFPGA
+2. mkdir build && cd build
+3. cmake ..
+4. make
+5. ./test_mockturtle
+6. ./test_demo
+
+
 ---
 ### Regression
 
