@@ -1,6 +1,7 @@
 .idea
 .vscode
 src/iFPGA/build
+src/iFPGA/cmake-build-debug
 src/iFPGA/data/result
 src/yosys/build
 src/yosys/Makefile.conf
