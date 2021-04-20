@@ -50,6 +50,8 @@ you can also find the benchmarks introduce in [doc/benchmarks_intro.pdf](doc/ben
 * OS: ubuntu 18.04 WSL(Windows Subsystem for Linux)
 * Ram: 16GB
 * cpu cores: 12
+* g++ version: 7.5.0
+* c++ std: 2017
 
 ---
 ### Build-Yosys
@@ -108,14 +110,16 @@ for asic example:
 ```
 ---
 ### Build-iFPGA
-
+```
 1. cd src/iFPGA
 2. mkdir build && cd build
 3. cmake ..
 4. make
-5. ./test_mockturtle
-6. ./test_demo
-
+5. sudo make install  // install ifpga to /usr/local/bin
+6. ./test_mockturtle
+7. ./test_demo
+8. ifpga -i [input_path] -o [output_path]
+```
 
 ---
 ### Regression
