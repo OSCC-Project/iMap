@@ -115,11 +115,26 @@ for asic example:
 2. mkdir build && cd build
 3. cmake ..
 4. make
-5. sudo make install  // install ifpga to /usr/local/bin
+5. sudo make install  # install ifpga to /usr/local/bin
 6. ./test_mockturtle
 7. ./test_demo
 8. ifpga -i [input_path] -o [output_path]
 ```
+
+--- 
+### Example FLow
+based on the ifpga and yosys is all installed success!
+
+```
+yosys
+yosys> read_verilog [xxx.aig]
+yosys> hierarchy -check
+yosys> proc;opt
+yosys> fsm;opt
+yosys> memory;opt
+yosys> ifpga -o ifpga_output.v
+```
+
 
 ---
 ### Regression
