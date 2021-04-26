@@ -127,7 +127,7 @@ based on the ifpga and yosys is all installed success!
 
 ```
 yosys
-yosys> read_verilog [xxx.aig]
+yosys> read_aiger [xxx.aig]
 yosys> hierarchy -check
 yosys> proc;opt
 yosys> fsm;opt
