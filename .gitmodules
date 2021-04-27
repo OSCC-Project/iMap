@@ -1,0 +1,6 @@
+[submodule "src/iFPGA/lib/args"]
+        path = src/iFPGA/lib/args
+        url = https://github.com/Taywee/args.git
+[submodule "src/iFPGA/lib/kitty"]
+        path = src/iFPGA/lib/kitty
+        url = https://github.com/msoeken/kitty.git
