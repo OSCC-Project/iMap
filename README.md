@@ -118,7 +118,7 @@ for asic example:
 5. sudo make install  # install ifpga to /usr/local/bin
 6. ./test_mockturtle
 7. ./test_demo
-8. ifpga -i [input_path] -o [output_path]
+8. ifpga -i [input_path] -o [output_verilog_path] -l [output_lut_path]
 ```
 
 --- 
