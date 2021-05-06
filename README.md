@@ -132,7 +132,7 @@ yosys> hierarchy -check
 yosys> proc;opt
 yosys> fsm;opt
 yosys> memory;opt
-yosys> ifpga -o ifpga_output.v
+yosys> ifpga -o ifpga_output.v -l ifpga_output.lut
 ```
 
 
