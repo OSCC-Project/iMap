@@ -156,15 +156,20 @@ yosys> ifpga -o ifpga_output.v -l ifpga_output.lut.v
   /* later ported to the server for daily build automatically*/
 ```
 
-* Anlu-test
+* Anlogic-test
 ```
-  /* Completed by Anlu!*/
+  /* Completed by Anlogic!*/
+  cd fpga-map-tool/test/anlogic_test/
+  # write your configuration in config.ini
+  # run test
+  python3 scripts/run_test.py config.ini 
 ```
+see [test/anlogic_test/README.md](test/anlogic_test/README.md) for details
 
 ---
 ### Code-review
 
-*We temporarily use github to review our code!*
+*We temporarily use gitee to review our code!*
 
 ---
 ### Daily Build
