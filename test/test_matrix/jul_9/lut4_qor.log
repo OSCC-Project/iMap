@@ -1,0 +1,2426 @@
+[2021-05-26 18:27:46,068]mapper_test.py:73:[INFO]: run case "cavlc"
+[2021-05-26 18:27:46,068]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-05-26 18:27:46,503]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/cavlc/cavlc.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/cavlc/cavlc.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut7.lib; if -K 7; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/cavlc/cavlc.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =       12     16.67 %
+Or           =        0      0.00 %
+Other        =       60     83.33 %
+TOTAL        =       72    100.00 %
+Level =    2.  COs =    3.    27.3 %
+Level =    3.  COs =    8.   100.0 %
+
+[2021-05-26 18:27:46,504]mapper_test.py:136:[INFO]: area: 109 level: 3
+[2021-05-26 18:27:46,505]mapper_test.py:171:[INFO]: run iFPGA flow...
+[2021-05-26 18:27:46,557]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	Cut-calculated time:0.033179
+	Topological sort time:0.000156
+	Area-flow time:0.000779
+	Exact-area time:0.002395
+	Matching selection time:0.000256
+	  Report mapping result:
+		klut_size()     :84
+		klut.num_gates():72
+		max delay       :4
+		max area        :72
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :4
+		LUT fanins:3	 numbers :5
+		LUT fanins:4	 numbers :1
+		LUT fanins:5	 numbers :6
+		LUT fanins:6	 numbers :9
+		LUT fanins:7	 numbers :47
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/cavlc/cavlc.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/cavlc/cavlc.ifpga.v
+
+[2021-05-26 18:27:46,558]mapper_test.py:195:[INFO]: area: 119 level: 4
+[2021-05-26 18:27:46,560]mapper_test.py:73:[INFO]: run case "ctrl"
+[2021-05-26 18:27:46,560]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-05-26 18:27:46,706]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/ctrl/ctrl.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/ctrl/ctrl.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut7.lib; if -K 7; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/ctrl/ctrl.abc.v; print_gates; print_level".
+
+Const        =        1      3.85 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =        9     34.62 %
+Or           =        0      0.00 %
+Other        =       16     61.54 %
+TOTAL        =       26    100.00 %
+Level =    0.  COs =    1.     3.8 %
+Level =    1.  COs =   25.   100.0 %
+
+[2021-05-26 18:27:46,707]mapper_test.py:136:[INFO]: area: 28 level: 1
+[2021-05-26 18:27:46,707]mapper_test.py:171:[INFO]: run iFPGA flow...
+[2021-05-26 18:27:46,722]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	Cut-calculated time:0.004276
+	Topological sort time:3.1e-05
+	Area-flow time:0.0001
+	Exact-area time:0.00033
+	Matching selection time:9.7e-05
+	  Report mapping result:
+		klut_size()     :34
+		klut.num_gates():25
+		max delay       :1
+		max area        :25
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :0
+		LUT fanins:3	 numbers :1
+		LUT fanins:4	 numbers :2
+		LUT fanins:5	 numbers :18
+		LUT fanins:6	 numbers :1
+		LUT fanins:7	 numbers :3
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/ctrl/ctrl.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/ctrl/ctrl.ifpga.v
+
+[2021-05-26 18:27:46,723]mapper_test.py:195:[INFO]: area: 28 level: 1
+[2021-05-26 18:27:46,724]mapper_test.py:73:[INFO]: run case "arbiter"
+[2021-05-26 18:27:46,724]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-05-26 18:27:54,611]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/arbiter/arbiter.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/arbiter/arbiter.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut7.lib; if -K 7; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/arbiter/arbiter.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =       32      1.37 %
+Or           =        0      0.00 %
+Other        =     2305     98.63 %
+TOTAL        =     2337    100.00 %
+Level =    5.  COs =    1.     0.8 %
+Level =   15.  COs =  128.   100.0 %
+
+[2021-05-26 18:27:54,620]mapper_test.py:136:[INFO]: area: 4131 level: 15
+[2021-05-26 18:27:54,620]mapper_test.py:171:[INFO]: run iFPGA flow...
+[2021-05-26 18:27:55,842]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	Cut-calculated time:0.928931
+	Topological sort time:0.002695
+	Area-flow time:0.022572
+	Exact-area time:0.112712
+	Matching selection time:0.004929
+	  Report mapping result:
+		klut_size()     :2476
+		klut.num_gates():2218
+		max delay       :16
+		max area        :2218
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :24
+		LUT fanins:3	 numbers :0
+		LUT fanins:4	 numbers :257
+		LUT fanins:5	 numbers :1
+		LUT fanins:6	 numbers :0
+		LUT fanins:7	 numbers :1936
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/arbiter/arbiter.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/arbiter/arbiter.ifpga.v
+
+[2021-05-26 18:27:55,842]mapper_test.py:195:[INFO]: area: 4154 level: 16
+[2021-05-26 18:27:55,843]mapper_test.py:73:[INFO]: run case "router"
+[2021-05-26 18:27:55,843]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-05-26 18:27:56,032]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/router/router.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/router/router.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut7.lib; if -K 7; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/router/router.abc.v; print_gates; print_level".
+
+Const        =       27     36.99 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =       21     28.77 %
+Or           =        0      0.00 %
+Other        =       25     34.25 %
+TOTAL        =       73    100.00 %
+Level =    0.  COs =   27.    90.0 %
+Level =    5.  COs =    3.   100.0 %
+
+[2021-05-26 18:27:56,032]mapper_test.py:136:[INFO]: area: 57 level: 5
+[2021-05-26 18:27:56,032]mapper_test.py:171:[INFO]: run iFPGA flow...
+[2021-05-26 18:27:56,054]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	Cut-calculated time:0.008508
+	Topological sort time:5.7e-05
+	Area-flow time:0.000314
+	Exact-area time:0.000793
+	Matching selection time:0.000121
+	  Report mapping result:
+		klut_size()     :107
+		klut.num_gates():45
+		max delay       :8
+		max area        :44
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :4
+		LUT fanins:3	 numbers :2
+		LUT fanins:4	 numbers :9
+		LUT fanins:5	 numbers :9
+		LUT fanins:6	 numbers :7
+		LUT fanins:7	 numbers :14
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/router/router.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/router/router.ifpga.v
+
+[2021-05-26 18:27:56,054]mapper_test.py:195:[INFO]: area: 59 level: 8
+[2021-05-26 18:27:56,056]mapper_test.py:73:[INFO]: run case "mem_ctrl"
+[2021-05-26 18:27:56,056]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-05-26 18:28:26,452]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/mem_ctrl/mem_ctrl.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/mem_ctrl/mem_ctrl.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut7.lib; if -K 7; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/mem_ctrl/mem_ctrl.abc.v; print_gates; print_level".
+
+Const        =        1      0.01 %
+Buffer       =      234      2.50 %
+Inverter     =       39      0.42 %
+And          =     1246     13.34 %
+Or           =        0      0.00 %
+Other        =     7823     83.73 %
+TOTAL        =     9343    100.00 %
+Level =    0.  COs =    1.     0.1 %
+Level =    1.  COs =  400.    32.6 %
+Level =    2.  COs =  186.    47.7 %
+Level =    3.  COs =   43.    51.2 %
+Level =    4.  COs =   36.    54.1 %
+Level =    5.  COs =   15.    55.3 %
+Level =    6.  COs =   16.    56.6 %
+Level =    7.  COs =   28.    58.9 %
+Level =    8.  COs =  139.    70.2 %
+Level =    9.  COs =   30.    72.6 %
+Level =   10.  COs =  163.    85.9 %
+Level =   11.  COs =   12.    86.8 %
+Level =   12.  COs =    9.    87.6 %
+Level =   13.  COs =    5.    88.0 %
+Level =   14.  COs =   17.    89.4 %
+Level =   15.  COs =   18.    90.8 %
+Level =   16.  COs =   18.    92.3 %
+Level =   17.  COs =   10.    93.1 %
+Level =   18.  COs =   10.    93.9 %
+Level =   19.  COs =   13.    95.0 %
+Level =   20.  COs =   62.   100.0 %
+
+[2021-05-26 18:28:26,484]mapper_test.py:136:[INFO]: area: 11863 level: 20
+[2021-05-26 18:28:26,484]mapper_test.py:171:[INFO]: run iFPGA flow...
+[2021-05-26 18:28:30,556]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	Cut-calculated time:2.94661
+	Topological sort time:0.009948
+	Area-flow time:0.076781
+	Exact-area time:0.298404
+	Matching selection time:0.024536
+	  Report mapping result:
+		klut_size()     :10338
+		klut.num_gates():9132
+		max delay       :38
+		max area        :9093
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :39
+		LUT fanins:2	 numbers :421
+		LUT fanins:3	 numbers :898
+		LUT fanins:4	 numbers :466
+		LUT fanins:5	 numbers :692
+		LUT fanins:6	 numbers :1375
+		LUT fanins:7	 numbers :5241
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/mem_ctrl/mem_ctrl.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/mem_ctrl/mem_ctrl.ifpga.v
+
+[2021-05-26 18:28:30,556]mapper_test.py:195:[INFO]: area: 14373 level: 38
+[2021-05-26 18:28:30,557]mapper_test.py:73:[INFO]: run case "priority"
+[2021-05-26 18:28:30,557]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-05-26 18:28:30,934]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/priority/priority.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/priority/priority.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut7.lib; if -K 7; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/priority/priority.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =       70     50.72 %
+Or           =        0      0.00 %
+Other        =       68     49.28 %
+TOTAL        =      138    100.00 %
+Level =    6.  COs =    3.    37.5 %
+Level =    7.  COs =    2.    62.5 %
+Level =   13.  COs =    1.    75.0 %
+Level =   15.  COs =    2.   100.0 %
+
+[2021-05-26 18:28:30,935]mapper_test.py:136:[INFO]: area: 184 level: 15
+[2021-05-26 18:28:30,935]mapper_test.py:171:[INFO]: run iFPGA flow...
+[2021-05-26 18:28:30,973]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	Cut-calculated time:0.017659
+	Topological sort time:0.000116
+	Area-flow time:0.000595
+	Exact-area time:0.002822
+	Matching selection time:0.000317
+	  Report mapping result:
+		klut_size()     :252
+		klut.num_gates():122
+		max delay       :21
+		max area        :121
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :6
+		LUT fanins:3	 numbers :4
+		LUT fanins:4	 numbers :24
+		LUT fanins:5	 numbers :18
+		LUT fanins:6	 numbers :10
+		LUT fanins:7	 numbers :60
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/priority/priority.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/priority/priority.ifpga.v
+
+[2021-05-26 18:28:30,973]mapper_test.py:195:[INFO]: area: 182 level: 21
+[2021-05-26 18:28:30,977]mapper_test.py:73:[INFO]: run case "dec"
+[2021-05-26 18:28:30,978]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-05-26 18:28:31,271]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/dec/dec.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/dec/dec.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut7.lib; if -K 7; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/dec/dec.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =      287    100.00 %
+Or           =        0      0.00 %
+Other        =        0      0.00 %
+TOTAL        =      287    100.00 %
+Level =    2.  COs =  256.   100.0 %
+
+[2021-05-26 18:28:31,272]mapper_test.py:136:[INFO]: area: 287 level: 2
+[2021-05-26 18:28:31,272]mapper_test.py:171:[INFO]: run iFPGA flow...
+[2021-05-26 18:28:31,322]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	Cut-calculated time:0.027977
+	Topological sort time:9e-05
+	Area-flow time:0.000494
+	Exact-area time:0.001299
+	Matching selection time:0.0005
+	  Report mapping result:
+		klut_size()     :283
+		klut.num_gates():273
+		max delay       :2
+		max area        :273
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :0
+		LUT fanins:3	 numbers :0
+		LUT fanins:4	 numbers :17
+		LUT fanins:5	 numbers :256
+		LUT fanins:6	 numbers :0
+		LUT fanins:7	 numbers :0
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/dec/dec.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/dec/dec.ifpga.v
+
+[2021-05-26 18:28:31,322]mapper_test.py:195:[INFO]: area: 273 level: 2
+[2021-05-26 18:28:31,325]mapper_test.py:73:[INFO]: run case "voter"
+[2021-05-26 18:28:31,326]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-05-26 18:28:44,515]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/voter/voter.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/voter/voter.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut7.lib; if -K 7; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/voter/voter.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =       37      2.42 %
+Or           =        0      0.00 %
+Other        =     1494     97.58 %
+TOTAL        =     1531    100.00 %
+Level =   11.  COs =    1.   100.0 %
+
+[2021-05-26 18:28:44,528]mapper_test.py:136:[INFO]: area: 1872 level: 11
+[2021-05-26 18:28:44,528]mapper_test.py:171:[INFO]: run iFPGA flow...
+[2021-05-26 18:28:45,725]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	Cut-calculated time:0.987836
+	Topological sort time:0.002055
+	Area-flow time:0.014947
+	Exact-area time:0.048095
+	Matching selection time:0.003392
+	  Report mapping result:
+		klut_size()     :2822
+		klut.num_gates():1819
+		max delay       :19
+		max area        :1819
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :174
+		LUT fanins:3	 numbers :910
+		LUT fanins:4	 numbers :18
+		LUT fanins:5	 numbers :1
+		LUT fanins:6	 numbers :434
+		LUT fanins:7	 numbers :282
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/voter/voter.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/voter/voter.ifpga.v
+
+[2021-05-26 18:28:45,725]mapper_test.py:195:[INFO]: area: 2101 level: 19
+[2021-05-26 18:28:45,726]mapper_test.py:73:[INFO]: run case "int2float"
+[2021-05-26 18:28:45,726]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-05-26 18:28:45,926]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/int2float/int2float.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/int2float/int2float.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut7.lib; if -K 7; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/int2float/int2float.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =        4     12.12 %
+Or           =        0      0.00 %
+Other        =       29     87.88 %
+TOTAL        =       33    100.00 %
+Level =    2.  COs =    2.    28.6 %
+Level =    3.  COs =    5.   100.0 %
+
+[2021-05-26 18:28:45,926]mapper_test.py:136:[INFO]: area: 47 level: 3
+[2021-05-26 18:28:45,926]mapper_test.py:171:[INFO]: run iFPGA flow...
+[2021-05-26 18:28:45,948]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	Cut-calculated time:0.009561
+	Topological sort time:5.5e-05
+	Area-flow time:0.000242
+	Exact-area time:0.000693
+	Matching selection time:9.3e-05
+	  Report mapping result:
+		klut_size()     :47
+		klut.num_gates():34
+		max delay       :5
+		max area        :34
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :8
+		LUT fanins:3	 numbers :1
+		LUT fanins:4	 numbers :1
+		LUT fanins:5	 numbers :0
+		LUT fanins:6	 numbers :1
+		LUT fanins:7	 numbers :23
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/int2float/int2float.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/int2float/int2float.ifpga.v
+
+[2021-05-26 18:28:45,949]mapper_test.py:195:[INFO]: area: 57 level: 5
+[2021-05-26 18:28:45,950]mapper_test.py:73:[INFO]: run case "i2c"
+[2021-05-26 18:28:45,950]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-05-26 18:28:46,536]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/i2c/i2c.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/i2c/i2c.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut7.lib; if -K 7; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/i2c/i2c.abc.v; print_gates; print_level".
+
+Const        =        1      0.38 %
+Buffer       =       14      5.38 %
+Inverter     =        0      0.00 %
+And          =       80     30.77 %
+Or           =        0      0.00 %
+Other        =      165     63.46 %
+TOTAL        =      260    100.00 %
+Level =    0.  COs =    1.     0.7 %
+Level =    1.  COs =   38.    27.5 %
+Level =    2.  COs =   22.    43.0 %
+Level =    3.  COs =   81.   100.0 %
+
+[2021-05-26 18:28:46,537]mapper_test.py:136:[INFO]: area: 314 level: 3
+[2021-05-26 18:28:46,537]mapper_test.py:171:[INFO]: run iFPGA flow...
+[2021-05-26 18:28:46,621]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	Cut-calculated time:0.051104
+	Topological sort time:0.000257
+	Area-flow time:0.001463
+	Exact-area time:0.003593
+	Matching selection time:0.000601
+	  Report mapping result:
+		klut_size()     :382
+		klut.num_gates():233
+		max delay       :5
+		max area        :233
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :19
+		LUT fanins:3	 numbers :13
+		LUT fanins:4	 numbers :54
+		LUT fanins:5	 numbers :15
+		LUT fanins:6	 numbers :35
+		LUT fanins:7	 numbers :97
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/i2c/i2c.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/i2c/i2c.ifpga.v
+
+[2021-05-26 18:28:46,621]mapper_test.py:195:[INFO]: area: 330 level: 5
+[2021-05-26 18:28:46,625]mapper_test.py:73:[INFO]: run case "sin"
+[2021-05-26 18:28:46,625]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-05-26 18:28:52,693]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sin/sin.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sin/sin.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut7.lib; if -K 7; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sin/sin.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =      408     29.04 %
+Or           =        0      0.00 %
+Other        =      997     70.96 %
+TOTAL        =     1405    100.00 %
+Level =   21.  COs =    1.     4.0 %
+Level =   22.  COs =    1.     8.0 %
+Level =   24.  COs =    5.    28.0 %
+Level =   25.  COs =    2.    36.0 %
+Level =   26.  COs =    2.    44.0 %
+Level =   27.  COs =    4.    60.0 %
+Level =   28.  COs =    3.    72.0 %
+Level =   29.  COs =    2.    80.0 %
+Level =   30.  COs =    5.   100.0 %
+
+[2021-05-26 18:28:52,700]mapper_test.py:136:[INFO]: area: 1722 level: 30
+[2021-05-26 18:28:52,700]mapper_test.py:171:[INFO]: run iFPGA flow...
+[2021-05-26 18:28:53,647]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	Cut-calculated time:0.824779
+	Topological sort time:0.001206
+	Area-flow time:0.010322
+	Exact-area time:0.029752
+	Matching selection time:0.003463
+	  Report mapping result:
+		klut_size()     :1530
+		klut.num_gates():1504
+		max delay       :76
+		max area        :1504
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :421
+		LUT fanins:3	 numbers :383
+		LUT fanins:4	 numbers :175
+		LUT fanins:5	 numbers :59
+		LUT fanins:6	 numbers :167
+		LUT fanins:7	 numbers :299
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sin/sin.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sin/sin.ifpga.v
+
+[2021-05-26 18:28:53,647]mapper_test.py:195:[INFO]: area: 1803 level: 76
+[2021-05-26 18:28:53,651]mapper_test.py:73:[INFO]: run case "div"
+[2021-05-26 18:28:53,652]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-05-26 18:29:37,659]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/div/div.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/div/div.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut7.lib; if -K 7; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/div/div.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =      397      5.16 %
+Or           =        0      0.00 %
+Other        =     7290     94.84 %
+TOTAL        =     7687    100.00 %
+Level =    5.  COs =    2.     1.6 %
+Level =    6.  COs =    2.     3.1 %
+Level =    8.  COs =    1.     3.9 %
+Level =   11.  COs =    1.     4.7 %
+Level =   14.  COs =    1.     5.5 %
+Level =   17.  COs =    1.     6.2 %
+Level =   20.  COs =    1.     7.0 %
+Level =   24.  COs =    1.     7.8 %
+Level =   28.  COs =    1.     8.6 %
+Level =   32.  COs =    1.     9.4 %
+Level =   38.  COs =    1.    10.2 %
+Level =   43.  COs =    1.    10.9 %
+Level =   47.  COs =    1.    11.7 %
+Level =   54.  COs =    1.    12.5 %
+Level =   60.  COs =    1.    13.3 %
+Level =   65.  COs =    1.    14.1 %
+Level =   72.  COs =    1.    14.8 %
+Level =   79.  COs =    1.    15.6 %
+Level =   86.  COs =    1.    16.4 %
+Level =   94.  COs =    1.    17.2 %
+Level =  102.  COs =    1.    18.0 %
+Level =  110.  COs =    1.    18.8 %
+Level =  119.  COs =    1.    19.5 %
+Level =  128.  COs =    1.    20.3 %
+Level =  138.  COs =    1.    21.1 %
+Level =  149.  COs =    1.    21.9 %
+Level =  159.  COs =    1.    22.7 %
+Level =  168.  COs =    1.    23.4 %
+Level =  179.  COs =    1.    24.2 %
+Level =  190.  COs =    1.    25.0 %
+Level =  201.  COs =    1.    25.8 %
+Level =  214.  COs =    1.    26.6 %
+Level =  225.  COs =    1.    27.3 %
+Level =  237.  COs =    1.    28.1 %
+Level =  251.  COs =    1.    28.9 %
+Level =  263.  COs =    1.    29.7 %
+Level =  276.  COs =    1.    30.5 %
+Level =  290.  COs =    1.    31.2 %
+Level =  304.  COs =    1.    32.0 %
+Level =  318.  COs =    1.    32.8 %
+Level =  333.  COs =    1.    33.6 %
+Level =  348.  COs =    1.    34.4 %
+Level =  363.  COs =    1.    35.2 %
+Level =  379.  COs =    1.    35.9 %
+Level =  395.  COs =    1.    36.7 %
+Level =  411.  COs =    1.    37.5 %
+Level =  428.  COs =    1.    38.3 %
+Level =  445.  COs =    1.    39.1 %
+Level =  462.  COs =    1.    39.8 %
+Level =  480.  COs =    1.    40.6 %
+Level =  498.  COs =    1.    41.4 %
+Level =  516.  COs =    1.    42.2 %
+Level =  535.  COs =    1.    43.0 %
+Level =  554.  COs =    1.    43.8 %
+Level =  573.  COs =    1.    44.5 %
+Level =  593.  COs =    1.    45.3 %
+Level =  613.  COs =    1.    46.1 %
+Level =  633.  COs =    1.    46.9 %
+Level =  654.  COs =    1.    47.7 %
+Level =  675.  COs =    1.    48.4 %
+Level =  696.  COs =    1.    49.2 %
+Level =  712.  COs =   65.   100.0 %
+
+[2021-05-26 18:29:37,700]mapper_test.py:136:[INFO]: area: 9514 level: 712
+[2021-05-26 18:29:37,701]mapper_test.py:171:[INFO]: run iFPGA flow...
+[2021-05-26 18:29:43,464]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	Cut-calculated time:4.98172
+	Topological sort time:0.009065
+	Area-flow time:0.076884
+	Exact-area time:0.224532
+	Matching selection time:0.014545
+	  Report mapping result:
+		klut_size()     :8293
+		klut.num_gates():8163
+		max delay       :2059
+		max area        :8148
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :47
+		LUT fanins:3	 numbers :3783
+		LUT fanins:4	 numbers :3793
+		LUT fanins:5	 numbers :171
+		LUT fanins:6	 numbers :131
+		LUT fanins:7	 numbers :238
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/div/div.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/div/div.ifpga.v
+
+[2021-05-26 18:29:43,464]mapper_test.py:195:[INFO]: area: 8401 level: 2059
+[2021-05-26 18:29:43,467]mapper_test.py:73:[INFO]: run case "adder"
+[2021-05-26 18:29:43,467]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-05-26 18:29:44,036]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/adder/adder.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/adder/adder.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut7.lib; if -K 7; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/adder/adder.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =        1      0.58 %
+Or           =        0      0.00 %
+Other        =      171     99.42 %
+TOTAL        =      172    100.00 %
+Level =    1.  COs =    1.     0.8 %
+Level =    2.  COs =    5.     4.7 %
+Level =    3.  COs =    3.     7.0 %
+Level =    4.  COs =    3.     9.3 %
+Level =    5.  COs =    3.    11.6 %
+Level =    6.  COs =    3.    14.0 %
+Level =    7.  COs =    3.    16.3 %
+Level =    8.  COs =    3.    18.6 %
+Level =    9.  COs =    3.    20.9 %
+Level =   10.  COs =    3.    23.3 %
+Level =   11.  COs =    3.    25.6 %
+Level =   12.  COs =    3.    27.9 %
+Level =   13.  COs =    3.    30.2 %
+Level =   14.  COs =    3.    32.6 %
+Level =   15.  COs =    3.    34.9 %
+Level =   16.  COs =    3.    37.2 %
+Level =   17.  COs =    3.    39.5 %
+Level =   18.  COs =    3.    41.9 %
+Level =   19.  COs =    3.    44.2 %
+Level =   20.  COs =    3.    46.5 %
+Level =   21.  COs =    3.    48.8 %
+Level =   22.  COs =    3.    51.2 %
+Level =   23.  COs =    3.    53.5 %
+Level =   24.  COs =    3.    55.8 %
+Level =   25.  COs =    3.    58.1 %
+Level =   26.  COs =    3.    60.5 %
+Level =   27.  COs =    3.    62.8 %
+Level =   28.  COs =    3.    65.1 %
+Level =   29.  COs =    3.    67.4 %
+Level =   30.  COs =    3.    69.8 %
+Level =   31.  COs =    3.    72.1 %
+Level =   32.  COs =    3.    74.4 %
+Level =   33.  COs =    3.    76.7 %
+Level =   34.  COs =    3.    79.1 %
+Level =   35.  COs =    3.    81.4 %
+Level =   36.  COs =    3.    83.7 %
+Level =   37.  COs =    3.    86.0 %
+Level =   38.  COs =    3.    88.4 %
+Level =   39.  COs =    3.    90.7 %
+Level =   40.  COs =    3.    93.0 %
+Level =   41.  COs =    3.    95.3 %
+Level =   42.  COs =    3.    97.7 %
+Level =   43.  COs =    3.   100.0 %
+
+[2021-05-26 18:29:44,038]mapper_test.py:136:[INFO]: area: 254 level: 43
+[2021-05-26 18:29:44,038]mapper_test.py:171:[INFO]: run iFPGA flow...
+[2021-05-26 18:29:44,117]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	Cut-calculated time:0.050482
+	Topological sort time:0.000273
+	Area-flow time:0.001577
+	Exact-area time:0.004049
+	Matching selection time:0.000398
+	  Report mapping result:
+		klut_size()     :429
+		klut.num_gates():171
+		max delay       :43
+		max area        :171
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :1
+		LUT fanins:3	 numbers :42
+		LUT fanins:4	 numbers :1
+		LUT fanins:5	 numbers :43
+		LUT fanins:6	 numbers :2
+		LUT fanins:7	 numbers :82
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/adder/adder.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/adder/adder.ifpga.v
+
+[2021-05-26 18:29:44,117]mapper_test.py:195:[INFO]: area: 253 level: 43
+[2021-05-26 18:29:44,118]mapper_test.py:73:[INFO]: run case "sqrt"
+[2021-05-26 18:29:44,118]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-05-26 18:30:11,813]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sqrt/sqrt.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sqrt/sqrt.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut7.lib; if -K 7; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sqrt/sqrt.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =      444      9.84 %
+Or           =        0      0.00 %
+Other        =     4067     90.16 %
+TOTAL        =     4511    100.00 %
+Level =    1.  COs =    3.     4.7 %
+Level =    2.  COs =    1.     6.2 %
+Level =    4.  COs =    1.     7.8 %
+Level =    7.  COs =    1.     9.4 %
+Level =    9.  COs =    1.    10.9 %
+Level =   13.  COs =    1.    12.5 %
+Level =   16.  COs =    1.    14.1 %
+Level =   19.  COs =    1.    15.6 %
+Level =   24.  COs =    1.    17.2 %
+Level =   28.  COs =    1.    18.8 %
+Level =   33.  COs =    1.    20.3 %
+Level =   39.  COs =    1.    21.9 %
+Level =   44.  COs =    1.    23.4 %
+Level =   51.  COs =    1.    25.0 %
+Level =   57.  COs =    1.    26.6 %
+Level =   63.  COs =    1.    28.1 %
+Level =   71.  COs =    1.    29.7 %
+Level =   78.  COs =    1.    31.2 %
+Level =   86.  COs =    1.    32.8 %
+Level =   95.  COs =    1.    34.4 %
+Level =  103.  COs =    1.    35.9 %
+Level =  113.  COs =    1.    37.5 %
+Level =  122.  COs =    1.    39.1 %
+Level =  131.  COs =    1.    40.6 %
+Level =  142.  COs =    1.    42.2 %
+Level =  152.  COs =    1.    43.8 %
+Level =  163.  COs =    1.    45.3 %
+Level =  175.  COs =    1.    46.9 %
+Level =  186.  COs =    1.    48.4 %
+Level =  199.  COs =    1.    50.0 %
+Level =  211.  COs =    1.    51.6 %
+Level =  223.  COs =    1.    53.1 %
+Level =  237.  COs =    1.    54.7 %
+Level =  250.  COs =    1.    56.2 %
+Level =  264.  COs =    1.    57.8 %
+Level =  279.  COs =    1.    59.4 %
+Level =  293.  COs =    1.    60.9 %
+Level =  309.  COs =    1.    62.5 %
+Level =  324.  COs =    1.    64.1 %
+Level =  339.  COs =    1.    65.6 %
+Level =  356.  COs =    1.    67.2 %
+Level =  372.  COs =    1.    68.8 %
+Level =  389.  COs =    1.    70.3 %
+Level =  407.  COs =    1.    71.9 %
+Level =  424.  COs =    1.    73.4 %
+Level =  443.  COs =    1.    75.0 %
+Level =  461.  COs =    1.    76.6 %
+Level =  479.  COs =    1.    78.1 %
+Level =  499.  COs =    1.    79.7 %
+Level =  518.  COs =    1.    81.2 %
+Level =  538.  COs =    1.    82.8 %
+Level =  559.  COs =    1.    84.4 %
+Level =  579.  COs =    1.    85.9 %
+Level =  601.  COs =    1.    87.5 %
+Level =  622.  COs =    1.    89.1 %
+Level =  643.  COs =    1.    90.6 %
+Level =  666.  COs =    1.    92.2 %
+Level =  688.  COs =    1.    93.8 %
+Level =  711.  COs =    1.    95.3 %
+Level =  735.  COs =    1.    96.9 %
+Level =  758.  COs =    1.    98.4 %
+Level =  770.  COs =    1.   100.0 %
+
+[2021-05-26 18:30:11,838]mapper_test.py:136:[INFO]: area: 5810 level: 770
+[2021-05-26 18:30:11,838]mapper_test.py:171:[INFO]: run iFPGA flow...
+[2021-05-26 18:30:15,230]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	Cut-calculated time:2.9584
+	Topological sort time:0.005108
+	Area-flow time:0.040751
+	Exact-area time:0.119956
+	Matching selection time:0.009926
+	  Report mapping result:
+		klut_size()     :4920
+		klut.num_gates():4790
+		max delay       :1910
+		max area        :4727
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :796
+		LUT fanins:3	 numbers :832
+		LUT fanins:4	 numbers :1687
+		LUT fanins:5	 numbers :950
+		LUT fanins:6	 numbers :68
+		LUT fanins:7	 numbers :457
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sqrt/sqrt.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sqrt/sqrt.ifpga.v
+
+[2021-05-26 18:30:15,230]mapper_test.py:195:[INFO]: area: 5247 level: 1910
+[2021-05-26 18:30:15,232]mapper_test.py:73:[INFO]: run case "square"
+[2021-05-26 18:30:15,232]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-05-26 18:30:38,096]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/square/square.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/square/square.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut7.lib; if -K 7; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/square/square.abc.v; print_gates; print_level".
+
+Const        =        1      0.03 %
+Buffer       =        1      0.03 %
+Inverter     =        0      0.00 %
+And          =      295      7.93 %
+Or           =        0      0.00 %
+Other        =     3425     92.02 %
+TOTAL        =     3722    100.00 %
+Level =    0.  COs =    1.     0.8 %
+Level =    1.  COs =    7.     6.2 %
+Level =    2.  COs =    2.     7.8 %
+Level =    3.  COs =    1.     8.6 %
+Level =    4.  COs =    3.    10.9 %
+Level =    5.  COs =    3.    13.3 %
+Level =    6.  COs =    3.    15.6 %
+Level =    7.  COs =    3.    18.0 %
+Level =    8.  COs =    3.    20.3 %
+Level =    9.  COs =    3.    22.7 %
+Level =   10.  COs =    3.    25.0 %
+Level =   11.  COs =    3.    27.3 %
+Level =   12.  COs =    3.    29.7 %
+Level =   13.  COs =    3.    32.0 %
+Level =   14.  COs =    3.    34.4 %
+Level =   15.  COs =    3.    36.7 %
+Level =   16.  COs =    3.    39.1 %
+Level =   17.  COs =    3.    41.4 %
+Level =   18.  COs =    3.    43.8 %
+Level =   19.  COs =    3.    46.1 %
+Level =   20.  COs =    3.    48.4 %
+Level =   21.  COs =    3.    50.8 %
+Level =   22.  COs =    3.    53.1 %
+Level =   23.  COs =    3.    55.5 %
+Level =   24.  COs =    3.    57.8 %
+Level =   25.  COs =    3.    60.2 %
+Level =   26.  COs =    3.    62.5 %
+Level =   27.  COs =    3.    64.8 %
+Level =   28.  COs =    3.    67.2 %
+Level =   29.  COs =    3.    69.5 %
+Level =   30.  COs =    3.    71.9 %
+Level =   31.  COs =    3.    74.2 %
+Level =   32.  COs =    3.    76.6 %
+Level =   33.  COs =    3.    78.9 %
+Level =   34.  COs =    3.    81.2 %
+Level =   35.  COs =    3.    83.6 %
+Level =   36.  COs =    3.    85.9 %
+Level =   37.  COs =    3.    88.3 %
+Level =   38.  COs =    5.    92.2 %
+Level =   39.  COs =    3.    94.5 %
+Level =   40.  COs =    3.    96.9 %
+Level =   41.  COs =    4.   100.0 %
+
+[2021-05-26 18:30:38,117]mapper_test.py:136:[INFO]: area: 4605 level: 41
+[2021-05-26 18:30:38,117]mapper_test.py:171:[INFO]: run iFPGA flow...
+[2021-05-26 18:30:40,047]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	Cut-calculated time:1.59786
+	Topological sort time:0.003898
+	Area-flow time:0.030227
+	Exact-area time:0.088938
+	Matching selection time:0.008105
+	  Report mapping result:
+		klut_size()     :3845
+		klut.num_gates():3779
+		max delay       :120
+		max area        :3779
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :357
+		LUT fanins:3	 numbers :1494
+		LUT fanins:4	 numbers :33
+		LUT fanins:5	 numbers :31
+		LUT fanins:6	 numbers :923
+		LUT fanins:7	 numbers :941
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/square/square.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/square/square.ifpga.v
+
+[2021-05-26 18:30:40,048]mapper_test.py:195:[INFO]: area: 4720 level: 120
+[2021-05-26 18:30:40,051]mapper_test.py:73:[INFO]: run case "multiplier"
+[2021-05-26 18:30:40,051]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-05-26 18:31:08,793]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/multiplier/multiplier.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/multiplier/multiplier.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut7.lib; if -K 7; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/multiplier/multiplier.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =        3      0.06 %
+Or           =        0      0.00 %
+Other        =     5312     99.94 %
+TOTAL        =     5315    100.00 %
+Level =    1.  COs =    3.     2.3 %
+Level =    2.  COs =    1.     3.1 %
+Level =    3.  COs =    1.     3.9 %
+Level =    4.  COs =    3.     6.2 %
+Level =    5.  COs =    3.     8.6 %
+Level =    6.  COs =    3.    10.9 %
+Level =    7.  COs =    3.    13.3 %
+Level =    8.  COs =    3.    15.6 %
+Level =    9.  COs =    3.    18.0 %
+Level =   10.  COs =    3.    20.3 %
+Level =   11.  COs =    3.    22.7 %
+Level =   12.  COs =    3.    25.0 %
+Level =   13.  COs =    5.    28.9 %
+Level =   14.  COs =    3.    31.2 %
+Level =   15.  COs =    3.    33.6 %
+Level =   16.  COs =    3.    35.9 %
+Level =   17.  COs =    3.    38.3 %
+Level =   18.  COs =    3.    40.6 %
+Level =   19.  COs =    3.    43.0 %
+Level =   20.  COs =    3.    45.3 %
+Level =   21.  COs =    3.    47.7 %
+Level =   22.  COs =    3.    50.0 %
+Level =   23.  COs =    3.    52.3 %
+Level =   24.  COs =    3.    54.7 %
+Level =   25.  COs =    3.    57.0 %
+Level =   26.  COs =    3.    59.4 %
+Level =   27.  COs =    3.    61.7 %
+Level =   28.  COs =    3.    64.1 %
+Level =   29.  COs =    3.    66.4 %
+Level =   30.  COs =    3.    68.8 %
+Level =   31.  COs =    3.    71.1 %
+Level =   32.  COs =    3.    73.4 %
+Level =   33.  COs =    3.    75.8 %
+Level =   34.  COs =    3.    78.1 %
+Level =   35.  COs =    3.    80.5 %
+Level =   36.  COs =    3.    82.8 %
+Level =   37.  COs =    3.    85.2 %
+Level =   38.  COs =    3.    87.5 %
+Level =   39.  COs =    3.    89.8 %
+Level =   40.  COs =    3.    92.2 %
+Level =   41.  COs =    3.    94.5 %
+Level =   42.  COs =    3.    96.9 %
+Level =   43.  COs =    3.    99.2 %
+Level =   44.  COs =    1.   100.0 %
+
+[2021-05-26 18:31:08,824]mapper_test.py:136:[INFO]: area: 7279 level: 44
+[2021-05-26 18:31:08,824]mapper_test.py:171:[INFO]: run iFPGA flow...
+[2021-05-26 18:31:12,071]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	Cut-calculated time:2.70874
+	Topological sort time:0.005506
+	Area-flow time:0.0479
+	Exact-area time:0.147388
+	Matching selection time:0.012539
+	  Report mapping result:
+		klut_size()     :6345
+		klut.num_gates():6215
+		max delay       :126
+		max area        :6215
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :1401
+		LUT fanins:3	 numbers :1879
+		LUT fanins:4	 numbers :37
+		LUT fanins:5	 numbers :55
+		LUT fanins:6	 numbers :1356
+		LUT fanins:7	 numbers :1487
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/multiplier/multiplier.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/multiplier/multiplier.ifpga.v
+
+[2021-05-26 18:31:12,072]mapper_test.py:195:[INFO]: area: 7702 level: 126
+[2021-05-26 18:31:12,074]mapper_test.py:73:[INFO]: run case "hyp"
+[2021-05-26 18:31:12,074]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 00:47:21,595]mapper_test.py:73:[INFO]: run case "cavlc"
+[2021-07-05 00:47:21,596]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 00:47:22,026]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/cavlc/cavlc.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/cavlc/cavlc.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/cavlc/cavlc.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =       79     27.34 %
+Or           =        0      0.00 %
+Other        =      210     72.66 %
+TOTAL        =      289    100.00 %
+Level =    3.  COs =    2.    18.2 %
+Level =    4.  COs =    1.    27.3 %
+Level =    6.  COs =    8.   100.0 %
+
+[2021-07-05 00:47:22,028]mapper_test.py:135:[INFO]: area: 289 level: 6
+[2021-07-05 00:47:22,028]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 00:47:22,072]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/cavlc/cavlc.opt.aig
+	Cut-calculated time:0.014051
+	Topological sort time:0.000161
+	Area-flow time:0.000769
+	Exact-area time:0.003115
+	Matching selection time:0.000596
+	  Report mapping result:
+		klut_size()     :294
+		klut.num_gates():282
+		max delay       :8
+		max area        :282
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :32
+		LUT fanins:3	 numbers :36
+		LUT fanins:4	 numbers :214
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/cavlc/cavlc.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/cavlc/cavlc.ifpga.v
+
+[2021-07-05 00:47:22,072]mapper_test.py:194:[INFO]: area: 282 level: 8
+[2021-07-05 00:47:22,074]mapper_test.py:73:[INFO]: run case "ctrl"
+[2021-07-05 00:47:22,074]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 00:47:22,220]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/ctrl/ctrl.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/ctrl/ctrl.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/ctrl/ctrl.abc.v; print_gates; print_level".
+
+Const        =        1      1.92 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =       22     42.31 %
+Or           =        0      0.00 %
+Other        =       29     55.77 %
+TOTAL        =       52    100.00 %
+Level =    0.  COs =    1.     3.8 %
+Level =    1.  COs =    2.    11.5 %
+Level =    2.  COs =   18.    80.8 %
+Level =    3.  COs =    5.   100.0 %
+
+[2021-07-05 00:47:22,221]mapper_test.py:135:[INFO]: area: 51 level: 3
+[2021-07-05 00:47:22,221]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 00:47:22,234]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/ctrl/ctrl.opt.aig
+	Cut-calculated time:0.002106
+	Topological sort time:2.9e-05
+	Area-flow time:9.2e-05
+	Exact-area time:0.000294
+	Matching selection time:0.000137
+	  Report mapping result:
+		klut_size()     :60
+		klut.num_gates():51
+		max delay       :3
+		max area        :51
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :8
+		LUT fanins:3	 numbers :6
+		LUT fanins:4	 numbers :37
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/ctrl/ctrl.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/ctrl/ctrl.ifpga.v
+
+[2021-07-05 00:47:22,234]mapper_test.py:194:[INFO]: area: 51 level: 3
+[2021-07-05 00:47:22,235]mapper_test.py:73:[INFO]: run case "arbiter"
+[2021-07-05 00:47:22,236]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 00:47:30,200]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/arbiter/arbiter.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/arbiter/arbiter.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/arbiter/arbiter.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =      148      3.49 %
+Or           =        0      0.00 %
+Other        =     4097     96.51 %
+TOTAL        =     4245    100.00 %
+Level =    4.  COs =    1.     0.8 %
+Level =   30.  COs =  128.   100.0 %
+
+[2021-07-05 00:47:30,211]mapper_test.py:135:[INFO]: area: 4245 level: 30
+[2021-07-05 00:47:30,211]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 00:47:30,892]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/arbiter/arbiter.opt.aig
+	Cut-calculated time:0.365278
+	Topological sort time:0.002721
+	Area-flow time:0.018728
+	Exact-area time:0.10463
+	Matching selection time:0.007572
+	  Report mapping result:
+		klut_size()     :4643
+		klut.num_gates():4385
+		max delay       :31
+		max area        :4385
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :255
+		LUT fanins:3	 numbers :255
+		LUT fanins:4	 numbers :3875
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/arbiter/arbiter.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/arbiter/arbiter.ifpga.v
+
+[2021-07-05 00:47:30,893]mapper_test.py:194:[INFO]: area: 4385 level: 31
+[2021-07-05 00:47:30,894]mapper_test.py:73:[INFO]: run case "router"
+[2021-07-05 00:47:30,894]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 00:47:31,084]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/router/router.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/router/router.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/router/router.abc.v; print_gates; print_level".
+
+Const        =       27     29.03 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =       34     36.56 %
+Or           =        0      0.00 %
+Other        =       32     34.41 %
+TOTAL        =       93    100.00 %
+Level =    0.  COs =   27.    90.0 %
+Level =    8.  COs =    1.    93.3 %
+Level =    9.  COs =    2.   100.0 %
+
+[2021-07-05 00:47:31,084]mapper_test.py:135:[INFO]: area: 66 level: 9
+[2021-07-05 00:47:31,084]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 00:47:31,101]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/router/router.opt.aig
+	Cut-calculated time:0.003239
+	Topological sort time:4.8e-05
+	Area-flow time:0.000165
+	Exact-area time:0.000687
+	Matching selection time:0.000121
+	  Report mapping result:
+		klut_size()     :127
+		klut.num_gates():65
+		max delay       :11
+		max area        :64
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :5
+		LUT fanins:3	 numbers :18
+		LUT fanins:4	 numbers :42
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/router/router.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/router/router.ifpga.v
+
+[2021-07-05 00:47:31,101]mapper_test.py:194:[INFO]: area: 65 level: 11
+[2021-07-05 00:47:31,103]mapper_test.py:73:[INFO]: run case "mem_ctrl"
+[2021-07-05 00:47:31,104]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 00:48:02,184]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/mem_ctrl/mem_ctrl.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/mem_ctrl/mem_ctrl.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/mem_ctrl/mem_ctrl.abc.v; print_gates; print_level".
+
+Const        =        1      0.01 %
+Buffer       =      234      1.41 %
+Inverter     =       39      0.23 %
+And          =     3385     20.37 %
+Or           =        0      0.00 %
+Other        =    12961     77.98 %
+TOTAL        =    16620    100.00 %
+Level =    0.  COs =    1.     0.1 %
+Level =    1.  COs =  371.    30.2 %
+Level =    2.  COs =   38.    33.3 %
+Level =    3.  COs =   81.    39.9 %
+Level =    4.  COs =  139.    51.2 %
+Level =    5.  COs =   17.    52.6 %
+Level =    6.  COs =   29.    54.9 %
+Level =    7.  COs =   13.    56.0 %
+Level =    8.  COs =   64.    61.2 %
+Level =    9.  COs =   79.    67.6 %
+Level =   10.  COs =   25.    69.6 %
+Level =   11.  COs =   17.    71.0 %
+Level =   12.  COs =   11.    71.9 %
+Level =   13.  COs =   16.    73.2 %
+Level =   14.  COs =  151.    85.5 %
+Level =   15.  COs =    9.    86.2 %
+Level =   16.  COs =    7.    86.8 %
+Level =   17.  COs =    2.    86.9 %
+Level =   18.  COs =    1.    87.0 %
+Level =   19.  COs =    4.    87.3 %
+Level =   20.  COs =   10.    88.1 %
+Level =   21.  COs =    7.    88.7 %
+Level =   22.  COs =   11.    89.6 %
+Level =   23.  COs =    6.    90.1 %
+Level =   24.  COs =   11.    91.0 %
+Level =   25.  COs =   14.    92.1 %
+Level =   26.  COs =   12.    93.1 %
+Level =   27.  COs =    2.    93.3 %
+Level =   28.  COs =    3.    93.5 %
+Level =   29.  COs =    2.    93.7 %
+Level =   30.  COs =    4.    94.0 %
+Level =   31.  COs =    4.    94.3 %
+Level =   32.  COs =    4.    94.6 %
+Level =   33.  COs =   14.    95.8 %
+Level =   34.  COs =    5.    96.2 %
+Level =   35.  COs =   12.    97.2 %
+Level =   36.  COs =    9.    97.9 %
+Level =   37.  COs =   26.   100.0 %
+
+[2021-07-05 00:48:02,223]mapper_test.py:135:[INFO]: area: 16385 level: 37
+[2021-07-05 00:48:02,224]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 00:48:04,528]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/mem_ctrl/mem_ctrl.opt.aig
+	Cut-calculated time:1.10472
+	Topological sort time:0.010449
+	Area-flow time:0.064515
+	Exact-area time:0.226403
+	Matching selection time:0.030902
+	  Report mapping result:
+		klut_size()     :17607
+		klut.num_gates():16401
+		max delay       :64
+		max area        :16357
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :39
+		LUT fanins:2	 numbers :1397
+		LUT fanins:3	 numbers :2978
+		LUT fanins:4	 numbers :11987
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/mem_ctrl/mem_ctrl.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/mem_ctrl/mem_ctrl.ifpga.v
+
+[2021-07-05 00:48:04,528]mapper_test.py:194:[INFO]: area: 16401 level: 64
+[2021-07-05 00:48:04,530]mapper_test.py:73:[INFO]: run case "priority"
+[2021-07-05 00:48:04,530]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 00:48:04,915]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/priority/priority.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/priority/priority.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/priority/priority.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =       93     45.15 %
+Or           =        0      0.00 %
+Other        =      113     54.85 %
+TOTAL        =      206    100.00 %
+Level =    6.  COs =    3.    37.5 %
+Level =    7.  COs =    1.    50.0 %
+Level =    9.  COs =    1.    62.5 %
+Level =   10.  COs =    1.    75.0 %
+Level =   29.  COs =    2.   100.0 %
+
+[2021-07-05 00:48:04,916]mapper_test.py:135:[INFO]: area: 206 level: 29
+[2021-07-05 00:48:04,916]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 00:48:04,944]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/priority/priority.opt.aig
+	Cut-calculated time:0.008631
+	Topological sort time:0.000123
+	Area-flow time:0.00043
+	Exact-area time:0.002182
+	Matching selection time:0.000364
+	  Report mapping result:
+		klut_size()     :334
+		klut.num_gates():204
+		max delay       :49
+		max area        :203
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :30
+		LUT fanins:3	 numbers :45
+		LUT fanins:4	 numbers :129
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/priority/priority.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/priority/priority.ifpga.v
+
+[2021-07-05 00:48:04,944]mapper_test.py:194:[INFO]: area: 204 level: 49
+[2021-07-05 00:48:04,946]mapper_test.py:73:[INFO]: run case "dec"
+[2021-07-05 00:48:04,946]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 00:48:05,234]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/dec/dec.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/dec/dec.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/dec/dec.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =      288    100.00 %
+Or           =        0      0.00 %
+Other        =        0      0.00 %
+TOTAL        =      288    100.00 %
+Level =    2.  COs =  256.   100.0 %
+
+[2021-07-05 00:48:05,235]mapper_test.py:135:[INFO]: area: 288 level: 2
+[2021-07-05 00:48:05,235]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 00:48:05,265]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/dec/dec.opt.aig
+	Cut-calculated time:0.008846
+	Topological sort time:8.3e-05
+	Area-flow time:0.000336
+	Exact-area time:0.001105
+	Matching selection time:0.000394
+	  Report mapping result:
+		klut_size()     :298
+		klut.num_gates():288
+		max delay       :2
+		max area        :288
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :256
+		LUT fanins:3	 numbers :0
+		LUT fanins:4	 numbers :32
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/dec/dec.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/dec/dec.ifpga.v
+
+[2021-07-05 00:48:05,266]mapper_test.py:194:[INFO]: area: 288 level: 2
+[2021-07-05 00:48:05,267]mapper_test.py:73:[INFO]: run case "voter"
+[2021-07-05 00:48:05,268]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 00:48:18,662]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/voter/voter.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/voter/voter.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/voter/voter.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =      264      9.63 %
+Or           =        0      0.00 %
+Other        =     2478     90.37 %
+TOTAL        =     2742    100.00 %
+Level =   18.  COs =    1.   100.0 %
+
+[2021-07-05 00:48:18,670]mapper_test.py:135:[INFO]: area: 2742 level: 18
+[2021-07-05 00:48:18,670]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 00:48:19,234]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/voter/voter.opt.aig
+	Cut-calculated time:0.339317
+	Topological sort time:0.002078
+	Area-flow time:0.014306
+	Exact-area time:0.042798
+	Matching selection time:0.005942
+	  Report mapping result:
+		klut_size()     :3565
+		klut.num_gates():2562
+		max delay       :22
+		max area        :2562
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :352
+		LUT fanins:3	 numbers :1564
+		LUT fanins:4	 numbers :646
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/voter/voter.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/voter/voter.ifpga.v
+
+[2021-07-05 00:48:19,234]mapper_test.py:194:[INFO]: area: 2562 level: 22
+[2021-07-05 00:48:19,235]mapper_test.py:73:[INFO]: run case "int2float"
+[2021-07-05 00:48:19,236]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 00:48:19,444]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/int2float/int2float.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/int2float/int2float.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/int2float/int2float.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =       28     31.82 %
+Or           =        0      0.00 %
+Other        =       60     68.18 %
+TOTAL        =       88    100.00 %
+Level =    3.  COs =    1.    14.3 %
+Level =    4.  COs =    1.    28.6 %
+Level =    5.  COs =    3.    71.4 %
+Level =    6.  COs =    2.   100.0 %
+
+[2021-07-05 00:48:19,444]mapper_test.py:135:[INFO]: area: 88 level: 6
+[2021-07-05 00:48:19,444]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 00:48:19,464]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/int2float/int2float.opt.aig
+	Cut-calculated time:0.004976
+	Topological sort time:6.1e-05
+	Area-flow time:0.000252
+	Exact-area time:0.000802
+	Matching selection time:0.000215
+	  Report mapping result:
+		klut_size()     :99
+		klut.num_gates():86
+		max delay       :8
+		max area        :86
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :15
+		LUT fanins:3	 numbers :5
+		LUT fanins:4	 numbers :66
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/int2float/int2float.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/int2float/int2float.ifpga.v
+
+[2021-07-05 00:48:19,464]mapper_test.py:194:[INFO]: area: 86 level: 8
+[2021-07-05 00:48:19,468]mapper_test.py:73:[INFO]: run case "i2c"
+[2021-07-05 00:48:19,469]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 00:48:20,056]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/i2c/i2c.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/i2c/i2c.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/i2c/i2c.abc.v; print_gates; print_level".
+
+Const        =        1      0.23 %
+Buffer       =       14      3.27 %
+Inverter     =        0      0.00 %
+And          =      166     38.79 %
+Or           =        0      0.00 %
+Other        =      247     57.71 %
+TOTAL        =      428    100.00 %
+Level =    0.  COs =    1.     0.7 %
+Level =    1.  COs =   27.    19.7 %
+Level =    2.  COs =   18.    32.4 %
+Level =    3.  COs =   46.    64.8 %
+Level =    4.  COs =    9.    71.1 %
+Level =    5.  COs =   17.    83.1 %
+Level =    6.  COs =   24.   100.0 %
+
+[2021-07-05 00:48:20,057]mapper_test.py:135:[INFO]: area: 413 level: 6
+[2021-07-05 00:48:20,057]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 00:48:20,113]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/i2c/i2c.opt.aig
+	Cut-calculated time:0.022654
+	Topological sort time:0.000271
+	Area-flow time:0.001275
+	Exact-area time:0.002887
+	Matching selection time:0.000794
+	  Report mapping result:
+		klut_size()     :552
+		klut.num_gates():403
+		max delay       :8
+		max area        :404
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :38
+		LUT fanins:3	 numbers :47
+		LUT fanins:4	 numbers :318
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/i2c/i2c.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/i2c/i2c.ifpga.v
+
+[2021-07-05 00:48:20,114]mapper_test.py:194:[INFO]: area: 403 level: 8
+[2021-07-05 00:48:20,115]mapper_test.py:73:[INFO]: run case "sin"
+[2021-07-05 00:48:20,116]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 00:48:26,262]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sin/sin.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sin/sin.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sin/sin.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =      816     41.34 %
+Or           =        0      0.00 %
+Other        =     1158     58.66 %
+TOTAL        =     1974    100.00 %
+Level =   39.  COs =    1.     4.0 %
+Level =   40.  COs =    1.     8.0 %
+Level =   41.  COs =    1.    12.0 %
+Level =   42.  COs =    1.    16.0 %
+Level =   43.  COs =    1.    20.0 %
+Level =   44.  COs =    1.    24.0 %
+Level =   45.  COs =    2.    32.0 %
+Level =   46.  COs =    1.    36.0 %
+Level =   47.  COs =    2.    44.0 %
+Level =   48.  COs =    1.    48.0 %
+Level =   49.  COs =    2.    56.0 %
+Level =   50.  COs =    2.    64.0 %
+Level =   51.  COs =    1.    68.0 %
+Level =   52.  COs =    2.    76.0 %
+Level =   53.  COs =    2.    84.0 %
+Level =   54.  COs =    1.    88.0 %
+Level =   55.  COs =    3.   100.0 %
+
+[2021-07-05 00:48:26,268]mapper_test.py:135:[INFO]: area: 1974 level: 55
+[2021-07-05 00:48:26,268]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 00:48:26,603]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sin/sin.opt.aig
+	Cut-calculated time:0.222804
+	Topological sort time:0.001164
+	Area-flow time:0.008832
+	Exact-area time:0.026572
+	Matching selection time:0.00353
+	  Report mapping result:
+		klut_size()     :1964
+		klut.num_gates():1938
+		max delay       :82
+		max area        :1938
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :531
+		LUT fanins:3	 numbers :651
+		LUT fanins:4	 numbers :756
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sin/sin.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sin/sin.ifpga.v
+
+[2021-07-05 00:48:26,603]mapper_test.py:194:[INFO]: area: 1938 level: 82
+[2021-07-05 00:48:26,605]mapper_test.py:73:[INFO]: run case "div"
+[2021-07-05 00:48:26,606]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 00:49:11,785]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/div/div.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/div/div.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/div/div.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =     2928     23.19 %
+Or           =        0      0.00 %
+Other        =     9699     76.81 %
+TOTAL        =    12627    100.00 %
+Level =    6.  COs =    1.     0.8 %
+Level =    8.  COs =    2.     2.3 %
+Level =   11.  COs =    1.     3.1 %
+Level =   16.  COs =    1.     3.9 %
+Level =   22.  COs =    1.     4.7 %
+Level =   30.  COs =    1.     5.5 %
+Level =   38.  COs =    1.     6.2 %
+Level =   47.  COs =    1.     7.0 %
+Level =   55.  COs =    1.     7.8 %
+Level =   63.  COs =    1.     8.6 %
+Level =   71.  COs =    1.     9.4 %
+Level =   81.  COs =    1.    10.2 %
+Level =   91.  COs =    1.    10.9 %
+Level =  101.  COs =    1.    11.7 %
+Level =  113.  COs =    1.    12.5 %
+Level =  125.  COs =    1.    13.3 %
+Level =  137.  COs =    1.    14.1 %
+Level =  151.  COs =    1.    14.8 %
+Level =  165.  COs =    1.    15.6 %
+Level =  179.  COs =    1.    16.4 %
+Level =  195.  COs =    1.    17.2 %
+Level =  211.  COs =    1.    18.0 %
+Level =  227.  COs =    1.    18.8 %
+Level =  245.  COs =    1.    19.5 %
+Level =  263.  COs =    1.    20.3 %
+Level =  281.  COs =    1.    21.1 %
+Level =  301.  COs =    1.    21.9 %
+Level =  321.  COs =    1.    22.7 %
+Level =  341.  COs =    1.    23.4 %
+Level =  362.  COs =    1.    24.2 %
+Level =  384.  COs =    1.    25.0 %
+Level =  407.  COs =    1.    25.8 %
+Level =  430.  COs =    1.    26.6 %
+Level =  454.  COs =    1.    27.3 %
+Level =  479.  COs =    1.    28.1 %
+Level =  505.  COs =    1.    28.9 %
+Level =  531.  COs =    1.    29.7 %
+Level =  558.  COs =    1.    30.5 %
+Level =  585.  COs =    1.    31.2 %
+Level =  613.  COs =    1.    32.0 %
+Level =  642.  COs =    1.    32.8 %
+Level =  671.  COs =    1.    33.6 %
+Level =  701.  COs =    1.    34.4 %
+Level =  731.  COs =    1.    35.2 %
+Level =  763.  COs =    1.    35.9 %
+Level =  795.  COs =    1.    36.7 %
+Level =  827.  COs =    1.    37.5 %
+Level =  861.  COs =    1.    38.3 %
+Level =  895.  COs =    1.    39.1 %
+Level =  930.  COs =    1.    39.8 %
+Level =  965.  COs =    1.    40.6 %
+Level = 1001.  COs =    1.    41.4 %
+Level = 1037.  COs =    1.    42.2 %
+Level = 1075.  COs =    1.    43.0 %
+Level = 1113.  COs =    1.    43.8 %
+Level = 1151.  COs =    1.    44.5 %
+Level = 1191.  COs =    1.    45.3 %
+Level = 1231.  COs =    1.    46.1 %
+Level = 1271.  COs =    1.    46.9 %
+Level = 1313.  COs =    1.    47.7 %
+Level = 1355.  COs =    1.    48.4 %
+Level = 1397.  COs =    1.    49.2 %
+Level = 1427.  COs =   65.   100.0 %
+
+[2021-07-05 00:49:11,824]mapper_test.py:135:[INFO]: area: 12627 level: 1427
+[2021-07-05 00:49:11,824]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 00:49:14,171]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/div/div.opt.aig
+	Cut-calculated time:1.62436
+	Topological sort time:0.010002
+	Area-flow time:0.066475
+	Exact-area time:0.199481
+	Matching selection time:0.014349
+	  Report mapping result:
+		klut_size()     :8678
+		klut.num_gates():8548
+		max delay       :2119
+		max area        :8533
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :197
+		LUT fanins:3	 numbers :4048
+		LUT fanins:4	 numbers :4303
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/div/div.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/div/div.ifpga.v
+
+[2021-07-05 00:49:14,171]mapper_test.py:194:[INFO]: area: 8548 level: 2119
+[2021-07-05 00:49:14,172]mapper_test.py:73:[INFO]: run case "adder"
+[2021-07-05 00:49:14,173]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 00:49:14,743]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/adder/adder.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/adder/adder.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/adder/adder.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =       84     24.78 %
+Or           =        0      0.00 %
+Other        =      255     75.22 %
+TOTAL        =      339    100.00 %
+Level =    1.  COs =    2.     1.6 %
+Level =    2.  COs =    1.     2.3 %
+Level =    3.  COs =    2.     3.9 %
+Level =    4.  COs =    1.     4.7 %
+Level =    5.  COs =    2.     6.2 %
+Level =    6.  COs =    1.     7.0 %
+Level =    7.  COs =    2.     8.5 %
+Level =    8.  COs =    1.     9.3 %
+Level =    9.  COs =    2.    10.9 %
+Level =   10.  COs =    1.    11.6 %
+Level =   11.  COs =    2.    13.2 %
+Level =   12.  COs =    1.    14.0 %
+Level =   13.  COs =    2.    15.5 %
+Level =   14.  COs =    1.    16.3 %
+Level =   15.  COs =    2.    17.8 %
+Level =   16.  COs =    1.    18.6 %
+Level =   17.  COs =    2.    20.2 %
+Level =   18.  COs =    1.    20.9 %
+Level =   19.  COs =    2.    22.5 %
+Level =   20.  COs =    1.    23.3 %
+Level =   21.  COs =    2.    24.8 %
+Level =   22.  COs =    1.    25.6 %
+Level =   23.  COs =    2.    27.1 %
+Level =   24.  COs =    1.    27.9 %
+Level =   25.  COs =    2.    29.5 %
+Level =   26.  COs =    1.    30.2 %
+Level =   27.  COs =    2.    31.8 %
+Level =   28.  COs =    1.    32.6 %
+Level =   29.  COs =    2.    34.1 %
+Level =   30.  COs =    1.    34.9 %
+Level =   31.  COs =    2.    36.4 %
+Level =   32.  COs =    1.    37.2 %
+Level =   33.  COs =    2.    38.8 %
+Level =   34.  COs =    1.    39.5 %
+Level =   35.  COs =    2.    41.1 %
+Level =   36.  COs =    1.    41.9 %
+Level =   37.  COs =    2.    43.4 %
+Level =   38.  COs =    1.    44.2 %
+Level =   39.  COs =    2.    45.7 %
+Level =   40.  COs =    1.    46.5 %
+Level =   41.  COs =    2.    48.1 %
+Level =   42.  COs =    1.    48.8 %
+Level =   43.  COs =    2.    50.4 %
+Level =   44.  COs =    1.    51.2 %
+Level =   45.  COs =    2.    52.7 %
+Level =   46.  COs =    1.    53.5 %
+Level =   47.  COs =    2.    55.0 %
+Level =   48.  COs =    1.    55.8 %
+Level =   49.  COs =    2.    57.4 %
+Level =   50.  COs =    1.    58.1 %
+Level =   51.  COs =    2.    59.7 %
+Level =   52.  COs =    1.    60.5 %
+Level =   53.  COs =    2.    62.0 %
+Level =   54.  COs =    1.    62.8 %
+Level =   55.  COs =    2.    64.3 %
+Level =   56.  COs =    1.    65.1 %
+Level =   57.  COs =    2.    66.7 %
+Level =   58.  COs =    1.    67.4 %
+Level =   59.  COs =    2.    69.0 %
+Level =   60.  COs =    1.    69.8 %
+Level =   61.  COs =    2.    71.3 %
+Level =   62.  COs =    1.    72.1 %
+Level =   63.  COs =    2.    73.6 %
+Level =   64.  COs =    1.    74.4 %
+Level =   65.  COs =    2.    76.0 %
+Level =   66.  COs =    1.    76.7 %
+Level =   67.  COs =    2.    78.3 %
+Level =   68.  COs =    1.    79.1 %
+Level =   69.  COs =    2.    80.6 %
+Level =   70.  COs =    1.    81.4 %
+Level =   71.  COs =    2.    82.9 %
+Level =   72.  COs =    1.    83.7 %
+Level =   73.  COs =    2.    85.3 %
+Level =   74.  COs =    1.    86.0 %
+Level =   75.  COs =    2.    87.6 %
+Level =   76.  COs =    1.    88.4 %
+Level =   77.  COs =    2.    89.9 %
+Level =   78.  COs =    1.    90.7 %
+Level =   79.  COs =    2.    92.2 %
+Level =   80.  COs =    1.    93.0 %
+Level =   81.  COs =    2.    94.6 %
+Level =   82.  COs =    1.    95.3 %
+Level =   83.  COs =    2.    96.9 %
+Level =   84.  COs =    1.    97.7 %
+Level =   85.  COs =    3.   100.0 %
+
+[2021-07-05 00:49:14,745]mapper_test.py:135:[INFO]: area: 339 level: 85
+[2021-07-05 00:49:14,745]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 00:49:14,803]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/adder/adder.opt.aig
+	Cut-calculated time:0.027276
+	Topological sort time:0.000265
+	Area-flow time:0.001316
+	Exact-area time:0.003021
+	Matching selection time:0.000468
+	  Report mapping result:
+		klut_size()     :513
+		klut.num_gates():255
+		max delay       :127
+		max area        :255
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :1
+		LUT fanins:3	 numbers :252
+		LUT fanins:4	 numbers :2
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/adder/adder.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/adder/adder.ifpga.v
+
+[2021-07-05 00:49:14,803]mapper_test.py:194:[INFO]: area: 255 level: 127
+[2021-07-05 00:49:14,805]mapper_test.py:73:[INFO]: run case "sqrt"
+[2021-07-05 00:49:14,805]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 00:49:42,035]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sqrt/sqrt.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sqrt/sqrt.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sqrt/sqrt.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =     1011     16.27 %
+Or           =        0      0.00 %
+Other        =     5201     83.73 %
+TOTAL        =     6212    100.00 %
+Level =    1.  COs =    2.     3.1 %
+Level =    3.  COs =    1.     4.7 %
+Level =    6.  COs =    1.     6.2 %
+Level =    9.  COs =    1.     7.8 %
+Level =   14.  COs =    1.     9.4 %
+Level =   20.  COs =    1.    10.9 %
+Level =   27.  COs =    1.    12.5 %
+Level =   35.  COs =    1.    14.1 %
+Level =   44.  COs =    1.    15.6 %
+Level =   54.  COs =    1.    17.2 %
+Level =   65.  COs =    1.    18.8 %
+Level =   77.  COs =    1.    20.3 %
+Level =   90.  COs =    1.    21.9 %
+Level =  104.  COs =    1.    23.4 %
+Level =  119.  COs =    1.    25.0 %
+Level =  135.  COs =    1.    26.6 %
+Level =  152.  COs =    1.    28.1 %
+Level =  170.  COs =    1.    29.7 %
+Level =  189.  COs =    1.    31.2 %
+Level =  209.  COs =    1.    32.8 %
+Level =  230.  COs =    1.    34.4 %
+Level =  252.  COs =    1.    35.9 %
+Level =  275.  COs =    1.    37.5 %
+Level =  299.  COs =    1.    39.1 %
+Level =  324.  COs =    1.    40.6 %
+Level =  350.  COs =    1.    42.2 %
+Level =  377.  COs =    1.    43.8 %
+Level =  405.  COs =    1.    45.3 %
+Level =  434.  COs =    1.    46.9 %
+Level =  464.  COs =    1.    48.4 %
+Level =  495.  COs =    1.    50.0 %
+Level =  527.  COs =    1.    51.6 %
+Level =  560.  COs =    1.    53.1 %
+Level =  594.  COs =    1.    54.7 %
+Level =  629.  COs =    1.    56.2 %
+Level =  665.  COs =    1.    57.8 %
+Level =  702.  COs =    1.    59.4 %
+Level =  740.  COs =    1.    60.9 %
+Level =  779.  COs =    1.    62.5 %
+Level =  819.  COs =    1.    64.1 %
+Level =  860.  COs =    1.    65.6 %
+Level =  902.  COs =    1.    67.2 %
+Level =  945.  COs =    1.    68.8 %
+Level =  989.  COs =    1.    70.3 %
+Level = 1034.  COs =    1.    71.9 %
+Level = 1080.  COs =    1.    73.4 %
+Level = 1127.  COs =    1.    75.0 %
+Level = 1175.  COs =    1.    76.6 %
+Level = 1224.  COs =    1.    78.1 %
+Level = 1274.  COs =    1.    79.7 %
+Level = 1325.  COs =    1.    81.2 %
+Level = 1377.  COs =    1.    82.8 %
+Level = 1430.  COs =    1.    84.4 %
+Level = 1484.  COs =    1.    85.9 %
+Level = 1539.  COs =    1.    87.5 %
+Level = 1595.  COs =    1.    89.1 %
+Level = 1652.  COs =    1.    90.6 %
+Level = 1710.  COs =    1.    92.2 %
+Level = 1769.  COs =    1.    93.8 %
+Level = 1829.  COs =    1.    95.3 %
+Level = 1890.  COs =    1.    96.9 %
+Level = 1952.  COs =    1.    98.4 %
+Level = 1975.  COs =    1.   100.0 %
+
+[2021-07-05 00:49:42,054]mapper_test.py:135:[INFO]: area: 6212 level: 1975
+[2021-07-05 00:49:42,054]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 00:49:43,275]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sqrt/sqrt.opt.aig
+	Cut-calculated time:0.816252
+	Topological sort time:0.004379
+	Area-flow time:0.035321
+	Exact-area time:0.104657
+	Matching selection time:0.011569
+	  Report mapping result:
+		klut_size()     :6475
+		klut.num_gates():6345
+		max delay       :2114
+		max area        :6282
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :2028
+		LUT fanins:3	 numbers :1074
+		LUT fanins:4	 numbers :3243
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sqrt/sqrt.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/sqrt/sqrt.ifpga.v
+
+[2021-07-05 00:49:43,276]mapper_test.py:194:[INFO]: area: 6345 level: 2114
+[2021-07-05 00:49:43,277]mapper_test.py:73:[INFO]: run case "square"
+[2021-07-05 00:49:43,277]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 00:50:05,859]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/square/square.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/square/square.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/square/square.abc.v; print_gates; print_level".
+
+Const        =        1      0.02 %
+Buffer       =        1      0.02 %
+Inverter     =        0      0.00 %
+And          =      951     17.09 %
+Or           =        0      0.00 %
+Other        =     4612     82.88 %
+TOTAL        =     5565    100.00 %
+Level =    0.  COs =    1.     0.8 %
+Level =    1.  COs =    4.     3.9 %
+Level =    2.  COs =    1.     4.7 %
+Level =    3.  COs =    1.     5.5 %
+Level =    4.  COs =    2.     7.0 %
+Level =    5.  COs =    1.     7.8 %
+Level =    6.  COs =    2.     9.4 %
+Level =    7.  COs =    1.    10.2 %
+Level =    8.  COs =    2.    11.7 %
+Level =    9.  COs =    1.    12.5 %
+Level =   10.  COs =    2.    14.1 %
+Level =   11.  COs =    1.    14.8 %
+Level =   12.  COs =    2.    16.4 %
+Level =   13.  COs =    1.    17.2 %
+Level =   14.  COs =    2.    18.8 %
+Level =   15.  COs =    1.    19.5 %
+Level =   16.  COs =    2.    21.1 %
+Level =   17.  COs =    1.    21.9 %
+Level =   18.  COs =    2.    23.4 %
+Level =   19.  COs =    1.    24.2 %
+Level =   20.  COs =    2.    25.8 %
+Level =   21.  COs =    1.    26.6 %
+Level =   22.  COs =    2.    28.1 %
+Level =   23.  COs =    1.    28.9 %
+Level =   24.  COs =    2.    30.5 %
+Level =   25.  COs =    1.    31.2 %
+Level =   26.  COs =    2.    32.8 %
+Level =   27.  COs =    1.    33.6 %
+Level =   28.  COs =    2.    35.2 %
+Level =   29.  COs =    1.    35.9 %
+Level =   30.  COs =    2.    37.5 %
+Level =   31.  COs =    1.    38.3 %
+Level =   32.  COs =    2.    39.8 %
+Level =   33.  COs =    1.    40.6 %
+Level =   34.  COs =    2.    42.2 %
+Level =   35.  COs =    1.    43.0 %
+Level =   36.  COs =    2.    44.5 %
+Level =   37.  COs =    1.    45.3 %
+Level =   38.  COs =    2.    46.9 %
+Level =   39.  COs =    1.    47.7 %
+Level =   40.  COs =    2.    49.2 %
+Level =   41.  COs =    1.    50.0 %
+Level =   42.  COs =    2.    51.6 %
+Level =   43.  COs =    1.    52.3 %
+Level =   44.  COs =    2.    53.9 %
+Level =   45.  COs =    1.    54.7 %
+Level =   46.  COs =    2.    56.2 %
+Level =   47.  COs =    1.    57.0 %
+Level =   48.  COs =    2.    58.6 %
+Level =   49.  COs =    1.    59.4 %
+Level =   50.  COs =    2.    60.9 %
+Level =   51.  COs =    1.    61.7 %
+Level =   52.  COs =    2.    63.3 %
+Level =   53.  COs =    1.    64.1 %
+Level =   54.  COs =    2.    65.6 %
+Level =   55.  COs =    1.    66.4 %
+Level =   56.  COs =    2.    68.0 %
+Level =   57.  COs =    1.    68.8 %
+Level =   58.  COs =    2.    70.3 %
+Level =   59.  COs =    1.    71.1 %
+Level =   60.  COs =    2.    72.7 %
+Level =   61.  COs =    1.    73.4 %
+Level =   62.  COs =    2.    75.0 %
+Level =   63.  COs =    1.    75.8 %
+Level =   64.  COs =    2.    77.3 %
+Level =   65.  COs =    1.    78.1 %
+Level =   66.  COs =    2.    79.7 %
+Level =   67.  COs =    1.    80.5 %
+Level =   68.  COs =    2.    82.0 %
+Level =   69.  COs =    1.    82.8 %
+Level =   70.  COs =    2.    84.4 %
+Level =   71.  COs =    1.    85.2 %
+Level =   72.  COs =    2.    86.7 %
+Level =   73.  COs =    1.    87.5 %
+Level =   74.  COs =    2.    89.1 %
+Level =   75.  COs =    1.    89.8 %
+Level =   76.  COs =    2.    91.4 %
+Level =   77.  COs =    1.    92.2 %
+Level =   78.  COs =    2.    93.8 %
+Level =   79.  COs =    1.    94.5 %
+Level =   80.  COs =    2.    96.1 %
+Level =   81.  COs =    1.    96.9 %
+Level =   82.  COs =    2.    98.4 %
+Level =   83.  COs =    2.   100.0 %
+
+[2021-07-05 00:50:05,876]mapper_test.py:135:[INFO]: area: 5563 level: 83
+[2021-07-05 00:50:05,876]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 00:50:06,809]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/square/square.opt.aig
+	Cut-calculated time:0.603726
+	Topological sort time:0.003756
+	Area-flow time:0.026776
+	Exact-area time:0.071915
+	Matching selection time:0.010263
+	  Report mapping result:
+		klut_size()     :5726
+		klut.num_gates():5660
+		max delay       :123
+		max area        :5660
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :532
+		LUT fanins:3	 numbers :2382
+		LUT fanins:4	 numbers :2746
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/square/square.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/square/square.ifpga.v
+
+[2021-07-05 00:50:06,809]mapper_test.py:194:[INFO]: area: 5660 level: 123
+[2021-07-05 00:50:06,810]mapper_test.py:73:[INFO]: run case "multiplier"
+[2021-07-05 00:50:06,811]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 00:50:36,508]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/multiplier/multiplier.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/multiplier/multiplier.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/multiplier/multiplier.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =      343      4.62 %
+Or           =        0      0.00 %
+Other        =     7088     95.38 %
+TOTAL        =     7431    100.00 %
+Level =    1.  COs =    1.     0.8 %
+Level =    3.  COs =    1.     1.6 %
+Level =    4.  COs =    2.     3.1 %
+Level =    5.  COs =    2.     4.7 %
+Level =    6.  COs =    1.     5.5 %
+Level =    7.  COs =    2.     7.0 %
+Level =    8.  COs =    1.     7.8 %
+Level =    9.  COs =    2.     9.4 %
+Level =   10.  COs =    1.    10.2 %
+Level =   11.  COs =    2.    11.7 %
+Level =   12.  COs =    1.    12.5 %
+Level =   13.  COs =    2.    14.1 %
+Level =   14.  COs =    1.    14.8 %
+Level =   15.  COs =    2.    16.4 %
+Level =   16.  COs =    1.    17.2 %
+Level =   17.  COs =    2.    18.8 %
+Level =   18.  COs =    1.    19.5 %
+Level =   19.  COs =    2.    21.1 %
+Level =   20.  COs =    1.    21.9 %
+Level =   21.  COs =    2.    23.4 %
+Level =   22.  COs =    1.    24.2 %
+Level =   23.  COs =    2.    25.8 %
+Level =   24.  COs =    1.    26.6 %
+Level =   25.  COs =    2.    28.1 %
+Level =   26.  COs =    1.    28.9 %
+Level =   27.  COs =    2.    30.5 %
+Level =   28.  COs =    1.    31.2 %
+Level =   29.  COs =    2.    32.8 %
+Level =   30.  COs =    1.    33.6 %
+Level =   31.  COs =    2.    35.2 %
+Level =   32.  COs =    1.    35.9 %
+Level =   33.  COs =    2.    37.5 %
+Level =   34.  COs =    1.    38.3 %
+Level =   35.  COs =    2.    39.8 %
+Level =   36.  COs =    1.    40.6 %
+Level =   37.  COs =    2.    42.2 %
+Level =   38.  COs =    1.    43.0 %
+Level =   39.  COs =    2.    44.5 %
+Level =   40.  COs =    1.    45.3 %
+Level =   41.  COs =    2.    46.9 %
+Level =   42.  COs =    1.    47.7 %
+Level =   43.  COs =    2.    49.2 %
+Level =   44.  COs =    1.    50.0 %
+Level =   45.  COs =    2.    51.6 %
+Level =   46.  COs =    1.    52.3 %
+Level =   47.  COs =    2.    53.9 %
+Level =   48.  COs =    1.    54.7 %
+Level =   49.  COs =    2.    56.2 %
+Level =   50.  COs =    1.    57.0 %
+Level =   51.  COs =    2.    58.6 %
+Level =   52.  COs =    1.    59.4 %
+Level =   53.  COs =    2.    60.9 %
+Level =   54.  COs =    1.    61.7 %
+Level =   55.  COs =    2.    63.3 %
+Level =   56.  COs =    1.    64.1 %
+Level =   57.  COs =    2.    65.6 %
+Level =   58.  COs =    1.    66.4 %
+Level =   59.  COs =    2.    68.0 %
+Level =   60.  COs =    1.    68.8 %
+Level =   61.  COs =    2.    70.3 %
+Level =   62.  COs =    1.    71.1 %
+Level =   63.  COs =    2.    72.7 %
+Level =   64.  COs =    1.    73.4 %
+Level =   65.  COs =    2.    75.0 %
+Level =   66.  COs =    1.    75.8 %
+Level =   67.  COs =    2.    77.3 %
+Level =   68.  COs =    1.    78.1 %
+Level =   69.  COs =    2.    79.7 %
+Level =   70.  COs =    1.    80.5 %
+Level =   71.  COs =    2.    82.0 %
+Level =   72.  COs =    1.    82.8 %
+Level =   73.  COs =    2.    84.4 %
+Level =   74.  COs =    1.    85.2 %
+Level =   75.  COs =    2.    86.7 %
+Level =   76.  COs =    1.    87.5 %
+Level =   77.  COs =    2.    89.1 %
+Level =   78.  COs =    1.    89.8 %
+Level =   79.  COs =    2.    91.4 %
+Level =   80.  COs =    1.    92.2 %
+Level =   81.  COs =    2.    93.8 %
+Level =   82.  COs =    1.    94.5 %
+Level =   83.  COs =    2.    96.1 %
+Level =   84.  COs =    1.    96.9 %
+Level =   85.  COs =    2.    98.4 %
+Level =   86.  COs =    1.    99.2 %
+Level =   87.  COs =    1.   100.0 %
+
+[2021-07-05 00:50:36,530]mapper_test.py:135:[INFO]: area: 7431 level: 87
+[2021-07-05 00:50:36,530]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 00:50:37,905]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/multiplier/multiplier.opt.aig
+	Cut-calculated time:0.888799
+	Topological sort time:0.006943
+	Area-flow time:0.043044
+	Exact-area time:0.112386
+	Matching selection time:0.013757
+	  Report mapping result:
+		klut_size()     :8115
+		klut.num_gates():7985
+		max delay       :130
+		max area        :7985
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :1652
+		LUT fanins:3	 numbers :3302
+		LUT fanins:4	 numbers :3031
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/multiplier/multiplier.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/multiplier/multiplier.ifpga.v
+
+[2021-07-05 00:50:37,905]mapper_test.py:194:[INFO]: area: 7985 level: 130
+[2021-07-05 00:50:37,908]mapper_test.py:73:[INFO]: run case "hyp"
+[2021-07-05 00:50:37,910]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 01:02:43,870]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/hyp/hyp.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/hyp/hyp.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/hyp/hyp.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =     7998     12.79 %
+Or           =        0      0.00 %
+Other        =    54512     87.21 %
+TOTAL        =    62510    100.00 %
+Level =  171.  COs =    2.     1.6 %
+Level =  172.  COs =    1.     2.3 %
+Level =  176.  COs =    1.     3.1 %
+Level =  180.  COs =    1.     3.9 %
+Level =  185.  COs =    1.     4.7 %
+Level =  191.  COs =    1.     5.5 %
+Level =  198.  COs =    1.     6.2 %
+Level =  206.  COs =    1.     7.0 %
+Level =  215.  COs =    1.     7.8 %
+Level =  225.  COs =    1.     8.6 %
+Level =  236.  COs =    1.     9.4 %
+Level =  248.  COs =    1.    10.2 %
+Level =  261.  COs =    1.    10.9 %
+Level =  275.  COs =    1.    11.7 %
+Level =  290.  COs =    1.    12.5 %
+Level =  306.  COs =    1.    13.3 %
+Level =  323.  COs =    1.    14.1 %
+Level =  341.  COs =    1.    14.8 %
+Level =  360.  COs =    1.    15.6 %
+Level =  380.  COs =    1.    16.4 %
+Level =  401.  COs =    1.    17.2 %
+Level =  423.  COs =    1.    18.0 %
+Level =  446.  COs =    1.    18.8 %
+Level =  470.  COs =    1.    19.5 %
+Level =  495.  COs =    1.    20.3 %
+Level =  521.  COs =    1.    21.1 %
+Level =  548.  COs =    1.    21.9 %
+Level =  576.  COs =    1.    22.7 %
+Level =  605.  COs =    1.    23.4 %
+Level =  635.  COs =    1.    24.2 %
+Level =  666.  COs =    1.    25.0 %
+Level =  698.  COs =    1.    25.8 %
+Level =  731.  COs =    1.    26.6 %
+Level =  765.  COs =    1.    27.3 %
+Level =  800.  COs =    1.    28.1 %
+Level =  836.  COs =    1.    28.9 %
+Level =  873.  COs =    1.    29.7 %
+Level =  911.  COs =    1.    30.5 %
+Level =  950.  COs =    1.    31.2 %
+Level =  990.  COs =    1.    32.0 %
+Level = 1031.  COs =    1.    32.8 %
+Level = 1073.  COs =    1.    33.6 %
+Level = 1116.  COs =    1.    34.4 %
+Level = 1160.  COs =    1.    35.2 %
+Level = 1205.  COs =    1.    35.9 %
+Level = 1251.  COs =    1.    36.7 %
+Level = 1298.  COs =    1.    37.5 %
+Level = 1346.  COs =    1.    38.3 %
+Level = 1395.  COs =    1.    39.1 %
+Level = 1445.  COs =    1.    39.8 %
+Level = 1496.  COs =    1.    40.6 %
+Level = 1548.  COs =    1.    41.4 %
+Level = 1601.  COs =    1.    42.2 %
+Level = 1655.  COs =    1.    43.0 %
+Level = 1710.  COs =    1.    43.8 %
+Level = 1766.  COs =    1.    44.5 %
+Level = 1823.  COs =    1.    45.3 %
+Level = 1881.  COs =    1.    46.1 %
+Level = 1940.  COs =    1.    46.9 %
+Level = 2000.  COs =    1.    47.7 %
+Level = 2061.  COs =    1.    48.4 %
+Level = 2123.  COs =    1.    49.2 %
+Level = 2186.  COs =    1.    50.0 %
+Level = 2250.  COs =    1.    50.8 %
+Level = 2315.  COs =    1.    51.6 %
+Level = 2381.  COs =    1.    52.3 %
+Level = 2448.  COs =    1.    53.1 %
+Level = 2516.  COs =    1.    53.9 %
+Level = 2585.  COs =    1.    54.7 %
+Level = 2655.  COs =    1.    55.5 %
+Level = 2726.  COs =    1.    56.2 %
+Level = 2798.  COs =    1.    57.0 %
+Level = 2871.  COs =    1.    57.8 %
+Level = 2945.  COs =    1.    58.6 %
+Level = 3020.  COs =    1.    59.4 %
+Level = 3096.  COs =    1.    60.2 %
+Level = 3173.  COs =    1.    60.9 %
+Level = 3251.  COs =    1.    61.7 %
+Level = 3330.  COs =    1.    62.5 %
+Level = 3410.  COs =    1.    63.3 %
+Level = 3491.  COs =    1.    64.1 %
+Level = 3573.  COs =    1.    64.8 %
+Level = 3656.  COs =    1.    65.6 %
+Level = 3740.  COs =    1.    66.4 %
+Level = 3825.  COs =    1.    67.2 %
+Level = 3911.  COs =    1.    68.0 %
+Level = 3998.  COs =    1.    68.8 %
+Level = 4086.  COs =    1.    69.5 %
+Level = 4175.  COs =    1.    70.3 %
+Level = 4265.  COs =    1.    71.1 %
+Level = 4356.  COs =    1.    71.9 %
+Level = 4448.  COs =    1.    72.7 %
+Level = 4541.  COs =    1.    73.4 %
+Level = 4635.  COs =    1.    74.2 %
+Level = 4730.  COs =    1.    75.0 %
+Level = 4826.  COs =    1.    75.8 %
+Level = 4923.  COs =    1.    76.6 %
+Level = 5021.  COs =    1.    77.3 %
+Level = 5120.  COs =    1.    78.1 %
+Level = 5220.  COs =    1.    78.9 %
+Level = 5321.  COs =    1.    79.7 %
+Level = 5423.  COs =    1.    80.5 %
+Level = 5526.  COs =    1.    81.2 %
+Level = 5630.  COs =    1.    82.0 %
+Level = 5735.  COs =    1.    82.8 %
+Level = 5841.  COs =    1.    83.6 %
+Level = 5948.  COs =    1.    84.4 %
+Level = 6056.  COs =    1.    85.2 %
+Level = 6165.  COs =    1.    85.9 %
+Level = 6275.  COs =    1.    86.7 %
+Level = 6386.  COs =    1.    87.5 %
+Level = 6498.  COs =    1.    88.3 %
+Level = 6611.  COs =    1.    89.1 %
+Level = 6725.  COs =    1.    89.8 %
+Level = 6840.  COs =    1.    90.6 %
+Level = 6956.  COs =    1.    91.4 %
+Level = 7073.  COs =    1.    92.2 %
+Level = 7191.  COs =    1.    93.0 %
+Level = 7310.  COs =    1.    93.8 %
+Level = 7430.  COs =    1.    94.5 %
+Level = 7551.  COs =    1.    95.3 %
+Level = 7673.  COs =    1.    96.1 %
+Level = 7796.  COs =    1.    96.9 %
+Level = 7920.  COs =    1.    97.7 %
+Level = 8045.  COs =    1.    98.4 %
+Level = 8171.  COs =    1.    99.2 %
+Level = 8245.  COs =    1.   100.0 %
+
+[2021-07-05 01:02:44,080]mapper_test.py:135:[INFO]: area: 62510 level: 8245
+[2021-07-05 01:02:44,080]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 01:02:56,917]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/hyp/hyp.opt.aig
+	Cut-calculated time:8.5387
+	Topological sort time:0.047708
+	Area-flow time:0.361166
+	Exact-area time:1.00679
+	Matching selection time:0.115894
+	  Report mapping result:
+		klut_size()     :63256
+		klut.num_gates():62998
+		max delay       :8822
+		max area        :62872
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :4003
+		LUT fanins:3	 numbers :29205
+		LUT fanins:4	 numbers :29790
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/hyp/hyp.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/hyp/hyp.ifpga.v
+
+[2021-07-05 01:02:56,917]mapper_test.py:194:[INFO]: area: 62998 level: 8822
+[2021-07-05 01:02:56,924]mapper_test.py:73:[INFO]: run case "max"
+[2021-07-05 01:02:56,924]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 01:02:58,440]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/max/max.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/max/max.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/max/max.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =      128     12.57 %
+Or           =        0      0.00 %
+Other        =      890     87.43 %
+TOTAL        =     1018    100.00 %
+Level =    1.  COs =    1.     0.8 %
+Level =   51.  COs =  129.   100.0 %
+
+[2021-07-05 01:02:58,443]mapper_test.py:135:[INFO]: area: 1018 level: 51
+[2021-07-05 01:02:58,443]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 01:02:58,605]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/max/max.opt.aig
+	Cut-calculated time:0.077374
+	Topological sort time:0.000672
+	Area-flow time:0.003775
+	Exact-area time:0.017451
+	Matching selection time:0.001876
+	  Report mapping result:
+		klut_size()     :1556
+		klut.num_gates():1042
+		max delay       :93
+		max area        :1042
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :99
+		LUT fanins:3	 numbers :454
+		LUT fanins:4	 numbers :489
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/max/max.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/max/max.ifpga.v
+
+[2021-07-05 01:02:58,605]mapper_test.py:194:[INFO]: area: 1042 level: 93
+[2021-07-05 01:02:58,608]mapper_test.py:73:[INFO]: run case "bar"
+[2021-07-05 01:02:58,608]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 01:03:00,023]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/bar/bar.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/bar/bar.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/bar/bar.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =      260     19.27 %
+Or           =        0      0.00 %
+Other        =     1089     80.73 %
+TOTAL        =     1349    100.00 %
+Level =    6.  COs =  128.   100.0 %
+
+[2021-07-05 01:03:00,027]mapper_test.py:135:[INFO]: area: 1349 level: 6
+[2021-07-05 01:03:00,027]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 01:03:00,185]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/bar/bar.opt.aig
+	Cut-calculated time:0.082465
+	Topological sort time:0.00097
+	Area-flow time:0.005177
+	Exact-area time:0.012633
+	Matching selection time:0.002491
+	  Report mapping result:
+		klut_size()     :1354
+		klut.num_gates():1217
+		max delay       :7
+		max area        :1217
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :319
+		LUT fanins:3	 numbers :256
+		LUT fanins:4	 numbers :642
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/bar/bar.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/bar/bar.ifpga.v
+
+[2021-07-05 01:03:00,185]mapper_test.py:194:[INFO]: area: 1217 level: 7
+[2021-07-05 01:03:00,188]mapper_test.py:73:[INFO]: run case "log2"
+[2021-07-05 01:03:00,188]mapper_test.py:87:[INFO]: run ABC flow...
+[2021-07-05 01:03:39,657]mapper_test.py:49:[DEBUG]: ABC command line: "read /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/log2/log2.aig; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; balance; rewrite; rewrite -z; balance; rewrite -z; balance; balance; rewrite; refactor; balance; rewrite; rewrite -z; balance; refactor -z; rewrite -z; balance; write_aiger -s /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/log2/log2.opt.aig; read_lut /home/chfeng/pcl/fpga-map-tool/test/mapper_test/lutlib/lut4.lib; if -K 4; sweep;write_verilog /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/log2/log2.abc.v; print_gates; print_level".
+
+Const        =        0      0.00 %
+Buffer       =        0      0.00 %
+Inverter     =        0      0.00 %
+And          =     3428     33.58 %
+Or           =        0      0.00 %
+Other        =     6781     66.42 %
+TOTAL        =    10209    100.00 %
+Level =   90.  COs =    2.     6.2 %
+Level =   91.  COs =    1.     9.4 %
+Level =   92.  COs =    1.    12.5 %
+Level =   93.  COs =    2.    18.8 %
+Level =   94.  COs =    1.    21.9 %
+Level =   95.  COs =    1.    25.0 %
+Level =   96.  COs =    1.    28.1 %
+Level =   97.  COs =    1.    31.2 %
+Level =   98.  COs =    1.    34.4 %
+Level =   99.  COs =    1.    37.5 %
+Level =  100.  COs =    2.    43.8 %
+Level =  101.  COs =    1.    46.9 %
+Level =  102.  COs =    1.    50.0 %
+Level =  103.  COs =    2.    56.2 %
+Level =  104.  COs =    1.    59.4 %
+Level =  105.  COs =    2.    65.6 %
+Level =  106.  COs =    2.    71.9 %
+Level =  107.  COs =    1.    75.0 %
+Level =  108.  COs =    2.    81.2 %
+Level =  109.  COs =    1.    84.4 %
+Level =  110.  COs =    2.    90.6 %
+Level =  111.  COs =    1.    93.8 %
+Level =  112.  COs =    1.    96.9 %
+Level =  113.  COs =    1.   100.0 %
+
+[2021-07-05 01:03:39,684]mapper_test.py:135:[INFO]: area: 10209 level: 113
+[2021-07-05 01:03:39,684]mapper_test.py:170:[INFO]: run iFPGA flow...
+[2021-07-05 01:03:41,485]mapper_test.py:49:[DEBUG]:               ifpga (Identification FPGA program)             
+FPGA Logical Synthesis tools.For now ,the architecture is based on our iEDA program.
+We supprot the AIG file IO ,and the result will be writed into dot file for visualization
+and verilog file for the gate-level netlist.
+
+	INFO: read the aig file SUCCESS, path from: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/log2/log2.opt.aig
+	Cut-calculated time:1.18941
+	Topological sort time:0.006813
+	Area-flow time:0.053
+	Exact-area time:0.158112
+	Matching selection time:0.017583
+	  Report mapping result:
+		klut_size()     :10252
+		klut.num_gates():10218
+		max delay       :211
+		max area        :10218
+
+	  LUTs statics:
+		LUT fanins:1	 numbers :0
+		LUT fanins:2	 numbers :1256
+		LUT fanins:3	 numbers :4166
+		LUT fanins:4	 numbers :4796
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/log2/log2.ifpga.lut.v
+	INFO: generate the verilog output file SUCCESS, path: /home/chfeng/pcl/fpga-map-tool/test/mapper_test/output/result-with-resyn-resyn2-x10s/log2/log2.ifpga.v
+
+[2021-07-05 01:03:41,485]mapper_test.py:194:[INFO]: area: 10218 level: 211
+[2021-07-05 01:03:41,485]mapper_test.py:250:[INFO]: case results:
+case_name  abc_lut1 abc_lut2 abc_lut3 abc_lut4 abc_area abc_level ifpga_lut1 ifpga_lut2 ifpga_lut3 ifpga_lut4 ifpga_area ifpga_level score 
+cavlc      0        39       71       179      289      6         0          32         36         214        282        8           85.99 
+ctrl       0        7        15       29       51       3         0          8          6          37         51         3           100.00
+arbiter    0        128      128      3989     4245     30        0          255        255        3875       4385       31          96.79 
+router     0        8        12       46       66       9         0          5          18         42         65         11          89.71 
+mem_ctrl   39       2224     4677     9445     16385    37        39         1397       2978       11987      16401      64          74.65 
+priority   0        60       38       108      206      29        0          30         45         129        204        49          75.90 
+dec        0        256      0        32       288      2         0          256        0          32         288        2           100.00
+voter      0        580      1222     940      2742     18        0          352        1564       646        2562       22          91.90 
+int2float  0        16       18       54       88       6         0          15         5          66         86         8           85.93 
+i2c        0        61       79       273      413      6         0          38         47         318        403        8           85.99 
+sin        0        369      693      912      1974     55        0          531        651        756        1938       82          80.99 
+div        0        4045     1715     6867     12627    1427      0          197        4048       4303       8548       2119        99.49 
+adder      0        85       126      128      339      85        0          1          252        2          255        127         93.33 
+sqrt       0        1699     1247     3266     6212     1975      0          2028       1074       3243       6345       2114        95.22 
+square     0        399      2808     2356     5563     83        0          532        2382       2746       5660       123         79.80 
+multiplier 0        559      2856     4016     7431     87        0          1652       3302       3031       7985       130         77.38 
+hyp        0        4700     30467    27343    62510    8245      0          4003       29205      29790      62998      8822        95.77 
+max        0        116      258      644      1018     51        0          99         454        489        1042       93          71.98 
+bar        0        132      447      770      1349     6         0          319        256        642        1217       7           95.77 
+log2       0        1231     3561     5417     10209    113       0          1256       4166       4796       10218      211         72.10 
+[2021-07-05 01:03:41,485]mapper_test.py:251:[INFO]: worse cases: arbiter, mem_ctrl, sqrt, square, multiplier, hyp, max, log2
+[2021-07-05 01:03:41,485]mapper_test.py:252:[INFO]: worse rate: 0.4
+[2021-07-05 01:03:41,485]mapper_test.py:253:[INFO]: better cases: ctrl, dec
+[2021-07-05 01:03:41,486]mapper_test.py:254:[INFO]: better rate: 0.1
+[2021-07-05 01:03:41,486]mapper_test.py:255:[INFO]: evaluation score: 87.43
+[2021-07-05 01:03:41,486]mapper_test.py:261:[INFO]: Generating result file: output/result-with-resyn-resyn2-x10s/test.csv
+[2021-07-05 01:03:41,486]mapper_test.py:263:[INFO]: Finished to run all cases, see 'output/result-with-resyn-resyn2-x10s' for details.
