@@ -4,3 +4,6 @@
 [submodule "src/iFPGA/lib/kitty"]
         path = src/iFPGA/lib/kitty
         url = https://github.com/msoeken/kitty.git
+[submodule "src/iFPGA/lib/yaml-cpp"]
+	path = src/iFPGA/lib/yaml-cpp
+	url = https://github.com/jbeder/yaml-cpp.git
