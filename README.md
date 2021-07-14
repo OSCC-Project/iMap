@@ -116,9 +116,7 @@ for asic example:
 3. cmake ..
 4. make
 5. sudo make install  # install ifpga to /usr/local/bin
-6. ./test_mockturtle
-7. ./test_demo
-8. ifpga -i [input_path] -o [output_verilog_path] -l [output_lut_path]
+6. ifpga -i [input_path] -v [output_verilog_path] -l [output_lut_path] -o [1 or 0]
 ```
 
 --- 
@@ -132,7 +130,7 @@ yosys> hierarchy -check
 yosys> proc;opt
 yosys> fsm;opt
 yosys> memory;opt
-yosys> ifpga -o ifpga_output.v -l ifpga_output.lut.v
+yosys> ifpga -v ifpga_output.v -l ifpga_output.lut.v -o 1
 ```
 
 
