@@ -1,0 +1,6 @@
+[2021-08-13 15:03:52,346]run_test.py:22:[INFO]: create workspace: /home/chfeng/pcl/fpga-map-tool/test/anlogic_test/results/210813-150352
+[2021-08-13 15:46:05,002]run_test.py:42:[INFO]: Summary:
+Total:  156
+Failed: 0
+Pass Rate: 100.00%
+[2021-08-13 15:46:05,029]run_test.py:45:[INFO]: Finished to run all test, see "/home/chfeng/pcl/fpga-map-tool/test/anlogic_test/results/210813-150352/regression.rpt" for report.
