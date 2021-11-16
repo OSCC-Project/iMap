@@ -1,10 +1,13 @@
 ### **rewrite_online_impl**
 ```markdown
-the rewrite method of optimization if mainly focus on better cut alternative from the pre-computed  isomorphic library based on 4-inputs-cut. so we can get a better area or depth optimized network by rewrite.
+the rewrite method of optimization is mainly focus on better cut alternative from the pre-computed  isomorphic library based on 4-inputs-cut. 
+so we can get a better area or depth optimized network by rewrite.
 ```
 #### **node_resynthesis**
 ```markdown
-there are 222 NPN classes for 4-inputs Boolean formutation, so we generate the database for these 222 NPN classes in a subgraph library, then we could get the map file to replace the cut by a better isomorphic cut. 
+there are 222 NPN classes for 4-inputs Boolean formutation, 
+so we generate the database for these 222 NPN classes in a subgraph library, 
+then we could get the map file to replace the cut by a better isomorphic cut. 
 ```
 ![rewrite](../pics/rewrite.png)
 

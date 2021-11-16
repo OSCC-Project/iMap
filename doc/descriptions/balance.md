@@ -1,6 +1,8 @@
 ### **balance_online_impl**
 ```markdown
-the balance method of optimization is mainly focus on the SOP-based balance. for each node we calculate the lower delay cut as the best cut, then we generate the SOP of this cut. so we perform the balance on SOP, to get a more balanced SOP formular, then we transform the balanced SOP to subgraph to replace the current cut.
+the balance method of optimization is mainly focus on the SOP-based balance. 
+for each node we calculate the lower delay cut as the best cut, then we generate the SOP of this cut. 
+so we perform the balance on SOP to get a more balanced SOP formular, then we transform the balanced SOP to subgraph to replace the current cut.
 ```
 ![balance](../pics/balance.png)
 

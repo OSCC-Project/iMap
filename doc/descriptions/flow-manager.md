@@ -3,7 +3,7 @@
 flow manager class is for control the whole mapping flow.
 the whole mapping flow is depicted as below:
 ```
-![flow manager](../pics/flow_manager.png)
+![flow manager](../pics/flow-manager.png)
 
 
 - **Examples**
