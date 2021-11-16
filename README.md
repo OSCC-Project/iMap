@@ -6,12 +6,12 @@ FPGA Logic Synthesis test.
 
 ### Folder Descriptions
 
-* [doc/](doc/) folder: Stores some documents.
-* [res/](res/) folder: Stored some results that from test.
-* [src/](src/) folder: Stored our source codes.
-* [test/](test/) folder: Stored out test codes.
-* [data/](data/) folder: Stored some data that may be used.
-* [config/](config/) folder: Stored some configure files.
+* [doc/](doc/README.md) folder: Stores some documents.
+* [res/](res/README.md) folder: Stored some results that from test.
+* [src/](src/README.md) folder: Stored our source codes.
+* [test/](test/README.md) folder: Stored out test codes.
+* [data/](data/README.md) folder: Stored some data that may be used.
+* [config/](config/README.md) folder: Stored some configure files.
 
 ---
 ### Benchmarks
