@@ -86,25 +86,25 @@ by the edge (named as signal in this class).
 -  bool is_ci( node const& n ) const
 	```markdown
 	description:
-    1. function: check whether this node represents an input of the combinational circuit, i.e., either a primary input or an output of a register.
+    1. function: check whether this node represents for an input of the combinational circuit, i.e., either a primary input or an output of a register.
     2. input: the node to be checked
-    3. output: return true if this node represents an input of the combinational circuit; otherwise, return false
+    3. output: return true if this node represents for an input of the combinational circuit; otherwise, return false
   ```
 
 -  bool is_pi( node const& n ) const
 	```markdown
 	description:
-    1. function: check whether this node represents a primary input of the whole circuit without partition
+    1. function: check whether this node represents for a primary input of the whole circuit without partition
     2. input: the node to be checked
-    3. output: return true if this node represents a primary input; otherwise, return false
+    3. output: return true if this node represents for a primary input; otherwise, return false
   ```
 
 -  bool is_ro( node const& n ) const
 	```markdown
 	description:
-    1. function: check whether this node represents a register output
+    1. function: check whether this node represents for a register output
     2. input: the node to be checked
-    3. output: return true if this node represents a register output; otherwise, return false
+    3. output: return true if this node represents for a register output; otherwise, return false
   ```
 
 -  uint32_t node_to_index( node const& n ) const
