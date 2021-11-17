@@ -1,7 +1,7 @@
 
 ### ```class klut_network```
 The main purpose of this class is to provide the data structure and related methods for “k-LUT network” used in the mapping program. 
-The k-LUT network contains a set of nodes and a set of edges. Each node is a k-bounded LUT with fanin number not exceeding k.
+The k-LUT network contains a set of nodes and a set of edges. Each node represents for a k-bounded LUT with fanin number not exceeding k.
 Each edge represents for the connection wire between the LUTs. k-LUT network only represents for a combinational circuit.
 
 **Examples**
@@ -72,7 +72,7 @@ Each edge represents for the connection wire between the LUTs. k-LUT network onl
   description:
     1. function: get detailed statistics of the used LUTs with fanin not exceeding k
     2. input: LUT size limit k
-    3. output: detailed information of LUT usage
+    3. output: detailed information of LUT utilization
   ```
 
 
