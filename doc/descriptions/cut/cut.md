@@ -29,7 +29,7 @@ The main purpose of this class is to provide the data structure and related meth
   description:
     1. function: function template for setting the leaves of a cut by iterator
     2. input: beginning and ending leaves of the leaves to be set
-    3. output: no.
+    3. output: no
   ```
 
 - template<typename Container>
@@ -38,7 +38,7 @@ The main purpose of this class is to provide the data structure and related meth
   description:
     1. function: overloaded function template for setting the leaves of a cut by iterator
     2. input: input object, passed by constant reference
-    3. output: no.
+    3. output: no
   ```
   
 - auto signature() const
@@ -60,17 +60,17 @@ The main purpose of this class is to provide the data structure and related meth
 - bool dominates( cut const& that )
   ```markdown
   description:
-    1. function: check whether the current cut dominates another cut, i.e., it is a subset of that cut.
+    1. function: check whether the current cut dominates another cut, i.e., it is a subset of that cut
     2. input: no
-    3. output: whether the current cut dominates the input cut.
+    3. output: whether the current cut dominates the input cut
   ```
 
 - bool merge( cut const& that, cut& res, uint32_t cut_size ) const;
   ```markdown
   description:
-    1. function: This method merges two cuts and stores the result in `res`. The merge of two cuts is the union \f$L_1 \cup L_2\f$ of the two leaf sets \f$L_1\f$ of the current cut and \f$L_2\f$ of the other cut `that`. The merge is only successful if the union has not more than `cut_size` elements. In that case, the function returns `false`, otherwise `true`.
-    2. input: the other cut to be merged with the current cut, the resulting merged cut, and the cut size constraint of the merged cut.
-    3. output: whether the merge within the cut size constraint is successful; the merged cut.
+    1. function: This method merges two cuts and stores the result in `res`. The merge of two cuts is the union \f$L_1 \cup L_2\f$ of the two leaf sets \f$L_1\f$ of the current cut and \f$L_2\f$ of the other cut `that`. The merge is only successful if the union has not more than `cut_size` elements. In that case, the function returns `false`, otherwise `true`
+    2. input: the other cut to be merged with the current cut, the resulting merged cut, and the cut size constraint of the merged cut
+    3. output: whether the merge within the cut size constraint is successful; the merged cut
   ```
 
 
