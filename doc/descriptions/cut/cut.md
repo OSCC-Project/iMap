@@ -23,14 +23,6 @@ The main purpose of this class is to provide the data structure and related meth
     3. output: generate a copy of the input object; no return value
   ```
 
-- void cut& operator=(cut const& other);
-  ```markdown
-  description:
-    1. function: overload the assignment operator
-    2. input: the cut object to be copied, passed by constant reference
-    3. output: return the assigned object, copy leaves, length, signature, and data to the returned object.
-  ```
-
 - template<typename Iterator>
   void set_leaves( Iterator begin, Iterator end );
   ```markdown
@@ -48,76 +40,38 @@ The main purpose of this class is to provide the data structure and related meth
     2. input: input object, passed by constant reference
     3. output: no.
   ```
+  
 - auto signature() const
-```markdown
+  ```markdown
   description:
     1. function: get the signature of the cut
     2. input: no
     3. output: cut signature
-```
+  ```
 
 - auto size() const
-```markdown
+  ```markdown
   description:
     1. function: get the size of the cut
     2. input: no
     3. output: cut size
-```
-
-- auto begin() const
-```markdown
-  description:
-    1. function: get the beginning iterator of _leaves (constant)
-    2. input: no
-    3. output: the beginning iterator of _leaves
-```
-
-- auto end() const
-```markdown
-  description:
-    1. function: get the ending iterator (constant)
-    2. input: no
-    3. output: the ending iterator
-```
-
-- auto begin()
-```markdown
-  description:
-    1. function: get the beginning iterator (mutable)
-    2. input: no
-    3. output: the beginning iterator
-```
-
-- auto end()
-```markdown
-  description:
-    1. function: get the ending iterator (mutable)
-    2. input: no
-    3. output: the ending iterator
-```
-
-- T* operator->()
-```markdown
-  description:
-    1. function: access to the data (mutable)
-    2. input: no
-    3. output: the data content of the object
-```
+  ```
 
 - bool dominates( cut const& that )
-```markdown
+  ```markdown
   description:
     1. function: check whether the current cut dominates another cut, i.e., it is a subset of that cut.
     2. input: no
     3. output: whether the current cut dominates the input cut.
-```
+  ```
+
 - bool merge( cut const& that, cut& res, uint32_t cut_size ) const;
-```markdown
+  ```markdown
   description:
     1. function: This method merges two cuts and stores the result in `res`. The merge of two cuts is the union \f$L_1 \cup L_2\f$ of the two leaf sets \f$L_1\f$ of the current cut and \f$L_2\f$ of the other cut `that`. The merge is only successful if the union has not more than `cut_size` elements. In that case, the function returns `false`, otherwise `true`.
     2. input: the other cut to be merged with the current cut, the resulting merged cut, and the cut size constraint of the merged cut.
     3. output: whether the merge within the cut size constraint is successful; the merged cut.
-```
+  ```
 
 
 
