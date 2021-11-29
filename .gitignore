@@ -14,6 +14,3 @@ src/yosys/yosys-smtbmc
 *.d
 *.o
 data/yosys-bench
-test/pcl_test/log
-test/pcl_test/result
-
