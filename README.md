@@ -15,7 +15,7 @@ FPGA Logic Synthesis test.
 
 ---
 ### Benchmarks
-you can also find the benchmarks introduce in [benchmark/benchmarks_intro.pdf](benchmark/benchmarks_intro.pdf)
+for more benchmarks, you can refer to https://gitee.com/nlwmode_personal/benchmark.git
 * [EPFL benchmarks](https://github.com/fpga-tool-org/benchmarks)
 * [Yosys benchmarks](https://github.com/fpga-tool-org/yosys-bench)
 * [IWLS 2005](http://iwls.org/iwls2005/benchmarks.html)
