@@ -82,7 +82,7 @@ for more benchmarks, you can refer to https://gitee.com/nlwmode_personal/benchma
   3. sudo cmake ..
   4. make
   5. sudo make install  # install ifpga to /usr/local/bin
-  6. ifpga -i [input_path] -c [config_file_path]
+  6. ifpga <-i input_path> [-c config_file_path] [-v verilog_output] [-l lut_format_output]
   (the detail usage follow the readme.md at src/iFPGA/readme.md)  
   ```
 
