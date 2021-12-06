@@ -96,7 +96,6 @@ we integrated the ifpga into yosys, so you can directly using ifpga in yosys com
   yosys> proc;opt
   yosys> fsm;opt
   yosys> memory;opt
-  yosys> ifpga      # if with the default confie file
   yosys> ifpga -c [xxx.yaml]     # if with specified confie file
   ```
 ---
