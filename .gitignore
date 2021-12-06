@@ -11,6 +11,7 @@ src/yosys/yosys-abc
 src/yosys/yosys-config
 src/yosys/yosys-filterlib
 src/yosys/yosys-smtbmc
+test/mapper_test/output
 *.d
 *.o
 data/yosys-bench
