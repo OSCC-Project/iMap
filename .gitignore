@@ -2,3 +2,5 @@
 iFPGA/bin
 iFPGA/build
 test/mapper_test/choice_output
+*.d
+*.o
