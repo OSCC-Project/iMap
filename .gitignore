@@ -1,6 +1,12 @@
 .vscode
 iFPGA/bin
+iFPGA/tmp
 iFPGA/build
+iFPGA/debug
+iFPGA/release
+benchmark
+iFPGA/config/config.json
 test/mapper_test/choice_output
+test/formal_test/choice_output
 *.d
 *.o
