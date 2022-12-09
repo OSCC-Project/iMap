@@ -1,1 +1,0 @@
-/usr/bin/g++-11  -Wall -Wno-unknown-pragmas -Werror=return-type -O0 -g -fsanitize=address -O0 -g -fsanitize=address   CMakeFiles/test_aig.dir/test_aig.cpp.o  -o test_aig 

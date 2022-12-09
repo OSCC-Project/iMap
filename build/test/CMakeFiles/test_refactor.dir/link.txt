@@ -1,1 +1,0 @@
-/usr/bin/g++-11  -Wall -Wno-unknown-pragmas -Werror=return-type -O0 -g -fsanitize=address -O0 -g -fsanitize=address   CMakeFiles/test_refactor.dir/test_refactor.cpp.o  -o test_refactor ../lib/abcsat/liblibabcsat.a 

@@ -1,1 +1,0 @@
-/usr/bin/g++-11  -Wall -Wno-unknown-pragmas -Werror=return-type -O0 -g -fsanitize=address -O0 -g -fsanitize=address   CMakeFiles/compress.dir/compress.cpp.o  -o /home/yangzonglin/iFPGA-submit/fpga-map-tool/iFPGA/bin/compress ../lib/abcsat/liblibabcsat.a 
