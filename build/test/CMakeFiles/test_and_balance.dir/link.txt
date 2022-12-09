@@ -1,0 +1,1 @@
+/usr/bin/g++-11  -Wall -Wno-unknown-pragmas -Werror=return-type -O0 -g -fsanitize=address -O0 -g -fsanitize=address   CMakeFiles/test_and_balance.dir/test_and_balance.cpp.o  -o test_and_balance ../lib/abcsat/liblibabcsat.a 

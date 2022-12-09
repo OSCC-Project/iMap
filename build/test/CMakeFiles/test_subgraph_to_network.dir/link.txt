@@ -1,0 +1,1 @@
+/usr/bin/g++-11  -Wall -Wno-unknown-pragmas -Werror=return-type -O0 -g -fsanitize=address -O0 -g -fsanitize=address   CMakeFiles/test_subgraph_to_network.dir/test_subgraph_to_network.cpp.o  -o test_subgraph_to_network ../lib/abcsat/liblibabcsat.a 

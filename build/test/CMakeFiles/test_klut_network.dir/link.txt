@@ -1,0 +1,1 @@
+/usr/bin/g++-11  -Wall -Wno-unknown-pragmas -Werror=return-type -O0 -g -fsanitize=address -O0 -g -fsanitize=address   CMakeFiles/test_klut_network.dir/test_klut_network.cpp.o  -o test_klut_network 

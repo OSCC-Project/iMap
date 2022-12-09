@@ -1,0 +1,1 @@
+/usr/bin/g++-11  -Wall -Wno-unknown-pragmas -Werror=return-type -O0 -g -fsanitize=address -O0 -g -fsanitize=address   CMakeFiles/balance.dir/balance.cpp.o  -o /home/yangzonglin/iFPGA-submit/fpga-map-tool/iFPGA/bin/balance ../lib/abcsat/liblibabcsat.a 
