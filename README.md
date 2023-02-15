@@ -19,9 +19,7 @@ For technology mapping, we want to support LUT-based FPGA technology mapping fir
 
 * [doc/](doc/README.md) stores some documents.
 * [iFPGA/](iFPGA/READMEmd) stores our source codes.
-* [test/](test/README.md) stores our regression and daily build scripts.
-* [data/](data/README.md) stores some data that may be used.
-* [tools/](tools/README.md) stores some tools that may be used.
+* [regression/](test/README.md) stores our regression and daily build scripts.
 
 ---
 ## **Benchmarks**
@@ -31,7 +29,7 @@ For technology mapping, we want to support LUT-based FPGA technology mapping fir
 * MCNC
 * LGSynth91
 ```
-for more details, please refer to https://gitee.com/nlwmode_personal/benchmark
+for more details, please refer to https://gitee.com/imap-fpga/benchmark
 ```
 
 ---
@@ -49,11 +47,7 @@ for more details, please refer to the README.md file under path iFPGA/README.md
 
 ---
 ## **Regression**
-for more details, please refer to the README.md file under path test/main_test/README.md
-
----
-## **Daily Build**
-We use [Jenkins](https://www.jenkins.io/doc/book/installing/) for auto daily build and regression.
+for more details, please refer to the README.md file under path regression/main_test/README.md
 
 ---
 ## **LICENSE**

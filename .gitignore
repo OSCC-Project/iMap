@@ -6,7 +6,7 @@ iFPGA/debug
 iFPGA/release
 benchmark
 iFPGA/config/config.json
-test/mapper_test/choice_output
-test/formal_test/choice_output
+regression/mapper_test/choice_output
+regression/formal_test/choice_output
 *.d
 *.o
