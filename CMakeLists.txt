@@ -97,7 +97,8 @@ if (ENABLE_DOXYGEN)
             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
             COMMENT "Generating API documentation with Doxygen"
             VERBATIM)
-    else (DOXYGEN_FOUND AND BUILD_DOXYGEN)
+    # else (DOXYGEN_FOUND AND BUILD_DOXYGEN)
+    else ()
         message("Doxygen need to be installed to generate the doxygen documentation")
     endif (DOXYGEN_FOUND)
 endif(ENABLE_DOXYGEN)
