@@ -1,0 +1,3 @@
+add_library(ifpga_algorithms INTERFACE)
+target_link_libraries(ifpga_algorithms INTERFACE ifpga_database bill percy fmt)
+target_include_directories(ifpga_algorithms INTERFACE ${PROJECT_SOURCE_DIR}/include/operations)

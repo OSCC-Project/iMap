@@ -1,0 +1,7 @@
+add_subdirectory(algorithms)
+add_subdirectory(io)
+add_subdirectory(optimization)
+
+add_library(ifpga_operations INTERFACE)
+target_link_libraries(ifpga_operations INTERFACE ifpga_algorithms ifpga_io ifpga_optimization)
+target_include_directories(ifpga_operations INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})

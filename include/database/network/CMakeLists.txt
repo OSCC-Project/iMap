@@ -1,0 +1,3 @@
+add_library(ifpga_network INTERFACE)
+target_link_libraries(ifpga_network INTERFACE kitty ifpga_utils)
+target_include_directories(ifpga_network INTERFACE ${PROJECT_SOURCE_DIR}/include/database)

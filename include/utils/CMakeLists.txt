@@ -1,0 +1,2 @@
+add_library(ifpga_utils INTERFACE)
+target_include_directories(ifpga_utils INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})

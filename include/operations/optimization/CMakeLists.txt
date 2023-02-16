@@ -1,0 +1,3 @@
+add_library(ifpga_optimization INTERFACE)
+target_link_libraries(ifpga_optimization INTERFACE ifpga_database kitty)
+target_include_directories(ifpga_optimization INTERFACE ${PROJECT_SOURCE_DIR}/include/operations)

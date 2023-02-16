@@ -1,0 +1,3 @@
+add_library(ifpga_flow INTERFACE)
+target_link_libraries(ifpga_flow INTERFACE ifpga_database ifpga_operations ifpga_utils)
+target_include_directories(ifpga_flow INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
