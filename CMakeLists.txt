@@ -42,7 +42,7 @@ endif()
 ############################################################
 message("STEP4: add subdirectories")
 add_subdirectory(include)
-add_subdirectory(lib)
+add_subdirectory(libs)
 
 if(ENABLE_TEST)
     add_subdirectory(test)
