@@ -1,0 +1,41 @@
+{
+  "flow_manager": {
+    "debug": true,
+    "iterations": 0,
+    "use_balance": true,
+    "use_rewrite": true,
+    "verbose": true,
+    "very_verbose": false
+  },
+  "cut_enumeration":{
+    "cut_size": 6,
+    "cut_limit": 10,
+    "fanin_limit": 25,
+    "minimize_truth_table": false,
+    "verbose": true,
+    "very_verbose": false
+  },
+  "klut_mapping":{
+    "cut_size": 6,
+    "cut_limit": 10,
+    "uGlobal_round": 1,
+    "uLocal_round": 1,
+    "debug": true,
+    "verbose": false,
+    "very_verbose": false
+  },
+  "balance":{
+    "only_on_critical_path": false,
+    "progress": false,
+    "verbose": false
+  },
+  "rewrite":{
+    "cut_size": 4,
+    "cut_limit": 10,
+    "min_candidate_cut_size": 4,
+    "max_candidate_cut_size": 4,
+    "minimize_truth_table": false,
+    "use_zero_gain": true,
+    "preserve_depth": false
+  }
+}

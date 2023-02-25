@@ -5,6 +5,5 @@ build
 debug
 release
 benchmark
-config/config.json
 *.d
 *.o
