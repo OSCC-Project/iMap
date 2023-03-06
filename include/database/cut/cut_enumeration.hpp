@@ -327,22 +327,20 @@ public:
 
   float cut_area_derefed(cut_t& cut, Ntk const& ntk, node<Ntk> const& node)
   {
-    float res1, res2;
     if(cut.size() < 2)  
       return 0;
-    res1 = cut_area_ref(cut, ntk, node);
-    res2 = cut_area_deref(cut, ntk, node);
+    [[maybe_unused]] float res1 = cut_area_ref(cut, ntk, node);
+    float res2 = cut_area_deref(cut, ntk, node);
     assert(std::fabs(res1 - res2) < 0.005f);
     return res2;
   }
 
   float cut_area_refed(cut_t& cut, Ntk const& ntk, node<Ntk> const& node)
   {
-    float res1, res2;
     if(cut.size() < 2)  
       return 0;
-    res1 = cut_area_deref(cut, ntk, node);
-    res2 = cut_area_ref(cut, ntk, node);
+    [[maybe_unused]] float res1 = cut_area_deref(cut, ntk, node);
+    float res2 = cut_area_ref(cut, ntk, node);
 
     assert(std::fabs(res1 - res2) < 0.005f);
     return res2;
@@ -376,11 +374,10 @@ public:
 
   float cut_edge_derefed(cut_t& cut, Ntk const& ntk, node<Ntk> const& node)
   {
-    float res1, res2;
     if(cut.size() < 2)  
       return 0;
-    res1 = cut_edge_ref(cut, ntk, node);
-    res2 = cut_edge_deref(cut, ntk, node);
+    [[maybe_unused]] float res1 = cut_edge_ref(cut, ntk, node);
+    float res2 = cut_edge_deref(cut, ntk, node);
 
     assert(std::fabs(res1 - res2) < 0.005f);
 
@@ -643,12 +640,21 @@ public:
     const auto fanin = 2;
     uint32_t pairs{1};
     std::array<uint32_t, 2> children_id;      // store the children's index
-    ntk.foreach_fanin( node, [this, &pairs, &children_id]( auto child, auto i ) {
-      auto child_index = ntk.node_to_index( ntk.get_node( child ) );
-      lcuts[i] = &cuts.cuts( child_index );   
-      children_id[i] = child_index;
-      pairs *= static_cast<uint32_t>( lcuts[i]->size() );
-    } );
+    //ntk.foreach_fanin( node, [this, &pairs, &children_id]( auto child, auto i ) {
+    //  auto child_index = ntk.node_to_index( ntk.get_node( child ) );
+    //  lcuts[i] = &cuts.cuts( child_index );   
+    //  children_id[i] = child_index;
+    //  pairs *= static_cast<uint32_t>( lcuts[i]->size() );
+    //} );
+    auto child0_index = ntk.get_node( ntk.get_child0(node) );
+    lcuts[0] = &cuts.cuts( child0_index );
+    children_id[0] = child0_index;
+    pairs *= static_cast<uint32_t>( lcuts[0]->size() );
+    auto child1_index = ntk.get_node( ntk.get_child1(node) );
+    lcuts[1] = &cuts.cuts( child1_index );
+    children_id[1] = child1_index;
+    pairs *= static_cast<uint32_t>( lcuts[1]->size() );
+    
 
     lcuts[2] = &cuts.cuts( index );
     auto& rcuts = *lcuts[fanin];

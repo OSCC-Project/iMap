@@ -70,7 +70,7 @@ public:
         {
             error = true;
             std::cout << "step2.1: checking the unequivalent po (" << _ntk.node_to_index(_ntk.get_node(_ue_signal)) << ", " << _ue_signal.complement << ")" << std::endl;
-            bool equal = check_signal_incrementally(_ue_signal);
+            [[maybe_unused]] bool equal = check_signal_incrementally(_ue_signal);
             assert(equal == !error);
             std::cout << "\tthe first unequivalent node at: " << _ue_node << std::endl;
         }
@@ -475,7 +475,7 @@ private:
      */
     void add_compl_equal_to_solver(uint32_t const &var1, uint32_t const &var2)
     {
-        uint32_t var_node = _current_sat_var++; // the dummy node, because of the 2 choice nodes do not have an ancestor
+        [[maybe_unused]] uint32_t var_node = _current_sat_var++; // the dummy node, because of the 2 choice nodes do not have an ancestor
 
         std::vector<uint32_t> lits(2, 0);
         lits[0] = make_lit(var1, false);
@@ -498,7 +498,7 @@ private:
      */
     void add_equal_to_solver(uint32_t const &var1, uint32_t const &var2)
     {
-        uint32_t var_node = _current_sat_var++; // the dummy node, because of the 2 choice nodes do not have an ancestor
+        [[maybe_unused]] uint32_t var_node = _current_sat_var++; // the dummy node, because of the 2 choice nodes do not have an ancestor
         std::vector<uint32_t> lits(2, 0);
         lits[0] = make_lit(var1, true );
         lits[1] = make_lit(var2, false);

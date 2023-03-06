@@ -1695,11 +1695,11 @@ class klut_mapping_impl2
     friend network_cuts<_Ntk, _ComputeTruth, _CutData> cut_enumeration( _Ntk const& ntk, cut_enumeration_params const& ps, cut_enumeration_stats * pst );
   
   private:
-    Ntk&                                  _ntk;
-    
     std::shared_ptr<klut_storage>         _storage;
     std::shared_ptr<klut_mapping_params>  _ps;
     std::shared_ptr<klut_mapping_stats>   _st;
+
+    Ntk&                                  _ntk;
 
     network_cuts_t                        _cut_network;
     cut_enumeration_stats                 _cut_enumeration_st;

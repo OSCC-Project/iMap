@@ -11,8 +11,8 @@ TEST_CASE( "klut_network basic function test", "[klut_network]" )
   iFPGA_NAMESPACE::klut_network klut;
   assert( klut.size() == 2 );
 
-  const auto c0 = klut.get_node( klut.get_constant( false ) );
-  const auto c1 = klut.get_node( klut.get_constant( true ) );
+  //const auto c0 = klut.get_node( klut.get_constant( false ) );
+  //const auto c1 = klut.get_node( klut.get_constant( true ) );
   const auto a = klut.create_pi();
   const auto b = klut.create_pi();
 

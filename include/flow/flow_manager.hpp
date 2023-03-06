@@ -329,14 +329,14 @@ private:
     {
       std::size_t pos_end_col = _path_output_lut.find_last_of("/");
       std::string command_mkdir = "mkdir -p " + _path_output_lut.substr(0, pos_end_col);
-      system(command_mkdir.c_str());
+      [[maybe_unused]] int res = system(command_mkdir.c_str());
     }
     idx = _path_output_verilog.find("/");
     if (idx != std::string::npos)
     {
       std::size_t pos_end_col = _path_output_verilog.find_last_of("/");
       std::string command_mkdir = "mkdir -p " + _path_output_verilog.substr(0, pos_end_col);
-      system(command_mkdir.c_str());
+      [[maybe_unused]] int rest = system(command_mkdir.c_str());
     }
 
     // create the output files
@@ -440,8 +440,8 @@ private:
   iFPGA_NAMESPACE::refactor_params      _ps_refactor;
 
   /// configurations
-  std::string                _path_configuration;         // config for comsumer
   std::string                _path_input;
+  std::string                _path_configuration;         // config for comsumer
   std::string                _path_output_verilog;
   std::string                _path_output_lut;
 };  // end class map_manager

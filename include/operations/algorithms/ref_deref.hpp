@@ -89,7 +89,7 @@ template<typename Ntk, typename NodeCostFn = unit_cost<Ntk>>
 uint32_t derefed_size(Ntk const& ntk, node<Ntk> const& n)
 {
   uint32_t s1 = deref_node_recursive<Ntk, NodeCostFn>(ntk, n);
-  uint32_t s2 = ref_node_recursive<Ntk, NodeCostFn>(ntk, n);
+  [[maybe_unused]] uint32_t s2 = ref_node_recursive<Ntk, NodeCostFn>(ntk, n);
   assert(s1 == s2);
   return s1;
 }
@@ -98,7 +98,7 @@ template<typename Ntk, typename NodeCostFn = unit_cost<Ntk>>
 uint32_t refed_size(Ntk const& ntk, node<Ntk> const& n)
 {
   uint32_t s1 = ref_node_recursive<Ntk, NodeCostFn>(ntk, n);
-  uint32_t s2 = deref_node_recursive<Ntk, NodeCostFn>(ntk, n);
+  [[maybe_unused]] uint32_t s2 = deref_node_recursive<Ntk, NodeCostFn>(ntk, n);
   assert(s1 == s2);
   return s1;
 }

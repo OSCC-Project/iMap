@@ -24,8 +24,8 @@ iFPGA_NAMESPACE_HEADER_START
 iFPGA_NAMESPACE::aig_network convert_klut_to_aig(iFPGA_NAMESPACE::klut_network const &klut)
 {
     using signal_a = iFPGA_NAMESPACE::aig_network::signal;
-    using signal_k = iFPGA_NAMESPACE::klut_network::signal;
-    using node_a = iFPGA_NAMESPACE::aig_network::node;
+    //using signal_k = iFPGA_NAMESPACE::klut_network::signal;
+    //using node_a = iFPGA_NAMESPACE::aig_network::node;
     using node_k = iFPGA_NAMESPACE::klut_network::node;
 
     iFPGA_NAMESPACE::aig_network aig;
@@ -97,8 +97,8 @@ template<typename Ntk>
 iFPGA_NAMESPACE::aig_network convert_mapped_graph_to_aig(Ntk const &lutnet)
 {
     using signal_a = iFPGA_NAMESPACE::aig_network::signal;
-    using node_a   = iFPGA_NAMESPACE::aig_network::node;
-    using signal_m = typename Ntk::signal;
+    //using node_a   = iFPGA_NAMESPACE::aig_network::node;
+    //using signal_m = typename Ntk::signal;
     using node_m   = typename Ntk::node;
 
     iFPGA_NAMESPACE::aig_network aig;

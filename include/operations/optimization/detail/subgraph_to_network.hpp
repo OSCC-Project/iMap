@@ -97,7 +97,7 @@ template<typename Ntk>
 void convert_subgrah_to_network( Ntk& ntk, const aig_subgraph_storage& subgraph)
 {
   std::vector<typename Ntk::signal> vec_signal(subgraph.num_pis());
-  for(int i = 0 ; i < subgraph.num_pis(); ++i)
+  for(size_t i = 0 ; i < subgraph.num_pis(); ++i)
   {
     vec_signal[i] = ntk.create_pi();
   }

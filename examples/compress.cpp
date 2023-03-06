@@ -27,7 +27,7 @@ int main(int argc, char **argv)
      *  eg: ./bin/compress ../benchmark/adder.aig
      */
     assert(argc > 1);
-    uint iteration = std::atoi(argv[1]);
+    //uint iteration = std::atoi(argv[1]);
     std::string file = std::string(argv[2]);
 
     iFPGA_NAMESPACE::write_verilog_params ports;

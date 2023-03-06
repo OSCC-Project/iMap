@@ -179,9 +179,9 @@ public:
   }
 
 private:
-  bool                          _state;             // true: reader a file from _path sucess , false not
-  int                           _type;              // the reader file's type
   std::string                   _path_in;           // the logic synthesis file's path
+  int                           _type;              // the reader file's type
+  bool                          _state;             // true: reader a file from _path sucess , false not
   Ntk                           _aig;               // the aig class
 };
 

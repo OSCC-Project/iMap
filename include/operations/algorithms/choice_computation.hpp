@@ -443,7 +443,7 @@ public:
         {
             lits[0] = lit_not(lits[0]);
             lits[1] = lit_not(lits[1]);
-            int ret1 = _solver.add_clause(lits);
+            [[maybe_unused]] int ret1 = _solver.add_clause(lits);
             assert(ret1);
         }
         // TODO, stats
@@ -476,7 +476,7 @@ public:
         {
             lits[0] = lit_not(lits[0]);
             lits[1] = lit_not(lits[1]);
-            int ret1 = _solver.add_clause(lits);
+            [[maybe_unused]] int ret1 = _solver.add_clause(lits);
             assert(ret1);
         }
         // TODO, stats
@@ -617,7 +617,7 @@ public:
             if(_fraig.phase(t.index)) lits[1] = lit_not(lits[1]);
             if(_fraig.phase(n)) lits[2] = lit_not(lits[2]);
         }
-        int ret = _solver.add_clause(lits);
+        [[maybe_unused]] int ret = _solver.add_clause(lits);
         assert(ret);
 
         lits[0] = make_lit(var_i, true);
@@ -743,7 +743,7 @@ public:
                 if(_fraig.phase(fanin.index)) lits[0] = lit_not(lits[0]);
                 if(_fraig.phase(n))     lits[1] = lit_not(lits[1]);
             }
-            int ret = _solver.add_clause(lits);
+            [[maybe_unused]] int ret = _solver.add_clause(lits);
             assert(ret);
         }
         // add A & B => C  or !A +!B + C
@@ -762,7 +762,7 @@ public:
         {
             if (_fraig.phase(n)) lits.back() = lit_not(lits.back());
         }
-        int ret = _solver.add_clause(lits);
+        [[maybe_unused]] int ret = _solver.add_clause(lits);
         assert(ret);
     }
 

@@ -329,7 +329,7 @@ public:
 
           _ntk.foreach_node([&](auto i)
           {
-            uint64_t before = map_old_to_new[i].data;
+            //uint64_t before = map_old_to_new[i].data;
             map_old_to_new[i] = dest.is_complemented( map_old_to_new[i]) ? tmp.create_not( new_to_newer[map_old_to_new[i]]) : new_to_newer[map_old_to_new[i]];
           });
           dest = tmp;
@@ -430,10 +430,15 @@ private:
     array<cut_set_t*, Ntk::max_fanin_size + 1> lcuts; // child's cut
     const auto fanin = 2;
     uint32_t pairs{1};
-    _ntk.foreach_fanin( _ntk.index_to_node( index ), [&]( auto child, auto i ) {
-      lcuts[i] = &_cut_network.cuts( _ntk.node_to_index( _ntk.get_node( child ) ) );
-      pairs *= static_cast<uint32_t>( lcuts[i]->size() );
-    } );
+    //_ntk.foreach_fanin( _ntk.index_to_node( index ), [&]( auto child, auto i ) {
+    //  lcuts[i] = &_cut_network.cuts( _ntk.node_to_index( _ntk.get_node( child ) ) );
+    //  pairs *= static_cast<uint32_t>( lcuts[i]->size() );
+    //} );
+    lcuts[0] = &_cut_network.cuts(_ntk.get_node(_ntk.get_child0(index)));
+    pairs *= static_cast<uint32_t>( lcuts[0]->size() );
+    lcuts[1] = &_cut_network.cuts( _ntk.get_node( _ntk.get_child1(index) ) );
+    pairs *= static_cast<uint32_t>( lcuts[1]->size() );
+
     lcuts[2] = &_cut_network.cuts( index );
     auto& rcuts = *lcuts[fanin];
     rcuts.clear();
