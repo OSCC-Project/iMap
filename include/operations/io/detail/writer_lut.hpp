@@ -81,6 +81,7 @@ void write_lut( Ntk const& ntk, std::ostream& os, write_verilog_params const& ps
   {
     for(auto const& [name, width] : ps.input_names)
     {
+      (void)width;
       vec_pis.emplace_back(name); // scalar only, TODO
     }
   }
@@ -101,6 +102,7 @@ void write_lut( Ntk const& ntk, std::ostream& os, write_verilog_params const& ps
   {
     for(auto const& [name, width] : ps.output_names)
     {
+      (void)width;
       vec_pos.emplace_back(name); // scalar only, TODO
     }
   }
