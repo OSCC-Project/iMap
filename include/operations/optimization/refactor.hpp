@@ -64,22 +64,26 @@ namespace detail
       //////////////////////////////////////////////////////
       _ntk.foreach_gate([&](auto const &n)
                         {
-      // skip the nodes with many fanouts and nodes with no fanout
-      if ( _ntk.is_dead( n ) || _ntk.fanout_size( n ) > 1000 ) {
-        return;
-      }
+        // skip the nodes with many fanouts and nodes with no fanout
+        if (_ntk.is_dead(n) || _ntk.fanout_size(n) > 1000)
+        {
+          return;
+        }
 
-      // 1、compute a reconvergence-driven cut
-      compute_reconvergence_driven_cut( n );
+        // 1、compute a reconvergence-driven cut
+        compute_reconvergence_driven_cut(n);
 
-      // 2、collect MFFC nodes
-      collect_cone_nodes( n );
+        // 2、collect MFFC nodes
+        collect_cone_nodes(n);
 
-      // 3、compute the truth table of the cut
-      auto tt = compute_cone_tt( n );
+        if (_visited_nodes.size() != 1 && _visited_nodes.size() <= _params.max_cone_size)
+        { // skip cone size 1 and cone size over max cone size
+          // 3、compute the truth table of the cut
+          auto tt = compute_cone_tt(n);
 
-      // 4、Isop refactor and replace sub ntk
-      replace_sub_ntk( n, tt ); });
+          // 4、Isop refactor and replace sub ntk
+          replace_sub_ntk(n, tt);
+        } });
 
       // clean up the dangling nodes
       return cleanup_dangling<Ntk>(_ntk);
@@ -91,6 +95,7 @@ namespace detail
       init_nodes_defered_size();
       compute_depth_info();
       compute_reverse_depth_info();
+      compute_fanouts_info();
     }
 
     /**
@@ -158,6 +163,24 @@ namespace detail
           child_iter->second = cur_depth + 1;
         } });
       }
+    }
+
+    /**
+     * @brief Computes fanouts nodes of each node in _ntk
+     */
+    void compute_fanouts_info()
+    {
+      _ntk.foreach_node([&](auto n)
+                        { _ntk.foreach_fanin(n, [&](auto const &f)
+                                             {
+        auto iter = _fanouts_map.find( _ntk.get_node( f ) );
+        if ( iter != _fanouts_map.end() ) {
+          iter->second.insert( n );
+        } else {
+          std::unordered_set<node<Ntk>> new_set;
+          new_set.insert( n );
+          _fanouts_map.insert( std::make_pair( _ntk.get_node( f ), new_set ) );
+        } }); });
     }
 
     /**
@@ -382,9 +405,6 @@ namespace detail
     void replace_sub_ntk(node<Ntk> root, kitty::dynamic_truth_table const &tt)
     {
       // TODO::constant tt
-      // compute old sub ntk's cost(reconvergence driven cut size)
-      auto num_nodes_save = deref_node_recursive<Ntk, NodeCostFn>(_ntk, root);
-
       // collect cut
       std::vector<signal<Ntk>> cut;
       for (auto leaf : _leaves_nodes)
@@ -395,23 +415,28 @@ namespace detail
       const auto on_signal = [&](auto const &f_new)
       {
         // compute gain
+        // compute old sub ntk's cost(reconvergence driven cut size)
+        auto num_nodes_save = deref_node_recursive<Ntk, NodeCostFn>(_ntk, root);
         auto num_nodes_added = ref_node_recursive<Ntk, NodeCostFn>(_ntk, _ntk.get_node(f_new));
         int gain = num_nodes_save - num_nodes_added;
 
         // compute depth
         auto reuqire_depth = _depth_max + 1 - _r_depth_map.find(root)->second;
-        auto cur_depth = recursive_update_depth(_ntk.get_node(f_new));
+        auto cur_depth = update_depth(_ntk.get_node(f_new));
 
         if ((gain > 0 || (_params.allow_zero_gain && gain == 0)) // area
             && ((cur_depth <= reuqire_depth) || _params.allow_depth_up) && root != _ntk.get_node(f_new))
         { // depth
           sub_ntk_replace(root, f_new);
+          update_fanouts_info(root, f_new);
+          recursive_update_fanouts_depth(_ntk.get_node(f_new));
         }
         else
         {
           deref_node_recursive<Ntk, NodeCostFn>(_ntk, _ntk.get_node(f_new));
           ref_node_recursive<Ntk, NodeCostFn>(_ntk, root);
         }
+
         return true;
       };
 
@@ -436,29 +461,99 @@ namespace detail
       {
         _ntk.set_value(leaf, _ntk.fanout_size(leaf));
       }
-
-      // TODO::update fanouts depth
     }
 
     /**
-     * @brief recursive compute depth for newly created nodes
+     * @brief update depth for nodes in new cone
      */
-    uint32_t recursive_update_depth(node<Ntk> root)
+    uint32_t update_depth(node<Ntk> root)
+    {
+      std::unordered_set<node<Ntk>> leaves_set(_leaves_nodes.begin(), _leaves_nodes.end());
+      return recursive_update_depth(root, leaves_set);
+    }
+
+    /**
+     * @brief recursive compute depth for nodes in new cone
+     */
+    uint32_t recursive_update_depth(node<Ntk> root, std::unordered_set<node<Ntk>> &leaves_set)
     {
       uint32_t cur_depth = 0;
 
+      // compute current max depth
       _ntk.foreach_fanin(root, [&](auto const &s, auto i)
                          {
-      auto child      = _ntk.get_node( s );
-      auto child_iter = _depth_map.find( child );
-      if ( child_iter != _depth_map.end() ) {  // leaf node
-        cur_depth = std::max( cur_depth, child_iter->second );
-      } else {  // newly created nodes
-        cur_depth = std::max( cur_depth, recursive_update_depth( child ) );
+      auto child = _ntk.get_node( s );
+      if ( leaves_set.find( child ) != leaves_set.end() ) {  // leaves node
+        cur_depth = std::max( cur_depth, 1 + _depth_map.find( child )->second );
+      } else {  // internal node
+        cur_depth = std::max( cur_depth, 1 + recursive_update_depth( child, leaves_set ) );
       } });
 
-      _depth_map.insert(std::make_pair(root, cur_depth + 1));
-      return cur_depth + 1;
+      // update depth info
+      auto iter = _depth_map.find(root);
+      if (iter == _depth_map.end())
+      { // newly node
+        _depth_map.insert(std::make_pair(root, cur_depth));
+      }
+      else
+      {
+        iter->second = cur_depth;
+      }
+
+      return cur_depth;
+    }
+
+    /**
+     * @brief update fanouts info for nodes in cone
+     */
+    void update_fanouts_info(node<Ntk> old_n, signal<Ntk> new_s)
+    {
+      // copy fanouts info of old node to new node
+      auto old_iter = _fanouts_map.find(old_n);
+      if (old_iter != _fanouts_map.end())
+      {
+        std::unordered_set<node<Ntk>> new_set(old_iter->second);
+        _fanouts_map.insert(std::make_pair(_ntk.get_node(new_s), new_set));
+        _fanouts_map.erase(old_iter);
+      }
+
+      for (auto n : _visited_nodes)
+      {
+        _ntk.foreach_fanin(n, [&](auto const &s, auto i)
+                           {
+        auto iter = _fanouts_map.find( _ntk.get_node( s ) );
+        if ( iter != _fanouts_map.end() ) {
+          iter->second.insert( n );
+        } else {
+          std::unordered_set<node<Ntk>> new_set;
+          new_set.insert( n );
+          _fanouts_map.insert( std::make_pair( _ntk.get_node( s ), new_set ) );
+        } });
+      }
+    }
+
+    /**
+     * @brief recursive update fanouts depth
+     */
+    void recursive_update_fanouts_depth(node<Ntk> root)
+    {
+      auto fanouts_iter = _fanouts_map.find(root);
+      if (fanouts_iter == _fanouts_map.end())
+      {
+        return;
+      }
+
+      auto fanouts_set = fanouts_iter->second;
+      auto root_dp = _depth_map.find(root)->second;
+      for (auto fanout : fanouts_set)
+      {
+        auto depth_iter = _depth_map.find(fanout);
+        if (depth_iter->second < root_dp + 1)
+        {
+          depth_iter->second = root_dp + 1;
+          recursive_update_fanouts_depth(fanout);
+        }
+      }
     }
 
   private:
@@ -473,6 +568,8 @@ namespace detail
     uint32_t _depth_max = 0;
     std::unordered_map<node<Ntk>, uint32_t> _depth_map;
     std::unordered_map<node<Ntk>, uint32_t> _r_depth_map;
+
+    std::unordered_map<node<Ntk>, std::unordered_set<node<Ntk>>> _fanouts_map;
   }; // end class refactor_impl
 };   // end namespace detail
 
