@@ -44,150 +44,16 @@ iFPGA_NAMESPACE_HEADER_START
   bool preserve_depth{ false };
 };
 namespace detail {
-/**
- * @brief the rewrite calss detail complement
- *    rewrite by create a euqivelent network from the source
- *    'Ntk' we deafult set to AIG
- *    'ResynthesisFn' means the rewrite function of the node's cut
- *    'NodeCostFn' means the cost fucntion of the node's cut
- */
+
 template <typename Ntk, typename ResynthesisFn, typename NodeCostFn>
 class rewrite_impl
-{
- public:
-  using network_cuts_t = iFPGA_NAMESPACE::network_cuts<Ntk, true, iFPGA_NAMESPACE::cut_enumeration_rewrite_cut>;
-
-  rewrite_impl( Ntk const&            ntk,
-                const rewrite_params& params,
-                const ResynthesisFn&  resynthesis_fn,
-                const NodeCostFn&     node_cost_fn )
-      : _ntk( ntk ),
-        _resynthesis_fn( resynthesis_fn ),
-        _node_cost_fn( node_cost_fn ),
-        _params( params ),
-        _cut_network( cut_enumeration<Ntk, true, cut_enumeration_rewrite_cut>( _ntk, _params.cut_enumeration_ps ) )
-  {
-  }
-
-  /**
-   * @brief the main algorithm procedure
-   */
-  Ntk run()
-  {
-    init_nodes();
-    Ntk dest;
-    /// record the network
-    node_map<typename Ntk::signal, Ntk> map_old_to_new( _ntk );
-
-    /// create constants
-    map_old_to_new[_ntk.get_constant( false )] = { 0, 0 };
-    // map_old_to_new[_ntk.get_constant( true )] = {0,1};
-    /// create PIs
-    _ntk.foreach_pi( [&]( auto const& n ) { map_old_to_new[n] = dest.create_pi(); } );
-
-    //////////////////////////////////////////////////////
-    ///   the algorithm of DAG-aware AIG rewriting,06
-    //////////////////////////////////////////////////////
-    uint32_t cost_original = compute_total_cost( _ntk );
-    /// create gates
-    _ntk.foreach_gate( [&]( auto const& n, auto i ) {
-      int32_t tmp_defered_size = derefed_size<Ntk, NodeCostFn>( _ntk, n );
-      if ( tmp_defered_size == 1 )  // not have to opt
-      {
-        std::vector<typename Ntk::signal> children( _ntk.fanin_size( n ) );
-        _ntk.foreach_fanin( n, [&]( auto const& s, auto i ) {
-          children[i] = _ntk.is_complemented( s ) ? dest.create_not( map_old_to_new[s] ) : map_old_to_new[s];
-        } );
-        map_old_to_new[n] = dest.clone_node( _ntk, n, children );
-      } else {
-        int32_t              best_gain = -1;
-        typename Ntk::signal best_signal;
-        for ( auto& cut : _cut_network.cuts( _ntk.node_to_index( n ) ) ) {
-          if ( cut->size() < _params.min_candidate_cut_size || cut->size() > _params.max_candidate_cut_size )
-            continue;
-
-          std::vector<typename Ntk::signal> leaves( cut->size() );
-          auto                              index = 0u;
-          for ( auto l : *cut ) {
-            leaves[index++] = map_old_to_new[_ntk.index_to_node( l )];
-          }
-          /// resynthesis of the current cut for the isologue
-          _resynthesis_fn.run( dest, _cut_network.truth_table( *cut ), leaves.begin(), leaves.end(), [&]( auto const& s ) {
-            uint32_t tmp_defered_size2 = ref_node_recursive<Ntk, NodeCostFn>( dest, dest.get_node( s ) );
-            deref_node_recursive<Ntk, NodeCostFn>( dest, dest.get_node( s ) );
-
-            int32_t gain = tmp_defered_size - tmp_defered_size2;
-            if ( gain > best_gain && ( gain > 0 || ( _params.use_zero_gain && gain == 0 ) ) ) {
-              best_gain   = gain;
-              best_signal = s;
-            }
-            return true;
-          } );
-        }
-        if ( best_gain == -1 ) {
-          std::vector<typename Ntk::signal> children( _ntk.fanin_size( n ) );
-          _ntk.foreach_fanin( n, [&]( auto const& s, auto i ) {
-            children[i] = _ntk.is_complemented( s ) ? dest.create_not( map_old_to_new[s] ) : map_old_to_new[s];
-          } );
-          map_old_to_new[n] = dest.clone_node( _ntk, n, children );
-        } else {
-          map_old_to_new[n] = best_signal;
-        }
-      }
-      /// ref the current node
-      ref_node_recursive<Ntk, NodeCostFn>( dest, dest.get_node( map_old_to_new[n] ) );
-    } );
-
-    /// create POs
-    _ntk.foreach_po( [&]( auto const& s ) {
-      dest.create_po( _ntk.is_complemented( s ) ? dest.create_not( map_old_to_new[s] ) : map_old_to_new[s] );
-    } );
-    /// clean up the dangling nodes
-    dest = cleanup_dangling<Ntk>( dest );
-
-    const auto cost_res = compute_total_cost( dest );
-    // printf("costs: %d -- %d\n", cost_original, cost_res);
-    return cost_res > cost_original ? _ntk : dest;
-  }
-
- private:
-  /**
-   * @brief initizlize the node's tmp_defered_size with fanout
-   */
-  void init_nodes()
-  {
-    _ntk.clear_values();
-    _ntk.foreach_node( [&]( auto const& n ) { _ntk.set_value( n, _ntk.fanout_size( n ) ); } );
-  }
-
-  /**
-   * @brief compute the total cost of the entire network
-   *    we default using the unit_cost for the average node's size cost
-   */
-  uint32_t compute_total_cost( const Ntk& ntk )
-  {
-    uint32_t total_cost = 0u;
-    ntk.foreach_gate( [&]( auto const& n ) { total_cost += _node_cost_fn( ntk, n ); } );
-    return total_cost;
-  }
-
- private:
-  Ntk const&            _ntk;
-  ResynthesisFn const&  _resynthesis_fn;
-  NodeCostFn const&     _node_cost_fn;
-  rewrite_params const& _params;
-  network_cuts_t        _cut_network;
-};  // end class rewrite_impl
-
-template <typename Ntk, typename ResynthesisFn, typename NodeCostFn>
-class rewrite_online_impl
 {
  public:
   using network_cuts_t = iFPGA_NAMESPACE::network_cuts<Ntk, true, iFPGA_NAMESPACE::cut_enumeration_rewrite_cut>;
   using cut_set_t      = typename network_cuts_t::cut_set_t;
   using cut_t          = typename network_cuts_t::cut_t;
 
-  rewrite_online_impl( Ntk const&                    ntk,
+  rewrite_impl( Ntk const&                    ntk,
                        network_cuts_t&               cuts,
                        const rewrite_params&         ps,
                        const ResynthesisFn&          resynthesis_fn,
@@ -265,8 +131,6 @@ class rewrite_online_impl
                 leaves[index++] = map_old_to_new[_ntk.index_to_node( l )];
               }
 
-              // clear old depth info
-              auto old_size = dest.size();
               /// resynthesis of the current cut for the isologue
               _resynthesis_fn.run(
                   dest, _cut_network.truth_table( *cut ), leaves.begin(), leaves.end(), [&]( auto const& s ) {
@@ -313,14 +177,11 @@ class rewrite_online_impl
           auto                       tmp = sweep( dest, new_to_newer );
 
           _ntk.foreach_node( [&]( auto i ) {
-            uint64_t before   = map_old_to_new[i].data;
             map_old_to_new[i] = dest.is_complemented( map_old_to_new[i] ) ? tmp.create_not( new_to_newer[map_old_to_new[i]] )
                                                                           : new_to_newer[map_old_to_new[i]];
           } );
           dest = tmp;
         }
-
-        /// TODO: add remove children's function
         ///  remove some bad cuts foreach_fanin
         _ntk.foreach_fanin( n, [&]( auto s, auto i ) {
           auto index_child = _ntk.node_to_index( _ntk.get_node( s ) );
@@ -330,6 +191,7 @@ class rewrite_online_impl
         } );
       }
     } );
+    
     dest.clear_pos();
     /// create POs
     _ntk.foreach_po( [&]( auto const& s ) {
@@ -403,13 +265,15 @@ class rewrite_online_impl
 
   void merge_cuts2( uint32_t index )
   {
-    array<cut_set_t*, Ntk::max_fanin_size + 1> lcuts;  // child's cut
-    const auto                                 fanin = 2;
-    uint32_t                                   pairs{ 1 };
-    _ntk.foreach_fanin( _ntk.index_to_node( index ), [&]( auto child, auto i ) {
-      lcuts[i] = &_cut_network.cuts( _ntk.node_to_index( _ntk.get_node( child ) ) );
-      pairs *= static_cast<uint32_t>( lcuts[i]->size() );
-    } );
+    array<cut_set_t*, 3> lcuts;  // child's cut
+    const auto           fanin = 2;
+    uint32_t             pairs{ 1 };
+
+    lcuts[0] = &_cut_network.cuts(_ntk.get_node(_ntk.get_child0(index)));
+    pairs *= static_cast<uint32_t>( lcuts[0]->size() );
+    lcuts[1] = &_cut_network.cuts( _ntk.get_node( _ntk.get_child1(index) ) );
+    pairs *= static_cast<uint32_t>( lcuts[1]->size() );
+
     lcuts[2]    = &_cut_network.cuts( index );
     auto& rcuts = *lcuts[fanin];
     rcuts.clear();
@@ -482,7 +346,7 @@ class rewrite_online_impl
   vector<int16_t>        _fanouts;
 
   std::map<node<Ntk>, uint32_t> _depth_map;
-};  // end class rewrite_online_impl
+};  // end class rewrite_impl
 
 };  // end namespace detail
 
@@ -491,28 +355,15 @@ template <typename Ntk           = iFPGA_NAMESPACE::aig_network,
           typename NodeCostFn    = unit_cost<Ntk>>
 Ntk rewrite( Ntk const& ntk, rewrite_params const& params )
 {
-  // printf("rewrite start!\n");
-  ResynthesisFn resynthesis_fn;
-  NodeCostFn    cost_fn;
-  const auto    dest = detail::rewrite_impl<Ntk, ResynthesisFn, NodeCostFn>{ ntk, params, resynthesis_fn, cost_fn }.run();
-  return dest;
-}
-
-template <typename Ntk           = iFPGA_NAMESPACE::aig_network,
-          typename ResynthesisFn = node_resynthesis<Ntk>,
-          typename NodeCostFn    = unit_cost<Ntk>>
-Ntk rewrite_online( Ntk const& ntk, rewrite_params const& params )
-{
   ResynthesisFn                                                                          resynthesis_fn;
   NodeCostFn                                                                             cost_fn;
   iFPGA_NAMESPACE::network_cuts<Ntk, true, iFPGA_NAMESPACE::cut_enumeration_rewrite_cut> cut_network( ntk.size() );
-  const auto dest = detail::rewrite_online_impl<Ntk, ResynthesisFn, NodeCostFn>{ ntk,
+  const auto dest = detail::rewrite_impl<Ntk, ResynthesisFn, NodeCostFn>{ ntk,
                                                                                  cut_network,
                                                                                  params,
                                                                                  resynthesis_fn,
                                                                                  cost_fn,
-                                                                                 params.cut_enumeration_ps }
-                        .run();
+                                                                                 params.cut_enumeration_ps }.run();
   return dest;
 }
 

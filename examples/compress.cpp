@@ -42,14 +42,14 @@ int main(int argc, char **argv)
     {
         ps_rewrite.preserve_depth = true;
         ps_rewrite.use_zero_gain = false;
-        caig = iFPGA_NAMESPACE::rewrite_online(caig, ps_rewrite);
+        caig = iFPGA_NAMESPACE::rewrite(caig, ps_rewrite);
 
         caig = iFPGA_NAMESPACE::refactor(caig, ps_refactor);
 
         caig = iFPGA_NAMESPACE::balance_and(caig);
 
         ps_rewrite.use_zero_gain = true;
-        caig = iFPGA_NAMESPACE::rewrite_online(caig, ps_rewrite);
+        caig = iFPGA_NAMESPACE::rewrite(caig, ps_rewrite);
     }
 
     printf("Statics:\n");

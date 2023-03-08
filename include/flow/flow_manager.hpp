@@ -127,16 +127,6 @@ private:
     _ps.b_verbose = _configer.get_value<bool>({"flow_manager", "verbose"});
     _ps.b_very_verbose = _configer.get_value<bool>({"flow_manager", "very_verbose"});
 
-    // _ps_balance.cut_enumeration_ps.cut_size = _configer.get_value<uint>({"cut_enumeration", "cut_size"});
-    // _ps_balance.cut_enumeration_ps.cut_limit = _configer.get_value<uint>({"cut_enumeration", "cut_limit"});
-    // _ps_balance.cut_enumeration_ps.fanin_limit = _configer.get_value<uint>({"cut_enumeration", "fanin_limit"});
-    // _ps_balance.cut_enumeration_ps.minimize_truth_table = _configer.get_value<bool>({"cut_enumeration", "minimize_truth_table"});
-    // _ps_balance.cut_enumeration_ps.verbose = _configer.get_value<bool>({"cut_enumeration", "verbose"});
-    // _ps_balance.cut_enumeration_ps.very_verbose = _configer.get_value<bool>({"cut_enumeration", "very_verbose"});
-    // _ps_balance.only_on_critical_path = _configer.get_value<bool>({"balance", "only_on_critical_path"});
-    // _ps_balance.progress = _configer.get_value<bool>({"balance", "progress"});
-    // _ps_balance.verbose = _configer.get_value<bool>({"balance", "verbose"});
-
     _ps_mapper.cut_enumeration_ps.cut_size = _configer.get_value<uint>({"klut_mapping", "cut_size"});
     _ps_mapper.cut_enumeration_ps.cut_limit = _configer.get_value<uint>({"klut_mapping", "cut_limit"});
     _ps_mapper.uGlobal_round = _configer.get_value<uint>({"klut_mapping", "uGlobal_round"});
@@ -168,14 +158,14 @@ private:
     iFPGA_NAMESPACE::refactor_params ps_refactor;
     ps_rewrite.preserve_depth = true;
     ps_rewrite.use_zero_gain = false;
-    caig = iFPGA_NAMESPACE::rewrite_online(caig, ps_rewrite);
+    caig = iFPGA_NAMESPACE::rewrite(caig, ps_rewrite);
 
     // caig = iFPGA_NAMESPACE::refactor(caig, ps_refactor);
 
     caig = iFPGA_NAMESPACE::balance_and(caig);
 
     ps_rewrite.use_zero_gain = true;
-    caig = iFPGA_NAMESPACE::rewrite_online(caig, ps_rewrite);
+    caig = iFPGA_NAMESPACE::rewrite(caig, ps_rewrite);
     return caig;
   }
 
@@ -190,23 +180,23 @@ private:
     iFPGA_NAMESPACE::refactor_params ps_refactor;
     ps_rewrite.preserve_depth = false;
     ps_rewrite.use_zero_gain = false;
-    caig = iFPGA_NAMESPACE::rewrite_online(caig, ps_rewrite);
+    caig = iFPGA_NAMESPACE::rewrite(caig, ps_rewrite);
     ps_rewrite.preserve_depth = true;
 
     // caig = iFPGA_NAMESPACE::refactor(caig, ps_refactor);
 
     caig = iFPGA_NAMESPACE::balance_and(caig);
 
-    caig = iFPGA_NAMESPACE::rewrite_online(caig, ps_rewrite);
+    caig = iFPGA_NAMESPACE::rewrite(caig, ps_rewrite);
 
     ps_rewrite.use_zero_gain = true;
-    caig = iFPGA_NAMESPACE::rewrite_online(caig, ps_rewrite);
+    caig = iFPGA_NAMESPACE::rewrite(caig, ps_rewrite);
 
     caig = iFPGA_NAMESPACE::balance_and(caig);
 
     // caig = iFPGA_NAMESPACE::refactor(caig, ps_refactor);
 
-    caig = iFPGA_NAMESPACE::rewrite_online(caig, ps_rewrite);
+    caig = iFPGA_NAMESPACE::rewrite(caig, ps_rewrite);
 
     caig = iFPGA_NAMESPACE::balance_and(caig);
     return caig;

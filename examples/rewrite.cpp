@@ -14,6 +14,7 @@
 #include "database/views/depth_view.hpp"
 #include "database/network/aig_network.hpp"
 #include "utils/mem_usage.hpp"
+#include "algorithms/debugger.hpp"
 #include "utils/tic_toc.hpp"
 #include <cstdlib>
 
@@ -37,8 +38,18 @@ int main(int argc, char **argv)
     iFPGA_NAMESPACE::aig_network raig(aig);
     iFPGA_NAMESPACE::rewrite_params ps;
     for(uint i = 0u; i < iteration; ++i ){
-        raig = iFPGA_NAMESPACE::rewrite_online(aig, ps);
+        raig = iFPGA_NAMESPACE::rewrite(raig, ps);
     }
+
+    if (iFPGA_NAMESPACE::debug_by_miter<iFPGA_NAMESPACE::aig_network, iFPGA_NAMESPACE::aig_network>(aig, raig))
+    {
+      std::cout << "\tequivalent" << std::endl;
+    }
+    else
+    {
+      std::cout << "\tunequivalent" << std::endl;
+    }
+    
     printf("Statics:\n");
     printf("time                : %0.6f", t.toc());
     printf("area(before/after)  : %u/%u", aig.num_gates(), raig.num_gates());
