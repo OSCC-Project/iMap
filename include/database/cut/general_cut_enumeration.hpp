@@ -79,10 +79,6 @@ bool operator<( cut_type<ComputeTruth, general_cut_data> const& c1, cut_type<Com
   }
   else if(gf_get_etc() == ETC_AREA)
   {
-    if ( c1->data.delay < c2->data.delay - gv_eps )
-      return true;
-    if ( c1->data.delay > c2->data.delay + gv_eps )
-      return false;
     if ( c1->data.area < c2->data.area - gv_eps )
       return true;
     if ( c1->data.area > c2->data.area + gv_eps )
@@ -94,6 +90,10 @@ bool operator<( cut_type<ComputeTruth, general_cut_data> const& c1, cut_type<Com
     if ( c1->data.power < c2->data.power - gv_eps )
       return true;
     if ( c1->data.power > c2->data.power + gv_eps )
+      return false;
+    if ( c1->data.delay < c2->data.delay - gv_eps )
+      return true;
+    if ( c1->data.delay > c2->data.delay + gv_eps )
       return false;
     if(c1.size() < c2.size())
       return true;

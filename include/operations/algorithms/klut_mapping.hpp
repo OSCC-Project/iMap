@@ -82,6 +82,7 @@ struct klut_mapping_params
   bool         bEdge{true};           // using edge
   bool         bPower{false};         // using power
   bool         bFancy{false};
+  bool         bZeroGain{true};       // allow zero gain when replace the best cut
   uint8_t      uFlowIters{1};
   uint8_t      uAreaIters{2};
   ETypeCmp     eSortMode{ETC_DELAY};  // sort mode of the cuts
@@ -255,22 +256,17 @@ class klut_mapping_impl
     {
       uint32_t i{0u};
       assert(mode >= 0 && mode <= 2);
-      if(mode == 0)
-      {
-        _ps->eCutMode = ETM_DELAY;
-        gf_set_etm(ETM_DELAY);
 
-      }
-      if(mode == 1)
-      {
-        _ps->eCutMode = ETM_FLOW;
-        gf_set_etm(ETM_FLOW);
-
-      }
       if(mode == 2)
       {
         _ps->eCutMode = ETM_AREA;
         gf_set_etm(ETM_AREA);
+
+      }
+      else
+      {
+        _ps->eCutMode = ETM_FLOW;
+        gf_set_etm(ETM_FLOW);
       }
       
       if(mode || _ps->bArea)
@@ -344,12 +340,12 @@ class klut_mapping_impl
       merge_cuts(n);
 
       // update the best cut without increasing the delay, trival cut can not be the best cut of the node itself
-      if( _cut_network.cuts(n).best().size() < 1u || 
-          // (_cut_network.cuts(n).best().size() > 1u && (!preprocess || _cut_network.cuts(n).best()->data.delay <=  _storage->require_times[n] + _ps->fEpsilon)) )
-          (_cut_network.cuts(n).best().size() > 1u && (_cut_network.cuts(n).best()->data.delay <=  _storage->require_times[n] + _ps->fEpsilon)) )
+      if( (_cut_network.cuts(n).best().size() < 1u) || 
+          (_cut_network.cuts(n).best()->data.delay < _storage->require_times[n] + _ps->fEpsilon) || 
+          (_ps->bZeroGain && _cut_network.cuts(n).best()->data.delay == _storage->require_times[n] + _ps->fEpsilon) )
       {
         _cut_network.set_best_cut(n, _cut_network.cuts(n).best());
-        _storage->arrival_times[n] = _cut_network.cuts(n).best()->data.delay;
+        _storage->arrival_times[n] = _cut_network.get_best_cut(n)->data.delay;
       }
 
       // ref the best cut
@@ -409,10 +405,11 @@ class klut_mapping_impl
 
       // update the best cut without increasing the delay
       // if( _cut_network.cuts(n).best().size() > 1 && (!preprocess ||  _cut_network.cuts(n).best()->data.delay <=  _storage->require_times[n] + _ps->fEpsilon) )
-      if( _cut_network.cuts(n).best().size() > 1 && (_cut_network.cuts(n).best()->data.delay <=  _storage->require_times[n] + _ps->fEpsilon) )
+      if( (_cut_network.cuts(n).best()->data.delay < _storage->require_times[n] + _ps->fEpsilon) || 
+          (_ps->bZeroGain && _cut_network.cuts(n).best()->data.delay == _storage->require_times[n] + _ps->fEpsilon)  )
       {
         _cut_network.set_best_cut(n, _cut_network.cuts(n).best());
-        _storage->arrival_times[n] = _cut_network.cuts( n ).best()->data.delay;
+        _storage->arrival_times[n] = _cut_network.get_best_cut(n)->data.delay;
       }
 
       // after insert the choice cuts, the trival cut will eliminates
@@ -485,14 +482,14 @@ class klut_mapping_impl
           _storage->required_glo = _storage->arrival_times[n];
       });
 
-      if( _ps->bArea )
-        return;
-      
       // update the required time for POs by the global required time
       _ntk.foreach_co([&]( auto s){
         _storage->require_times[  _ntk.get_node(s) ] = _storage->required_glo;
       });
 
+      if( _ps->bArea )
+        return;
+      
       // propagate required times from POs to PIs
       for(auto it = _storage->topo_order.rbegin(); it != _storage->topo_order.rend(); ++it)
       {
@@ -505,10 +502,18 @@ class klut_mapping_impl
         {
           if( _storage->refs[an] == 0u )
             continue;
-          auto required = _storage->require_times[ an ];
-          for( auto leaf : _cut_network.cuts( an ).best() )
+          auto required = _storage->require_times[ an ];          
+          for( auto leaf : _cut_network.get_best_cut(an) )
           {
             _storage->require_times[ leaf ] = std::min( _storage->require_times[ leaf ],  required - 1.0f);
+          }
+          
+          // assign the choice node the same require time
+          auto next_choice_node = _ntk.get_equiv_node(an);
+          while(next_choice_node != AIG_NULL)
+          {
+            _storage->require_times[ next_choice_node ] = _storage->require_times[ an ];
+            next_choice_node = _ntk.get_equiv_node(next_choice_node);
           }
         }
       }
@@ -582,7 +587,7 @@ class klut_mapping_impl
         if( _storage->refs[n] == 0u || _ntk.is_ci(n) || _ntk.is_constant(n) )
           continue;
 
-        assert( _cut_network.get_best_cut(n).size() > 1);  // assert the trivial cut why this?
+        assert( _cut_network.get_best_cut(n).size() > 1);
 
         std::vector< node_t > nodes;
         for( auto leaf : _cut_network.get_best_cut(n) )
