@@ -22,14 +22,23 @@ iFPGA_NAMESPACE_HEADER_START
 
 // state a global variables
 /**
- * @brief the X-oriented Comparation type
+ * @brief the Comparation type
  */
 enum ETypeCmp {
   ETC_DEFAULT = 0,
   ETC_DELAY,
   ETC_DELAY2,
-  ETC_AREA,         // on-behalf of local
-  ETC_FLOW          // on-behalf of global
+  ETC_AREA,         // area or area flow
+};
+
+/**
+ * @brief the Mode type for cut value computation
+ */
+enum ETypeMode {
+  ETM_DEFAULT = 0,
+  ETM_DELAY,
+  ETM_AREA,
+  ETM_FLOW,         // area or area flow
 };
 
 /**
@@ -39,9 +48,12 @@ enum ETypeCmp {
  *    ifferent mapping rounds may based on different cut_enumeration trics
  */
 ETypeCmp gv_etc{ETC_DELAY};
-
 ETypeCmp gf_get_etc() { return gv_etc; }
 void gf_set_etc(ETypeCmp const& etc)  { gv_etc = etc; } 
+
+ETypeMode gv_etm{ETM_DELAY};
+ETypeMode gf_get_etm() { return gv_etm; }
+void gf_set_etm(ETypeMode const& etm)  { gv_etm = etm; } 
 
 
 /**

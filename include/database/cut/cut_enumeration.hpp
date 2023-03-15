@@ -130,7 +130,7 @@ class cut_enumeration_impl;
 struct network_cuts_params
 {
   // the max size of priority cut nums
-  uint16_t max_cut_num{8};
+  uint16_t max_cut_num{10};
   // the max cut's leaves num
   uint16_t max_cut_size{7};
 };
@@ -152,11 +152,9 @@ public:
   using cut_t     = cut_type<ComputeTruth, CutData>;
   using cut_set_t = cut_set<cut_t, max_cut_num>;
 
-// private:
   explicit network_cuts( uint32_t size ) 
     : _cuts( size ),
-      _capsule_best_cuts(size), 
-      _refs(size, 0u)
+      _best_cuts( size )
   {
     kitty::dynamic_truth_table zero( 0u ), proj( 1u );
     kitty::create_nth_var( proj, 0u );
@@ -172,39 +170,14 @@ public:
   /*! \brief Returns the cut set of a node */
   cut_set_t const& cuts( uint32_t node_index ) const { return _cuts[node_index]; }
   
-  /*! \brief return the best cuts of node_index */
-  cut_set_t const& cuts_capsule( uint32_t node_index) const { return _capsule_best_cuts[node_index]; }
-  
-  /*! \brief push cut c into the capsule */
-  void push_2_capsule(uint32_t node_index, cut_t const& c) { _capsule_best_cuts[node_index].insert(c); }
+  cut_t& get_best_cut( uint32_t node_index ) { return _best_cuts[node_index]; }
+  void   set_best_cut( uint32_t node_index, cut_t const& cut ) { _best_cuts[node_index] = cut; }
 
   /*! \brief Returns the truth table of a cut */
   template<bool enabled = ComputeTruth, typename = std::enable_if_t<std::is_same_v<Ntk, Ntk> && enabled>>
   auto truth_table( cut_t const& cut ) const
   {
     return _truth_tables[cut->func_id];
-  }
-
-  /*! \brief Returns the total number of tuples that were tried to be merged */
-  auto total_tuples() const
-  {
-    return _total_tuples;
-  }
-
-  /*! \brief Returns the total number of cuts in the database. */
-  auto total_cuts() const
-  {
-    return _total_cuts;
-  }
-
-  void incre_total_cuts(uint32_t size)
-  {
-    _total_cuts += size;
-  }
-  
-  void incre_total_tuples(uint32_t size)
-  {
-    _total_tuples += size;
   }
 
   kitty::dynamic_truth_table extend_truth_table_at(uint32_t func_id, cut_t& res)
@@ -215,12 +188,6 @@ public:
   kitty::dynamic_truth_table at(uint32_t id)
   {
     return _truth_tables[id];
-  }
-
-  /*! \brief Returns the number of nodes for which cuts are computed */
-  auto nodes_size() const
-  {
-    return _cuts.size();
   }
 
   /* compute positions of leave indices in cut `sub` (subset) with respect to
@@ -257,206 +224,6 @@ public:
     return _truth_tables.insert( tt );
   }
 
-  //uint32_t truth_table_at( uint32_t id )
-  //{
-  //  return _truth_tables[id];
-  //}
-
-#pragma region X
-
-  void clear_refs()
-  {
-    std::fill(_refs.begin(), _refs.end(), 0u);
-  }
-
-  auto& ref_at( node<Ntk> const& n )
-  {
-    return _refs[n];
-  }
-
-  void set_ref( node<Ntk> const& n, uint32_t v )
-  {
-    _refs[n] = v;
-  }
-
-  auto incr_ref( node<Ntk> const& n )
-  {
-    return ++_refs[n];
-  }
-
-  auto decr_ref( node<Ntk> const& n )
-  {
-    return --_refs[n];
-  }
-
-  float cut_lut_area (cut_t& cut, Ntk const& ntk, node<Ntk> const& node)  
-  { 
-    return 1.0f; 
-  }
-
-  float cut_lut_delay(cut_t& cut, Ntk const& ntk, node<Ntk> const& node)  
-  { 
-    return 1.0f;
-  }
-
-  float cut_area_deref(cut_t& cut, Ntk const& ntk, node<Ntk> const& node)
-  { 
-    float area = 1.0f;
-    for(auto leaf : cut)
-    {
-      assert(_refs[leaf] > 0);
-      if( --_refs[leaf] > 0 || ntk.is_pi(leaf) || ntk.is_constant(leaf) )
-        continue;
-      area += cut_area_deref(cuts( leaf ).best() , ntk, leaf);
-    }
-    return area;
-  }
-
-  float cut_area_ref(cut_t& cut, Ntk const& ntk, node<Ntk> const& node)
-  { 
-    float area = 1.0f ;
-    for(auto leaf : cut)
-    {
-      assert(_refs[leaf] >= 0);
-      if( _refs[leaf]++ > 0 || ntk.is_pi(leaf) || ntk.is_constant(leaf) )
-        continue;
-      area += cut_area_ref(cuts( leaf ).best() , ntk, leaf);
-    }
-    return area;
-  }
-
-  float cut_area_derefed(cut_t& cut, Ntk const& ntk, node<Ntk> const& node)
-  {
-    if(cut.size() < 2)  
-      return 0;
-    [[maybe_unused]] float res1 = cut_area_ref(cut, ntk, node);
-    float res2 = cut_area_deref(cut, ntk, node);
-    assert(std::fabs(res1 - res2) < 0.005f);
-    return res2;
-  }
-
-  float cut_area_refed(cut_t& cut, Ntk const& ntk, node<Ntk> const& node)
-  {
-    if(cut.size() < 2)  
-      return 0;
-    [[maybe_unused]] float res1 = cut_area_deref(cut, ntk, node);
-    float res2 = cut_area_ref(cut, ntk, node);
-
-    assert(std::fabs(res1 - res2) < 0.005f);
-    return res2;
-  }
-
-  float cut_edge_deref(cut_t& cut, Ntk const& ntk, node<Ntk> const& node)
-  {
-    float edge = (float)cut.size();
-    for(auto leaf : cut)
-    {
-      assert(_refs[leaf] > 0);
-      if( --_refs[leaf] > 0 || ntk.is_pi(leaf) || ntk.is_constant(leaf) )
-        continue;
-      edge += cut_edge_deref(cuts( leaf ).best() , ntk, leaf );
-    }
-    return edge;
-  }
-
-  float cut_edge_ref(cut_t& cut, Ntk const& ntk, node<Ntk> const& node)
-  {
-    float edge = (float)cut.size();
-    for(auto leaf : cut)
-    {
-      assert(_refs[leaf] >= 0);
-      if( _refs[leaf]++ > 0 || ntk.is_pi(leaf) || ntk.is_constant(leaf) )
-        continue;
-      edge += cut_edge_ref(cuts( leaf ).best() , ntk, leaf);
-    }
-    return edge;
-  }
-
-  float cut_edge_derefed(cut_t& cut, Ntk const& ntk, node<Ntk> const& node)
-  {
-    if(cut.size() < 2)  
-      return 0;
-    [[maybe_unused]] float res1 = cut_edge_ref(cut, ntk, node);
-    float res2 = cut_edge_deref(cut, ntk, node);
-
-    assert(std::fabs(res1 - res2) < 0.005f);
-
-    return res2;
-  }
-
-  float cut_edge_refed(cut_t& cut, Ntk const& ntk, node<Ntk> const& node)
-  {
-    float res1, res2;
-    if(cut.size() < 2)  
-      return 0;
-    res1 = cut_edge_deref(cut, ntk, node);
-    res2 = cut_edge_ref(cut, ntk, node);
-
-    assert(std::fabs(res1 - res2) < 0.005f);
-
-    return res2;
-  }
-  float cut_area_flow(cut_t& cut, Ntk const& ntk, node<Ntk> const& node)
-  {
-    float area_flow = 1.0f, addon_area_flow;
-    for(auto leaf : cut)
-    {
-      const auto& best_leaf_cut = cuts( node ).best();
-      if( !(ntk.fanout_size(leaf) ^ 0) || ntk.is_constant(leaf) )
-        addon_area_flow = best_leaf_cut->data.area;
-      else
-        addon_area_flow = best_leaf_cut->data.area / ntk.fanout_size(leaf);
-
-      if(area_flow >= (float)1e32 || addon_area_flow >= (float)1e32)
-      {
-        area_flow = (float)1e32;
-      }
-      else
-      {
-        area_flow += addon_area_flow;
-        if(area_flow >= (float)1e32)
-          area_flow = (float)1e32;
-      }
-    }
-    return area_flow;
-  }
-
-  float cut_edge_flow(cut_t& cut, Ntk const& ntk, node<Ntk> const& node)
-  {
-    float edge_flow = (float)cut.size(), addon_edge_flow;
-    for(auto leaf : cut)
-    {
-      const auto& best_leaf_cut = cuts( node ).best();
-      if( !(ntk.fanout_size(leaf) ^ 0) || ntk.is_constant(leaf) )
-        addon_edge_flow = best_leaf_cut->data.edge;
-      else
-        addon_edge_flow = best_leaf_cut->data.edge / ntk.fanout_size(leaf);
-
-      if(edge_flow >= (float)1e32 || addon_edge_flow >= (float)1e32)
-      {
-        edge_flow = (float)1e32;
-      }
-      else
-      {
-        edge_flow += addon_edge_flow;
-        if(edge_flow >= (float)1e32)
-          edge_flow = (float)1e32;
-      }
-    }
-    return edge_flow;
-  }
-
-#pragma endregion
-
-private:
-  template<typename _Ntk, bool _ComputeTruth, typename _CutData>
-  friend class detail::cut_enumeration_impl;
-
-  template<typename _Ntk, bool _ComputeTruth, typename _CutData>
-  friend network_cuts<_Ntk, _ComputeTruth, _CutData> cut_enumeration( _Ntk const& ntk, cut_enumeration_params const& ps, cut_enumeration_stats * pst );
-
-// private:
-public:
   void add_zero_cut( uint32_t index )
   {
     auto& cut = _cuts[index].add_cut( &index, &index ); /* fake iterator for emptyness */
@@ -477,6 +244,39 @@ public:
     }
   }
 
+  /*! \brief Returns the total number of tuples that were tried to be merged */
+  auto total_tuples() const
+  {
+    return _total_tuples;
+  }
+
+  /*! \brief Returns the total number of cuts in the database. */
+  auto total_cuts() const
+  {
+    return _total_cuts;
+  }
+
+  void incre_total_cuts(uint32_t size)
+  {
+    _total_cuts += size;
+  }
+  
+  void incre_total_tuples(uint32_t size)
+  {
+    _total_tuples += size;
+  }
+
+  /*! \brief Returns the number of nodes for which cuts are computed */
+  auto nodes_size() const
+  {
+    return _cuts.size();
+  }
+  
+  auto truth_cache_size() const
+  {
+    return _truth_tables.size();
+  }
+  
   void print_cuts()
   {
     uint32_t i;
@@ -487,38 +287,25 @@ public:
     printf("\n");
   }
 
-  void print_capsule_cuts()
-  {
-    uint32_t i;
-    for(i = 0u; i < _capsule_best_cuts.size(); ++i)
-    {
-      std::cout << _capsule_best_cuts[i] << std::endl;
-    }
-    printf("\n");
-  }
+private:
+  template<typename _Ntk, bool _ComputeTruth, typename _CutData>
+  friend class detail::cut_enumeration_impl;
 
-  void print_storage()
-  {
-    printf("\033[0;32;40m Netwrok-Cuts-Storage: \033[0m \n");
-    printf("_cuts size              : %lu\n", _cuts.size());
-    printf("_capsule_best_cuts size : %lu\n", _capsule_best_cuts.size());
-    printf("_refs size              : %lu\n", _refs.size());
-  }
+  template<typename _Ntk, bool _ComputeTruth, typename _CutData>
+  friend network_cuts<_Ntk, _ComputeTruth, _CutData> cut_enumeration( _Ntk const& ntk, cut_enumeration_params const& ps, cut_enumeration_stats * pst );
 
 private:
   /* compressed representation of cuts */
   std::vector<cut_set_t> _cuts;           
-  /* store the previous best cuts of the nodes, not include the PIs and constants */
-  std::vector<cut_set_t> _capsule_best_cuts;
-  /*  count the cut generation iterations*/
-  uint8_t _uCount_iter{0u};    
+  /* store the current best cuts of the nodes, not include the PIs and constants */
+  std::vector<cut_t>     _best_cuts;
+
   /* cut truth tables */
   truth_table_cache<kitty::dynamic_truth_table> _truth_tables;
 
   /* statistics */
-  uint32_t _total_tuples{};
+  uint32_t    _total_tuples{};
   std::size_t _total_cuts{};
-  std::vector<uint32_t> _refs;      // the ref count of node in cut_network.
 };
 
 /*! \cond PRIVATE */
@@ -544,85 +331,28 @@ public:
 public:
   void run()
   {
-    cuts._uCount_iter++;
-    if(cuts._uCount_iter == 1u)
-    {
-      ntk.foreach_node( [this]( auto node ) {
-        const auto index = ntk.node_to_index( node );
+    ntk.foreach_node( [this]( auto node ) {
+      const auto index = ntk.node_to_index( node );
 
-        if ( ps.very_verbose )
-        {
-          std::cout << printf( "[i] compute cut for node at index %d \n", index );
-        }
-        if ( ntk.is_constant( node ) )
-        {
-          cuts.add_zero_cut( index );
-        }
-        else if ( ntk.is_pi( node ) )
-        {
-          cuts.add_unit_cut( index );
-        }
-        else
-        {
-          if constexpr ( Ntk::min_fanin_size == 2 && Ntk::max_fanin_size == 2 )
-          {
-            merge_cuts2( index );
-          }
-          else
-          {
-            merge_cuts( index );
-          }
-        }
-      } );
-    }
-    else  // after the first cut generation, the following iterations to generate cuts...
-    {
-      ntk.foreach_node( [this]( auto node ) {
-        const auto index = ntk.node_to_index( node );
+      if ( ps.very_verbose )
+      {
+        std::cout << printf( "[i] compute cut for node at index %d \n", index );
+      }
 
-        if ( ps.very_verbose )
-        {
-          std::cout << printf( "[i] compute cut for node at index %d \n", index );
-        }
-
-        if ( ntk.is_constant( node ) )
-        {
-          return;
-        }
-        else if ( ntk.is_pi( node ) )
-        {
-          return;
-        }
-        else
-        {
-          if constexpr ( Ntk::min_fanin_size == 2 && Ntk::max_fanin_size == 2 )
-          {
-            merge_cuts2( index );
-          }
-          else
-          {
-            merge_cuts( index );
-          }
-        }
-      } );
-    }
-
-    // printf("check best cuts of each node:\n");
-    // cuts.print_cuts();
-    // cuts.print_capsule_cuts();
+      if ( ntk.is_constant( node ) )
+      {
+        return;
+      }
+      else if ( ntk.is_pi( node ) )
+      {
+        return;
+      }
+      else
+      {
+        merge_cuts2( index );
+      }
+    } );
   }
-
-  /**
-   * @brief Set the comparison function type
-   * 
-   * @param etc reference as the enum ETypeCmp
-   */
-  void set_cmp_type(ETypeCmp const& etc)
-  {
-    gf_set_etc(etc);
-  }
-
-// private:
   
   /**
    * @brief merge the cut by priority cut
@@ -640,23 +370,21 @@ public:
     const auto fanin = 2;
     uint32_t pairs{1};
     std::array<uint32_t, 2> children_id;      // store the children's index
-    //ntk.foreach_fanin( node, [this, &pairs, &children_id]( auto child, auto i ) {
-    //  auto child_index = ntk.node_to_index( ntk.get_node( child ) );
-    //  lcuts[i] = &cuts.cuts( child_index );   
-    //  children_id[i] = child_index;
-    //  pairs *= static_cast<uint32_t>( lcuts[i]->size() );
-    //} );
+
     auto child0_index = ntk.get_node( ntk.get_child0(node) );
-    lcuts[0] = &cuts.cuts( child0_index );
-    children_id[0] = child0_index;
-    pairs *= static_cast<uint32_t>( lcuts[0]->size() );
     auto child1_index = ntk.get_node( ntk.get_child1(node) );
-    lcuts[1] = &cuts.cuts( child1_index );
+    
+    children_id[0] = child0_index;
     children_id[1] = child1_index;
+    
+    lcuts[0] = &cuts.cuts( child0_index );
+    lcuts[1] = &cuts.cuts( child1_index );
+
+    pairs *= static_cast<uint32_t>( lcuts[0]->size() );
     pairs *= static_cast<uint32_t>( lcuts[1]->size() );
     
-
     lcuts[2] = &cuts.cuts( index );
+
     auto& rcuts = *lcuts[fanin];
 
     rcuts.clear();                // update current node's cutset by fanins
@@ -695,65 +423,6 @@ public:
 
         rcuts.insert( new_cut );
       }
-    }
-    //  lcuts[0]  merge with lcuts[1]'s best cuts
-    for(auto const& c1 : *lcuts[0])
-    {
-      for(auto const& c2 : cuts.cuts_capsule(children_id[1]))
-      {
-        if ( !c1->merge( *c2, new_cut, ps.cut_size ) )
-        {
-          continue;
-        }
-
-        if ( rcuts.is_dominated( new_cut ) )
-        {
-          continue;
-        }
-        if constexpr ( ComputeTruth )
-        {
-          if(truth)
-          {
-            vcuts[0] = c1;
-            vcuts[1] = c2;
-            new_cut->func_id = compute_truth_table( index, vcuts, new_cut );            
-          }
-        }
-
-        cut_enumeration_update_cut<CutData>::apply( new_cut, cuts, ntk, node );
-
-        rcuts.insert( new_cut );
-      } 
-    }
-    //  lcuts[1]  merge with lcuts[0]'s best cuts,
-    for(auto const& c1 : cuts.cuts_capsule(children_id[0])) // keep c1 be child0, c2 be child1
-    {
-      for(auto const& c2 : *lcuts[1])
-      {
-        if ( !c1->merge( *c2, new_cut, ps.cut_size ) )
-        {
-          continue;
-        }
-
-        if ( rcuts.is_dominated( new_cut ) )
-        {
-          continue;
-        }
-
-        if constexpr ( ComputeTruth )
-        {
-          if(truth)
-          {
-            vcuts[0] = c1;
-            vcuts[1] = c2;
-            new_cut->func_id = compute_truth_table( index, vcuts, new_cut );
-          }
-        }
-
-        cut_enumeration_update_cut<CutData>::apply( new_cut, cuts, ntk, node );
-
-        rcuts.insert( new_cut );
-      } 
     }
     
     /* limit the maximum number of cuts, and reserve one position for trival cut */
