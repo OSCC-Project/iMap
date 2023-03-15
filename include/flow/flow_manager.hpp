@@ -22,7 +22,7 @@
 
 #include "algorithms/klut_mapping.hpp"
 #include "utils/util.hpp"
-#include  "algorithms/debugger.hpp"
+#include "algorithms/debugger.hpp"
 
 #include "views/depth_view.hpp"
 #include "optimization/balancing/sop_balancing.hpp"
@@ -69,6 +69,8 @@ public:
    */
   void run()
   {
+    tic_toc tt;
+
     printf("\033[0;32;47m [STEP]: Configuration ing... \033[0m \n");
     /// configure params
     configure();
@@ -85,9 +87,10 @@ public:
 
     printf("\033[0;32;47m [STEP]: Technology mapping ing... \033[0m \n");
     /// technology mapping
+
     auto res = mapper();
     report(std::get<0>(res), std::get<2>(res));
-
+    
     if(_ps.b_debug)
     {
       printf("\033[0;32;47m [STEP]: Formal Verfication ing... \033[0m \n");
@@ -129,8 +132,8 @@ private:
 
     _ps_mapper.cut_enumeration_ps.cut_size = _configer.get_value<uint>({"klut_mapping", "cut_size"});
     _ps_mapper.cut_enumeration_ps.cut_limit = _configer.get_value<uint>({"klut_mapping", "cut_limit"});
-    _ps_mapper.uGlobal_round = _configer.get_value<uint>({"klut_mapping", "uGlobal_round"});
-    _ps_mapper.uLocal_round = _configer.get_value<uint>({"klut_mapping", "uLocal_round"});
+    _ps_mapper.uFlowIters = _configer.get_value<uint>({"klut_mapping", "uGlobal_round"});
+    _ps_mapper.uAreaIters = _configer.get_value<uint>({"klut_mapping", "uLocal_round"});
     _ps_mapper.bDebug = _configer.get_value<bool>({"klut_mapping", "debug"});
     _ps_mapper.verbose = _configer.get_value<bool>({"klut_mapping", "verbose"});
     _ps_mapper.very_verbose = _configer.get_value<bool>({"klut_mapping", "very_verbose"});
@@ -357,8 +360,7 @@ private:
    */
   void report(const klut_network& klut, iFPGA_NAMESPACE::mapping_qor_storage qor)
   {
-    printf("\tReport mapping result:\n\t\tklut_size()     :%u\n\t\tklut.num_gates():%d\n\t\tmax delay       :%.0f\n\t\tmax area        :%.0f\n",  \
-            klut.size(), klut.num_gates(), qor.delay, qor.area);
+    printf("\tReport mapping result:\n\t\tArea :   %d\n \t\tDelay:   %.0f\n", klut.num_gates(), qor.delay);
     printf("\tLUTs statics:\n");
     std::vector<uint32_t> lut_num = klut.get_Statics_LUT(_ps_mapper.cut_enumeration_ps.cut_size );
     if(lut_num.size() == 0)

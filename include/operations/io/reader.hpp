@@ -122,7 +122,7 @@ public:
 
     if( result == lorina::return_code::success )
     {
-      std::cout<< "\tINFO: read the aig file SUCCESS, path from: "<< path_in << std::endl;
+      // std::cout<< "\tINFO: read the aig file SUCCESS, path from: "<< path_in << std::endl;
       _state = true;
       aig = _aig;
       /// Network + NameMap -> write_verilog_params

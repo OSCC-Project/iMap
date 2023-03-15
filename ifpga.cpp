@@ -9,6 +9,7 @@
 #include "flow/flow_manager.hpp"
 #include "args/args.hxx"
 #include "utils/mem_usage.hpp"
+#include "utils/tic_toc.hpp"
 
 #include <iostream>
 #include <cstdlib>
@@ -58,8 +59,9 @@ int main(int argc, char** argv){
   auto config = args::get(sInput_config);
 
   iFPGA_NAMESPACE::flow_manager manager(input, config, args::get(sOutput_verilog), args::get(sOutput_lut));
+  iFPGA_NAMESPACE::tic_toc tt;
   manager.run();
-
-  printf("\tPeak memory: %ld bytes\n", getPeakRSS());
+  printf("Mapping time: %f secs\n", tt.toc());
+  printf("Peak memory: %ld bytes\n", getPeakRSS());
   return 0;
 }
