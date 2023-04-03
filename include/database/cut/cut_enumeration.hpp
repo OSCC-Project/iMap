@@ -341,10 +341,12 @@ public:
 
       if ( ntk.is_constant( node ) )
       {
+        cuts.add_zero_cut(index);
         return;
       }
       else if ( ntk.is_pi( node ) )
       {
+        cuts.add_unit_cut(index);
         return;
       }
       else
