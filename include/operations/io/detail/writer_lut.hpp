@@ -203,7 +203,7 @@ void write_lut( Ntk const& ntk, std::ostream& os, write_verilog_params const& ps
                          ntk.node_to_index( ntk.get_node( s ) ) );
     }
   } );
-  os << "endmodule;";
+  os << "endmodule";
   os << std::flush;
 }
 
