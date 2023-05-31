@@ -142,10 +142,8 @@ private:
     _ps_rewrite.cut_enumeration_ps.cut_size = _configer.get_value<uint>({"rewrite", "cut_size"});
     _ps_rewrite.cut_enumeration_ps.cut_limit = _configer.get_value<uint>({"rewrite", "cut_limit"});
     _ps_rewrite.cut_enumeration_ps.minimize_truth_table = _configer.get_value<uint>({"rewrite", "min_candidate_cut_size"});
-    _ps_rewrite.min_candidate_cut_size = _configer.get_value<uint>({"rewrite", "max_candidate_cut_size"});
-    _ps_rewrite.max_candidate_cut_size = _configer.get_value<bool>({"rewrite", "minimize_truth_table"});
-    _ps_rewrite.use_zero_gain = _configer.get_value<bool>({"rewrite", "use_zero_gain"});
-    _ps_rewrite.preserve_depth = _configer.get_value<bool>({"rewrite", "preserve_depth"});
+    _ps_rewrite.b_use_zero_gain = _configer.get_value<bool>({"rewrite", "use_zero_gain"});
+    _ps_rewrite.b_preserve_depth = _configer.get_value<bool>({"rewrite", "preserve_depth"});
 
     return true;
   }
@@ -159,15 +157,15 @@ private:
     iFPGA_NAMESPACE::aig_network caig(aig);
     iFPGA_NAMESPACE::rewrite_params ps_rewrite;
     iFPGA_NAMESPACE::refactor_params ps_refactor;
-    ps_rewrite.preserve_depth = true;
-    ps_rewrite.use_zero_gain = false;
+    ps_rewrite.b_preserve_depth = true;
+    ps_rewrite.b_use_zero_gain = false;
     caig = iFPGA_NAMESPACE::rewrite(caig, ps_rewrite);
 
     // caig = iFPGA_NAMESPACE::refactor(caig, ps_refactor);
 
     caig = iFPGA_NAMESPACE::balance_and(caig);
 
-    ps_rewrite.use_zero_gain = true;
+    ps_rewrite.b_use_zero_gain = true;
     caig = iFPGA_NAMESPACE::rewrite(caig, ps_rewrite);
     return caig;
   }
@@ -181,10 +179,10 @@ private:
     iFPGA_NAMESPACE::aig_network caig(aig);
     iFPGA_NAMESPACE::rewrite_params ps_rewrite;
     iFPGA_NAMESPACE::refactor_params ps_refactor;
-    ps_rewrite.preserve_depth = false;
-    ps_rewrite.use_zero_gain = false;
+    ps_rewrite.b_preserve_depth = false;
+    ps_rewrite.b_use_zero_gain = false;
     caig = iFPGA_NAMESPACE::rewrite(caig, ps_rewrite);
-    ps_rewrite.preserve_depth = true;
+    ps_rewrite.b_preserve_depth = true;
 
     // caig = iFPGA_NAMESPACE::refactor(caig, ps_refactor);
 
@@ -192,7 +190,7 @@ private:
 
     caig = iFPGA_NAMESPACE::rewrite(caig, ps_rewrite);
 
-    ps_rewrite.use_zero_gain = true;
+    ps_rewrite.b_use_zero_gain = true;
     caig = iFPGA_NAMESPACE::rewrite(caig, ps_rewrite);
 
     caig = iFPGA_NAMESPACE::balance_and(caig);
@@ -271,7 +269,7 @@ private:
 
     auto qor = iFPGA_NAMESPACE::klut_mapping<decltype(mapped_aig), true>(mapped_aig, _ps_mapper);
 
-    return make_tuple(*iFPGA_NAMESPACE::choice_to_klut<iFPGA_NAMESPACE::klut_network>( mapped_aig ), mapped_aig, qor);
+    return std::make_tuple(*iFPGA_NAMESPACE::choice_to_klut<iFPGA_NAMESPACE::klut_network>( mapped_aig ), mapped_aig, qor);
   }
 
   /**
