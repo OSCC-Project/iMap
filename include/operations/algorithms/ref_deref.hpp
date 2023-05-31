@@ -48,14 +48,14 @@ uint32_t ref_node_recursive_cond(Ntk const& ntk, node<Ntk> const& n, TermConditi
   return value;
 }
 
-template<typename Ntk, typename NodeCostFn>
+template<typename Ntk, typename NodeCostFn = unit_cost<Ntk>>
 uint32_t deref_node_recursive(Ntk const& ntk, node<Ntk> const& n)
 {
   const auto term_fn = [&](const auto& n){ return ntk.is_constant(n) || ntk.is_pi(n); };
   return deref_node_recursive_cond<Ntk, NodeCostFn, decltype(term_fn)>(ntk, n, term_fn);
 }
 
-template<typename Ntk, typename NodeCostFn>
+template<typename Ntk, typename NodeCostFn = unit_cost<Ntk>>
 uint32_t ref_node_recursive(Ntk const& ntk, node<Ntk> const& n)
 {
   const auto term_fn = [&](const auto& n){ return ntk.is_constant(n) || ntk.is_pi(n); };
