@@ -243,13 +243,13 @@ private:
       _depth = std::max( _depth, clevel );
     } );
 
-    this->foreach_po( [&]( auto const& f ) {
-      const auto n = this->get_node( f );
-      if ( _levels[n] == _depth )
-      {
-        set_critical_path( n );
-      }
-    } );
+    // this->foreach_po( [&]( auto const& f ) {
+    //   const auto n = this->get_node( f );
+    //   if ( _levels[n] == _depth )
+    //   {
+    //     set_critical_path( n );
+    //   }
+    // } );
   }
 
   void set_critical_path( node const& n )
