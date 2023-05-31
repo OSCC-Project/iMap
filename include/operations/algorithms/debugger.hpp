@@ -12,6 +12,7 @@
 
 #include "ifpga_namespaces.hpp"
 #include "detail/checker_4_mapped_graph.hpp"
+#include "detail/checker_4_mapped_graph_parallel.hpp"
 #include "detail/convert_to_aig.hpp"
 #include "equivalence_checking.hpp"
 #include "miter.hpp"
@@ -31,6 +32,13 @@ template<typename Ntk>
 bool debug_mapped_aig_by_origin(Ntk const& ntk)
 {
     checker_4_mapped_graph<Ntk> checker(ntk);
+    return checker.run();
+}
+
+template<typename Ntk>
+bool debug_mapped_aig_by_origin_parallel(Ntk const& ntk)
+{
+    checker_4_mapped_graph_parallel<Ntk> checker(ntk);
     return checker.run();
 }
 
