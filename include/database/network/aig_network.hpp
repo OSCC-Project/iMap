@@ -1127,6 +1127,19 @@ public:
     return _storage->nodes[p].children[1];
   }
 
+  void set_child0(node& p, signal c) {
+    _storage->nodes[p].children[0] = c;
+  }
+
+  void set_child1(node& p, signal c) {
+    _storage->nodes[p].children[1] = c;
+  }
+
+
+  void set_po_at(uint32_t index, signal s) {
+    _storage->outputs[index] = s;
+  }
+
 #pragma endregion
 
 #pragma region Value simulation
