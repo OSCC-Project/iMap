@@ -1,5 +1,5 @@
 /**
- * @file node_resynthesis.hpp
+ * @file node_rewriting.hpp
  * @author liwei ni (nilw@pcl.ac.cn)
  * @brief resynthesis the current node by the equivalent npn class
  * @version 0.1
@@ -11,13 +11,12 @@
 #include "algorithms/ref_deref.hpp"
 #include "utils/cost_functions.hpp"
 
-#include "subgraph_to_network.hpp"
+#include "database_npn4_aig.hpp"
 
 #include "kitty/kitty.hpp"
 #include "kitty/npn.hpp"
 
 #include "algorithms/simulation.hpp"
-//#include "mockturtle/utils/index_list.hpp"
 
 #include <stdint.h>
 #include <vector>
@@ -32,10 +31,10 @@ iFPGA_NAMESPACE_HEADER_START
  * @brief resynthesis the node for 4-input graph
  */
 template<typename Ntk>
-class node_resynthesis
+class node_rewriting
 {
 public:
-  node_resynthesis()
+  node_rewriting()
     : _vec_canonical_repre(1u << 16u)
   {
     _umap_repre_to_signal.reserve(222);
@@ -43,11 +42,13 @@ public:
 
     generate_db(database_subgraphs_aig);
   }
+
+public:
   /**
    * @brief override the operator
    */
   template<typename LeavesIterator, typename CheckGainFn>
-  void run(Ntk& ntk, kitty::dynamic_truth_table const& function, LeavesIterator begin, LeavesIterator end, CheckGainFn&& fn) const
+  void operator()(Ntk& ntk, kitty::dynamic_truth_table const& function, LeavesIterator begin, LeavesIterator end, CheckGainFn&& fn) const
   {
     kitty::static_truth_table<4> dtt = kitty::extend_to<4u>( function );
 
@@ -59,12 +60,12 @@ public:
     if( it == _umap_repre_to_signal.end())
       return;
     
-    std::vector<typename Ntk::signal> vec_PIs(4, {0u, 0u} ); // store the cut's input variables
+    std::vector<typename Ntk::signal> vec_PIs(4, ntk.get_constant(false) ); // store the cut's input variables
 
-    copy(begin, end, vec_PIs.begin());
+    std::copy(begin, end, vec_PIs.begin());
 
     std::unordered_map< node<Ntk>, typename Ntk::signal > db_to_aig;
-    db_to_aig.insert( {0u, {0u, 0u} } );
+    db_to_aig.insert( {0u, ntk.get_constant(false) } );
     
     for(uint8_t i = 0 ; i < 4u ; ++i)
     {
@@ -72,12 +73,11 @@ public:
     }
 
     /// process the cut's isologues
-    for(auto const& candidate : it->second)
+    for(auto const& cand : it->second)
     {
-      const auto s = padding_network_by_signal(ntk, _ntk_subgraph_db.get_node(candidate), db_to_aig);
-      auto new_structure = (_ntk_subgraph_db.is_complemented(candidate) != (phase >> 4 & 1))  ? ntk.create_not(s) : s;
+      const auto s = padding_network_by_signal(ntk, _ntk_subgraph_db.get_node(cand), db_to_aig);
       /// check the gain of the replacement ( original structure with new structure)
-      if( !fn( new_structure ) )
+      if( !fn( (_ntk_subgraph_db.is_complemented(cand) != (phase >> 4 & 1))  ? ntk.create_not(s) : s ) )  // output polarity
         return;
     }
   }
@@ -105,10 +105,11 @@ private:
    *       /  \    /  \
    *     c11 c12  c21  c22
    */
-  void generate_db(const std::vector<uint32_t>& subgraph_database)
+  void generate_db(std::vector<uint32_t> const& data)
   {
     /// convert the AIG sugbraph database into network
-    convert_subgrah_to_network(_ntk_subgraph_db, aig_subgraph_storage(subgraph_database) );
+    database_npn4_aig dna(data);
+    decode_data_rewriting(_ntk_subgraph_db, dna);
     /// compute the truth table for every 4-input
     const auto sim_res = simulate_nodes< kitty::static_truth_table<4u> >(_ntk_subgraph_db);
     /// construct the isomorphic class of one node
@@ -187,6 +188,6 @@ private:
                       kitty::hash<kitty::static_truth_table<4u>>
                     >  _umap_repre_to_signal;                 //truth table map to the signal in the network
   Ntk                  _ntk_subgraph_db;                           // store the subgraph database
-};  // end class node_resynthesis
+};  // end class node_rewriting
 
 iFPGA_NAMESPACE_HEADER_END

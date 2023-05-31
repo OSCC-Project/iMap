@@ -15,21 +15,19 @@
 iFPGA_NAMESPACE_HEADER_START
 
 /**
- * @brief the aig_subgraph_storage database for the database
+ * @brief the database_npn4_aig database for the database
  *    _values[0] store the num_gates | num_pos | num_pis
  */
-struct aig_subgraph_storage
+struct database_npn4_aig
 {
 public:
-  explicit aig_subgraph_storage(uint32_t num_pis = 0)
-  {
-    _values.clear();
-    _values.emplace_back(num_pis);
-  }
+  explicit database_npn4_aig(uint32_t num_pis = 0)
+    : _values({num_pis})
+  {  }
 
-  explicit aig_subgraph_storage(const std::vector<uint32_t>& values)
-    : _values(std::begin(values), std::end(values))
-  {}
+  explicit database_npn4_aig(std::vector<uint32_t> const& values)
+    : _values(values.begin(), values.end())
+  {  }
 
   uint32_t size()      const { return _values.size(); }
   uint32_t num_gates() const { return _values[0] >> 16; }
@@ -39,7 +37,7 @@ public:
   template<typename Fn>
   void foreach_gate(Fn&& fn) const
   {
-    assert( (_values.size()-num_pos())%2 == 1);
+    assert( (_values.size() - num_pos() - 1u)%2 == 0);
     for(uint32_t i = 1u; i < _values.size()-num_pos(); i += 2)
     {
       fn(_values[i], _values[i+1]);
@@ -58,34 +56,35 @@ public:
 private:
   std::vector<uint32_t> _values;
 };
+
 /**
  * @brief insert by the signals
  */
 template<typename Ntk, typename Begin, typename End, typename Fn>
-void insert_into_network(Ntk& ntk, Begin begin, End end, const aig_subgraph_storage& subgraph, Fn&& fn)
-{
-  assert( distance(begin, end) == subgraph.num_pis() );
+void insert_into_network(Ntk& ntk, Begin begin, End end, database_npn4_aig const& data, Fn&& fn) {
+  using signal_t = typename Ntk::signal;
   
-  std::vector<typename Ntk::signal> vec_signal;
+  assert( std::distance(begin, end) == data.num_pis() );
+
+  std::vector<signal_t> vec_signal;
   vec_signal.emplace_back( ntk.get_constant(false) );
-  for(auto it = begin; it != end; ++it)
-  {
-    vec_signal.emplace_back(*it);
+  for(auto it = begin; it != end; ++it) {
+    vec_signal.emplace_back( *it );
   }
 
-  subgraph.foreach_gate( [&](uint32_t lit0, uint32_t lit1){
+  data.foreach_gate( [&](uint32_t lit0, uint32_t lit1){
     assert(lit0 != lit1);
-    uint32_t index_0 = lit0 >> 1;
-    uint32_t index_1 = lit1 >> 1;
+    uint32_t const index_0 = lit0 >> 1;
+    uint32_t const index_1 = lit1 >> 1;
     /// make sure the index's order for emplace_back
-    typename Ntk::signal const s0 = ( lit0 % 2 ) ? ntk.create_not( vec_signal.at( index_0 ) ) : vec_signal.at( index_0 );
-    typename Ntk::signal const s1 = ( lit1 % 2 ) ? ntk.create_not( vec_signal.at( index_1 ) ) : vec_signal.at( index_1 );
+    signal_t const s0 = ( lit0 % 2 ) ? ntk.create_not( vec_signal.at( index_0 ) ) : vec_signal.at( index_0 );
+    signal_t const s1 = ( lit1 % 2 ) ? ntk.create_not( vec_signal.at( index_1 ) ) : vec_signal.at( index_1 );
     vec_signal.emplace_back( lit0 > lit1 ? ntk.create_xor( s0, s1 ) : ntk.create_and( s0, s1 ) );
   });
 
-  subgraph.foreach_po( [&](uint32_t lit){
+  data.foreach_po( [&](uint32_t lit){
     uint32_t const index = lit >> 1;
-    fn( (lit % 2) ? ntk.create_not(vec_signal[index]) : vec_signal[index] );
+    fn( (lit % 2) ? ntk.create_not(vec_signal.at( index )) : vec_signal.at( index ) );
   });
 }
 
@@ -94,14 +93,15 @@ void insert_into_network(Ntk& ntk, Begin begin, End end, const aig_subgraph_stor
  *  only for the database constructor
  */
 template<typename Ntk>
-void convert_subgrah_to_network( Ntk& ntk, const aig_subgraph_storage& subgraph)
-{
-  std::vector<typename Ntk::signal> vec_signal(subgraph.num_pis());
-  for(size_t i = 0 ; i < subgraph.num_pis(); ++i)
-  {
-    vec_signal[i] = ntk.create_pi();
-  }
-  insert_into_network(ntk, vec_signal.begin(), vec_signal.end(), subgraph, [&](typename Ntk::signal const& s){
+void decode_data_rewriting( Ntk& ntk, database_npn4_aig const& data) {
+  using signal_t = typename Ntk::signal;
+
+  std::vector<signal_t> vec_signal(data.num_pis());
+  std::generate(vec_signal.begin(), vec_signal.end(), [&](){
+    return ntk.create_pi();
+  });
+
+  insert_into_network(ntk, vec_signal.begin(), vec_signal.end(), data, [&](auto const& s){
     ntk.create_po(s);
   });
 }
