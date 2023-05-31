@@ -13,12 +13,20 @@ option(ENABLE_TEST "enable test" ON)
 option(ENABLE_GPROF "enable gprof tool for profiling" OFF)
 option(ENABLE_DOXYGEN "enable doxygen tool for generate the docs" OFF)
 
+
 # ###########################################################
 # ##        config bebug/release mode
 # ###########################################################
 set(CMAKE_CXX_FLAGS "-Wall -Wno-unknown-pragmas -Werror=return-type")
 set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g -fsanitize=address")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG")
+
+find_package(OpenMP REQUIRED)
+if(OpenMP_FOUND)
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fopenmp")
+else()
+    message(FATAL_ERROR "openmp not found!")
+endif()
 
 message("STEP3: config bebug/release mode")
 if( CMAKE_BUILD_TYPE AND (CMAKE_BUILD_TYPE STREQUAL "Debug") )
