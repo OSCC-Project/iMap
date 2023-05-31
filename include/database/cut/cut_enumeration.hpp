@@ -366,7 +366,7 @@ public:
    * @param limit the limited priority cut size
    * 
    */
-  void merge_cuts2( uint32_t index, bool truth = false)
+  void merge_cuts2( uint32_t index)
   {
     auto node = ntk.index_to_node( index );
     const auto fanin = 2;
@@ -413,12 +413,9 @@ public:
 
         if constexpr ( ComputeTruth )
         {
-          if(truth)
-          {
-            vcuts[0] = c1;
-            vcuts[1] = c2;
-            new_cut->func_id = compute_truth_table( index, vcuts, new_cut );
-          }
+          vcuts[0] = c1;
+          vcuts[1] = c2;
+          new_cut->func_id = compute_truth_table( index, vcuts, new_cut );
         }
 
         cut_enumeration_update_cut<CutData>::apply( new_cut, cuts, ntk, node );
