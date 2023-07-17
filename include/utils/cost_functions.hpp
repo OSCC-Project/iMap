@@ -1,12 +1,3 @@
-/**
- * @file cost_function.hpp
- * @author liwei ni (nilw@pcl.ac.cn)
- * @brief the cost function of a node
- * 
- * @version 0.1
- * @date 2021-07-26
- * @copyright Copyright (c) 2021
- */
 
 /**
  * @file cost_function.cpp
