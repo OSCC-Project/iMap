@@ -8,3 +8,5 @@ release
 benchmark
 *.d
 *.o
+*.sh
+*.txt
