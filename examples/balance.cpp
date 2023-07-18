@@ -14,6 +14,7 @@
 //
 // See the Mulan PSL v2 for more details.
 // ***************************************************************************************
+
 #include "io/reader.hpp"
 #include "io/detail/write_verilog.hpp"
 #include "optimization/and_balance.hpp"

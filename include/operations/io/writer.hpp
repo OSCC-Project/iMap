@@ -14,6 +14,7 @@
 //
 // See the Mulan PSL v2 for more details.
 // ***************************************************************************************
+
 #pragma once
 #include "utils/ifpga_namespaces.hpp"
 #include "network/aig_network.hpp"

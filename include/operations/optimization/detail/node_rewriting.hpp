@@ -14,6 +14,7 @@
 //
 // See the Mulan PSL v2 for more details.
 // ***************************************************************************************
+
 #pragma once
 #include "network/aig_network.hpp"
 #include "algorithms/ref_deref.hpp"
