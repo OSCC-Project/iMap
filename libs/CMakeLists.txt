@@ -77,3 +77,5 @@ add_library(parallel_hashmap INTERFACE)
 target_include_directories(parallel_hashmap INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/parallel_hashmap)
 
 
+add_subdirectory(alice)
+

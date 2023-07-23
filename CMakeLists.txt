@@ -51,6 +51,7 @@ endif()
 message("STEP4: add subdirectories")
 add_subdirectory(include)
 add_subdirectory(libs)
+add_subdirectory(cli)
 
 if(ENABLE_TEST)
     add_subdirectory(test)
@@ -70,6 +71,7 @@ add_definitions( -D_PATH_FPGA=\"${CMAKE_CURRENT_SOURCE_DIR}\")
 add_executable( ifpga
     ${PROJECT_SOURCE_DIR}/ifpga.cpp
 )
+
 target_link_libraries( ifpga
     yaml-cpp
     ifpga_header
