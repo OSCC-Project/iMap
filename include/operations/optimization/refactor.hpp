@@ -27,7 +27,6 @@
 
 #include "algorithms/cleanup.hpp"
 #include "algorithms/ref_deref.hpp"
-#include "database/views/depth_view.hpp"
 #include "detail/sop_refactoring.hpp"
 #include "kitty/constructors.hpp"
 #include "kitty/isop.hpp"

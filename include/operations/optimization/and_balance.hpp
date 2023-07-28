@@ -361,7 +361,7 @@ template<typename Ntk = iFPGA_NAMESPACE::aig_network>
 Ntk balance_and(Ntk const& ntk)
 {
     iFPGA_NAMESPACE::and_balance<iFPGA_NAMESPACE::aig_network> ab(ntk);
-    return ab.run();
+    return ab.run()._storage;
 }
 
 iFPGA_NAMESPACE_HEADER_END
