@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
-project(ifpga LANGUAGES CXX)
+project(imap LANGUAGES CXX)
 
 ############################################################
 ###        common settings
@@ -8,8 +8,8 @@ message("STEP2: common settings")
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-option(ENABLE_EXAMPLE "enable examples" ON)
-option(ENABLE_TEST "enable test" ON)
+option(ENABLE_EXAMPLE "enable examples" OFF)
+option(ENABLE_TEST "enable test" OFF)
 option(ENABLE_GPROF "enable gprof tool for profiling" OFF)
 option(ENABLE_DOXYGEN "enable doxygen tool for generate the docs" OFF)
 
@@ -61,31 +61,7 @@ if(ENABLE_EXAMPLE)
     add_subdirectory(examples)
 endif(ENABLE_EXAMPLE)
 
-############################################################
-###        EXECUTION
-############################################################
-message("STEP5: compile ifpga ing")
-add_definitions( -D_PATH_FPGA=\"${CMAKE_CURRENT_SOURCE_DIR}\")
-# include_directories(${YAML_CPP_INCLUDE_DIR})
 
-add_executable( ifpga
-    ${PROJECT_SOURCE_DIR}/ifpga.cpp
-)
-
-target_link_libraries( ifpga
-    yaml-cpp
-    ifpga_header
-    args
-)
-
-############################################################
-###        INSTALL
-############################################################
-message("STEP6: install ifpga ing")
-message("install direcotry: ${CMAKE_INSTALL_PREFIX}/bin")
-install(TARGETS ifpga
-    RUNTIME DESTINATION bin
-)
 
 ############################################################
 ###        Doxygen

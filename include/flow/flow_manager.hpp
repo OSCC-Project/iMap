@@ -145,8 +145,6 @@ private:
     _ps_mapper.uAreaIters = _configer.get_value<uint>({"klut_mapping", "uLocal_round"});
     _ps_mapper.bDebug = _configer.get_value<bool>({"klut_mapping", "debug"});
     _ps_mapper.verbose = _configer.get_value<bool>({"klut_mapping", "verbose"});
-    _ps_mapper.very_verbose = _configer.get_value<bool>({"klut_mapping", "very_verbose"});
-
 
     _ps_rewrite.cut_enumeration_ps.cut_size = _configer.get_value<uint>({"rewrite", "cut_size"});
     _ps_rewrite.cut_enumeration_ps.cut_limit = _configer.get_value<uint>({"rewrite", "cut_limit"});
