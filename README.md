@@ -1,4 +1,6 @@
-<center> iMAP </center>
+<div align="center">
+<h1>iMAP</h1>
+</div>
 
 ```
 Logic optimization and technology mapping tool.
@@ -62,6 +64,6 @@ The above step-by-step interactive execution can be performed at a time as shown
 
 If you have any question, please feel free to submit issues, or just send an email to "nlwmode AT gmail DOT com". 
 
-<div align=center>
-<img src=https://gitee.com/oscc-project/iEDA/raw/master/docs/resources/WeChatGroup.png style="zoom:20%;" />
+<div align="center">
+ <img src="https://gitee.com/oscc-project/iEDA/raw/master/docs/resources/WeChatGroup.png" width="20%" height="20%" alt="微信讨论群" />
 </div>
