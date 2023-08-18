@@ -10,21 +10,19 @@ class balance_command : public command
 public:
     explicit balance_command(const environment::ptr& env) : command(env, "performs technology-independent AND-tree balance of AIG") 
     {
-        add_option("--verbose, -v", verbose, "toggles of report verbose information");
+        add_flag("--verbose, -v", verbose, "toggles of report verbose information");
     }
 
-    rules validity_rules() const
-    {
-        return { has_store_element<iFPGA::aig_network>(env) };
-    }
+    rules validity_rules() const { return {}; }
+
 protected:
     void execute()
     {
-        iFPGA::aig_network aig = store<iFPGA::aig_network>().current();
-        aig = iFPGA::balance_and(aig);
-
-        store<iFPGA::aig_network>().extend();
-        store<iFPGA::aig_network>().current() = aig;
+        if( store<iFPGA::aig_network>().empty() ) {
+            printf("WARN: there is no any stored AIG file, please refer to the command \"read_aiger\"\n");
+            return;
+        }
+        store<iFPGA::aig_network>().current() = iFPGA::balance_and( store<iFPGA::aig_network>().current() );
     }
 private:
     bool verbose = false;

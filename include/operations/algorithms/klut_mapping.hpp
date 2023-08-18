@@ -102,7 +102,6 @@ struct klut_mapping_params
   float        fEpsilon{0.005f};
   bool         bDebug{false};
   bool         verbose{false};
-  bool         very_verbose{false};
 };
 
 struct klut_mapping_stats
@@ -314,8 +313,11 @@ class klut_mapping_impl
 
       compute_required_times(); // some bugs here
 
-      printf("\t[Delay] %f \t", _storage->required_glo);
-      printf("[Area] %f \n", _storage->area_glo);
+      if(_ps->verbose)
+      {
+        printf("\t[Delay] %f \t", _storage->required_glo);
+        printf("[Area] %f \n", _storage->area_glo);
+      }
     }
 
     /**
@@ -1082,8 +1084,6 @@ mapping_qor_storage klut_mapping(Ntk& ntk, klut_mapping_params const& ps = {}, k
   klut_mapping_stats st;
   iFPGA_NAMESPACE::detail::klut_mapping_impl<Ntk, StoreFunction, CutData> p(ntk, ps, st);
   p.run();
-  if ( ps.verbose )    
-    st.report();
   if ( pst )
     *pst = st;
   return {p.get_best_delay(), p.get_best_area()};

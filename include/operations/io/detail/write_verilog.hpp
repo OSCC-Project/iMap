@@ -315,4 +315,15 @@ void write_verilog( Ntk const& ntk, std::ostream& os, write_verilog_params const
   writer.on_module_end();
 }
 
+/**
+ * @brief
+*/
+template<class Ntk>
+void write_verilog( Ntk const& ntk, std::string const& filename, write_verilog_params const& ports = {} )
+{
+  std::ofstream os( filename.c_str(), std::ofstream::out );
+  write_verilog( ntk, os, ports );
+  os.close();
+}
+
 iFPGA_NAMESPACE_HEADER_END

@@ -234,14 +234,6 @@ void write_lut( Ntk const& ntk, std::string const& filename, write_verilog_param
   std::ofstream os( filename.c_str(), std::ofstream::out );
   write_lut( ntk, os, portnames );
   os.close();
-  if( isFileExist(filename) )
-  {
-      std::cout<< "\tINFO: generate the lut file SUCCESS, path: "<< filename << std::endl;
-  }
-  else
-  {
-      std::cerr<< "\tERROR: generate the lut file FAIL, path: "<< filename << std::endl;
-  }
 }
 
 iFPGA_NAMESPACE_HEADER_END

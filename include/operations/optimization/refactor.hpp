@@ -38,7 +38,7 @@
 
 iFPGA_NAMESPACE_HEADER_START
 
-    struct refactor_params
+struct refactor_params
 {
   /*! \brief Maximum number of leaves in reconvergence_driven_cut. */
   uint32_t max_leaves_num{10};
@@ -48,6 +48,7 @@ iFPGA_NAMESPACE_HEADER_START
   bool allow_depth_up = false;
   /*! \brief whether allow replace sub_ntk with zero gain */
   bool allow_zero_gain = false;
+  bool verbose = false;
 };
 
 namespace detail

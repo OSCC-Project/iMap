@@ -599,7 +599,7 @@ extern "C" { \
 int main( int argc, char ** argv ) \
 { \
   _ALICE_MAIN_BODY(prefix) \
-  printf("iMap-FPGA v0.1 by PCL, CECA and Anlogic\n"); \
+  printf("iMPA v0.1 by PCL, CECA and Anlogic\n"); \
   return cli.run( argc, argv ); \
 }
 #endif

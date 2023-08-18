@@ -43,6 +43,7 @@ struct rewrite_params
 
   bool b_use_zero_gain{ true };
   bool b_preserve_depth{ true };
+  bool verbose{ false };
 };
 namespace detail {
 
@@ -80,7 +81,9 @@ class rewrite_impl
 
     /// process rewrite on each nodes
     uint32_t size = _ntk.size();
-    printf("perform best signal selection int ing\n");
+    if(_ps.verbose) {
+      printf("perform best signal selection int ing\n");
+    }
     _ntk.foreach_gate([&](auto const& n){
       auto index = _ntk.node_to_index(n);
       if(index >= size)
@@ -132,7 +135,9 @@ class rewrite_impl
     });
 
     // local replacement for the candidate best signal
-    printf("perform local replacement ing\n");
+    if(_ps.verbose) {
+      printf("perform local replacement ing\n");
+    }
     // uint i = 0;
     // size = best_replacement.size();
     for(auto cand : best_replacement){
