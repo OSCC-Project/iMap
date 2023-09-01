@@ -23,7 +23,9 @@ public:
     {
         add_option("--priority_size, -P", priority_size, "set the number of priority-cut size for cut enumeration [6, 20] [default=10]");
         add_option("--cut_size, -C", cut_size, "set the input size of cut for cut enumeration [2, 6] [default=6]");
-        add_option("--type, -t", type, "set the type of mapping, 0/1 means mapping without/with choice, [default=0]");
+        add_option("--global_area_iterations, -G", iFlowIter, "set the number of iteration for global area cost optimization, [1, 2] [default=1]");
+        add_option("--local_area_iterations, -L", iAreaIter, "set the number of iteration for local area cost optimization, [1, 3] [default=2]");
+        add_option("--type, -t", type, "set the type of mapping, 0/1 means mapping without/with choice from history AIGs, [default=0]");
         add_flag("--verbose, -v", verbose, "toggles of report verbose information");
     }
 
@@ -51,53 +53,47 @@ protected:
             return;
         }
 
+        if( iFlowIter < 1u || iFlowIter > 2u ) {
+            printf("WARN: the global area iterations should be in the range [1, 2], please refer to the command \"map_fpga -h\"\n");
+            return;
+        }
+
+        if(iAreaIter < 1u || iAreaIter > 3u) {
+            printf("WARN: the local area iterations should be in the range [1, 3], please refer to the command \"map_fpga -h\"\n");
+            return;
+        }
+
         if( store<iFPGA::klut_network>().empty() ) {
             store<iFPGA::klut_network>().extend();
         }
 
+        iFPGA::klut_mapping_params param_mapping;
+        param_mapping.cut_enumeration_ps.cut_size = cut_size;
+        param_mapping.cut_enumeration_ps.cut_limit = priority_size;
+        param_mapping.uFlowIters = iFlowIter;
+        param_mapping.uAreaIters = iAreaIter;
+        param_mapping.verbose = verbose;
+        
+        if(type == 1 && store<iFPGA::aig_network>().size() < 2) {
+            printf("WARN: there is no another history AIG files, please refer to the command \"history\"\n");
+            type = 0;
+        }
+
         if(type == 1) { // mapping with choice
 
-            iFPGA::aig_network aig_c1 = store<iFPGA::aig_network>().current()._storage;
-            iFPGA::rewrite_params ps_rewrite;
-            iFPGA::refactor_params ps_refactor;
-
-            ps_rewrite.b_preserve_depth = true;
-            ps_rewrite.b_use_zero_gain = false;
-            aig_c1 = iFPGA::rewrite(aig_c1, ps_rewrite);
-            aig_c1 = iFPGA::refactor(aig_c1, ps_refactor);
-            aig_c1 = iFPGA::balance_and( aig_c1 );
-            ps_rewrite.b_use_zero_gain = true;
-            aig_c1 = iFPGA::rewrite(aig_c1, ps_rewrite);
-
-            iFPGA::aig_network aig_c2 = aig_c1._storage;
-            ps_rewrite.b_preserve_depth = false;
-            ps_rewrite.b_use_zero_gain = false;
-            aig_c2 = iFPGA::rewrite(aig_c2, ps_rewrite);
-            aig_c2 = iFPGA::refactor(aig_c2, ps_refactor);
-            aig_c2 = iFPGA::balance_and( aig_c2 );
-            ps_rewrite.b_preserve_depth = true;
-            aig_c2 = iFPGA::rewrite(aig_c2, ps_rewrite);
-            ps_rewrite.b_use_zero_gain = true;
-            aig_c2 = iFPGA::rewrite(aig_c2, ps_rewrite);
-            aig_c2 = iFPGA::balance_and( aig_c2 );
-            aig_c2 = iFPGA::refactor(aig_c2, ps_refactor);
-            aig_c2 = iFPGA::rewrite(aig_c2, ps_rewrite);
-            aig_c2 = iFPGA::balance_and( aig_c2 );
-            
+            uint32_t i = 0u;
             iFPGA::choice_miter cm;
-            cm.add_aig( std::make_shared<iFPGA_NAMESPACE::aig_network>(aig_c2) );
-            cm.add_aig( std::make_shared<iFPGA_NAMESPACE::aig_network>(aig_c1) );
-            cm.add_aig( std::make_shared<iFPGA_NAMESPACE::aig_network>(store<iFPGA::aig_network>().current()._storage) );
-
             iFPGA::choice_params params_choice;
+
+            for(i = store<iFPGA::aig_network>().size() - 2; i >=0; i--) {
+                iFPGA::aig_network aig = store<iFPGA::aig_network>()[i]._storage;
+                cm.add_aig( std::make_shared<iFPGA::aig_network>(aig) );
+            }
+        
             iFPGA::choice_computation cc(params_choice, cm.merge_aigs_to_miter());
 
             iFPGA::aig_with_choice awc = cc.compute_choice();
             iFPGA::mapping_view<iFPGA::aig_with_choice, true, false> mapped_aig(awc);
-            iFPGA::klut_mapping_params param_mapping;
-            param_mapping.cut_enumeration_ps.cut_size = cut_size;
-            param_mapping.cut_enumeration_ps.cut_limit = priority_size;
-            param_mapping.verbose = verbose;
             iFPGA_NAMESPACE::klut_mapping<decltype(mapped_aig), true>(mapped_aig, param_mapping);
             const auto kluts = *iFPGA_NAMESPACE::choice_to_klut<iFPGA_NAMESPACE::klut_network>( mapped_aig );
 
@@ -107,20 +103,18 @@ protected:
             iFPGA::aig_network aig = store<iFPGA::aig_network>().current();
             iFPGA::aig_with_choice awc(aig);
             iFPGA::mapping_view<iFPGA::aig_with_choice, true, false> mapped_aig(awc);
-            iFPGA::klut_mapping_params params;
-            params.cut_enumeration_ps.cut_size = cut_size;
-            params.cut_enumeration_ps.cut_limit = priority_size;
-            params.verbose = verbose;
-            iFPGA_NAMESPACE::klut_mapping<decltype(mapped_aig), true>(mapped_aig, params);
+
+            iFPGA_NAMESPACE::klut_mapping<decltype(mapped_aig), true>(mapped_aig, param_mapping);
             const auto kluts = *iFPGA_NAMESPACE::choice_to_klut<iFPGA_NAMESPACE::klut_network>( mapped_aig );
 
             store<iFPGA::klut_network>().current() = kluts;
         }        
-
     }
 private:
     uint32_t priority_size = 10u;
     uint32_t cut_size = 6u;
+    uint32_t iFlowIter = 1;
+    uint32_t iAreaIter = 2;
     int type = 0;               // 0 means mapping without choice, 1 means mapping with choice;
     bool verbose = false;
 };
