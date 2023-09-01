@@ -13,4 +13,5 @@
 #include "command/map_fpga.hpp"
 #include "command/cleanup.hpp"
 #include "command/print_stats.hpp"
+#include "command/history.hpp"
 ALICE_MAIN(imap)
