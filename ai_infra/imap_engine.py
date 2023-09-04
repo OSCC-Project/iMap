@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
-import sys
 from lib import imap
 
 class EngineIMAP():
@@ -15,6 +14,7 @@ class EngineIMAP():
     refactor
     balance
     lut_opt
+    history
     
     Technology mapping functions:
     map_fpga
@@ -107,6 +107,17 @@ class EngineIMAP():
         """
         imap.lut_opt(priority_size = priority_size, cut_size = cut_size, global_area_iterations = global_area_iterations, local_area_iterations = local_area_iterations, zero_gain = zero_gain, verbose = verbose)
 
+    def history(self, clear = False, size = False, add = False, replace = -1):
+        """ Manipulation for the history stored AIG 
+
+        Args:
+            clear (bool, optional): Clear the history stored AIG. Defaults to False.
+            size (bool, optional): Report the size of history stored AIG. Defaults to False.
+            add (bool, optional): Add current AIG into the history AIG. Defaults to True.
+            replace (int, optional): Replace the given indexed history AIG by current AIG. Defaults to -1.
+        """
+        imap.history(clear = clear, size = size, add = add, replace = replace)
+
     def map_fpga(self, priority_size = 10, cut_size = 6, global_area_iterations = 1, local_area_iterations = 1, type = 0, verbose = False):
         """ Technology mapping for FPGA
 
@@ -135,42 +146,3 @@ class EngineIMAP():
             type (int, optional): 0 means print the stats of current AIG-netowork, while 1 means LUT-network. Range of [0,1]. Defaults to 0.
         """
         imap.print_stats(type = type)
-
-
-# # test
-# file_aig = sys.argv[1]
-# file_seq = sys.argv[2]
-
-# engine = EngineIMAP(file_aig, file_seq)
-
-# print("read")
-# engine.read()
-# engine.print_stats()
-
-# print("rewrite")
-# engine.rewrite()
-# engine.print_stats()
-# engine.add_sequence("rewrite")
-
-# print("refactor")
-# engine.refactor()
-# engine.print_stats()
-# engine.add_sequence("refactor")
-
-# print("balance")
-# engine.balance()
-# engine.print_stats()
-# engine.add_sequence("balance")
-
-# print("lut_opt")
-# engine.lut_opt()
-# engine.print_stats()
-# engine.add_sequence("lut_opt")
-
-# print("map_fpga")
-# engine.map_fpga()
-# engine.print_stats(type=1)
-# engine.add_sequence("map_fpga")
-
-# print("write")
-# engine.write()

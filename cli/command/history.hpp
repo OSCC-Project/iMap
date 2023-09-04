@@ -46,7 +46,7 @@ protected:
             store<iFPGA::aig_network>().current() = aig;
         }
 
-        if ((index_replace < 0) || (index_replace > (int)store<iFPGA::aig_network>().size())) {
+        if (index_replace > (int)store<iFPGA::aig_network>().size()) {
             printf("WARN: the replace index is out of range, please refer to the command \"history -h\"\n");
             return;
         } else {
