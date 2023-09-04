@@ -924,6 +924,36 @@ template<class Ntk>
 inline constexpr bool has_is_on_critical_path_v = has_is_on_critical_path<Ntk>::value;
 #pragma endregion
 
+#pragma region has_is_buf
+template<class Ntk, class = void>
+struct has_is_buf : std::false_type
+{
+};
+
+template<class Ntk>
+struct has_is_buf<Ntk, std::void_t<decltype( std::declval<Ntk>().is_buf( std::declval<node<Ntk>>() ) )>> : std::true_type
+{
+};
+
+template<class Ntk>
+inline constexpr bool has_is_buf_v = has_is_buf<Ntk>::value;
+#pragma endregion
+
+#pragma region has_is_not
+template<class Ntk, class = void>
+struct has_is_not : std::false_type
+{
+};
+
+template<class Ntk>
+struct has_is_not<Ntk, std::void_t<decltype( std::declval<Ntk>().is_not( std::declval<node<Ntk>>() ) )>> : std::true_type
+{
+};
+
+template<class Ntk>
+inline constexpr bool has_is_not_v = has_is_not<Ntk>::value;
+#pragma endregion
+
 #pragma region has_is_and
 template<class Ntk, class = void>
 struct has_is_and : std::false_type
@@ -1073,6 +1103,37 @@ struct has_is_function<Ntk, std::void_t<decltype( std::declval<Ntk>().is_functio
 template<class Ntk>
 inline constexpr bool has_is_function_v = has_is_function<Ntk>::value;
 #pragma endregion
+
+#pragma region has_get_network_name
+template<class Ntk, class = void>
+struct has_get_network_name : std::false_type
+{
+};
+
+template<class Ntk>
+struct has_get_network_name<Ntk, std::void_t<decltype( std::declval<Ntk>().get_network_name( std::declval<node<Ntk>>() ) )>> : std::true_type
+{
+};
+
+template<class Ntk>
+inline constexpr bool has_get_network_name_v = has_get_network_name<Ntk>::value;
+#pragma endregion
+
+#pragma region has_set_network_name
+template<class Ntk, class = void>
+struct has_set_network_name : std::false_type
+{
+};
+
+template<class Ntk>
+struct has_set_network_name<Ntk, std::void_t<decltype( std::declval<Ntk>().set_network_name( std::declval<node<Ntk>>() ) )>> : std::true_type
+{
+};
+
+template<class Ntk>
+inline constexpr bool has_set_network_name_v = has_set_network_name<Ntk>::value;
+#pragma endregion
+
 
 #pragma region has_node_function
 template<class Ntk, class = void>
