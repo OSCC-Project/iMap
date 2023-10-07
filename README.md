@@ -51,6 +51,21 @@ The above step-by-step interactive execution can be performed at a time as shown
 ./imap -c "read_aiger -f ../../../benchmark/EPFL/arithmetic/adder.aig; print_stats -t 0; rewrite; balance; refactor; lut_opt; map_fpga; print_stats -t 1; write_fpga -f adder.fpga.v"
 ```
 
+### Activated your python APIs
+After running the "Compilation" step, the python library will generated in the "build/cli" path and named with "imap.python-<PYHTON-VERSION>-x86_64-linux-gnu.so", for example, if your python version is 3.7, then <PYHTON-VERSION> is 37.
+It is necessary to run the EngineIMAP with the generated python library.
+```
+1. cd <path>/imap/ai_infra
+2. rm lib/imap.cpython-<PYHTON-VERSION>-x86_64-linux-gnu.so
+3. cp <path>/imap/build/cli/imap.cpython-<PYHTON-VERSION>-x86_64-linux-gnu.so ./lib
+```
+Then, the EngineIMAP in imap_engine.py will be activated, and you can run with your python:
+```
+python demo.py <path_aig>
+```
+**Notes**: You can modify the apis in "cli" folder of imap to let it support your modified algorithms before activating your python APIs.
+
+
 ### **WIP**
 - Yosys + imap;
 - Sequential circuit;
