@@ -24,7 +24,13 @@ protected:
             store<iFPGA::klut_network>().clear();
             store<iFPGA::write_verilog_params>().clear();
         }
-
+        // the history AIGs indexed with {0,1,2,3,4}
+        store<iFPGA::aig_network>().extend();
+        store<iFPGA::aig_network>().extend();
+        store<iFPGA::aig_network>().extend();
+        store<iFPGA::aig_network>().extend();
+        store<iFPGA::aig_network>().extend();
+        // current AIG
         store<iFPGA::aig_network>().extend();
         store<iFPGA::write_verilog_params>().extend();
         iFPGA::Reader<iFPGA::aig_network> reader(filename, store<iFPGA::aig_network>().current(), store<iFPGA::write_verilog_params>().current());

@@ -18,50 +18,55 @@ public:
     }
 
 protected:
-    void execute() {
+    void execute() {    
         if (store<iFPGA::aig_network>().empty()) {
             printf("WARN: there is no any stored AIG file, please refer to the command \"read_aiger\"\n");
             return;
         }
 
-        if (store<iFPGA::aig_network>().size() > max_size) {
-            printf("WARN: the history size is %d, please refer to the command \"history -h\"\n", max_size);
+        if (cadd && history_index + 1 <= max_size) {
+            iFPGA::aig_network aig = store<iFPGA::aig_network>().current()._storage;
+            store<iFPGA::aig_network>()[++history_index] = aig;
+        }
+
+        if (history_index + 1 > max_size) {
+            printf("WARN: the max history size is %d, please refer to the command \"history -h\"\n", max_size);
             return;
+        }
+
+        // using current AIG to replace the indexed history AIG
+        if (index_replace == -1) {
+            // do nothing
+        } else if (index_replace > history_index || index_replace < -1) {
+            printf("WARN: the replace index is out of range, please refer to the command \"history -h\"\n");
+        } else {
+            iFPGA::aig_network aig = store<iFPGA::aig_network>().current()._storage;
+            store<iFPGA::aig_network>()[index_replace] = aig; // replace the AIG file
         }
 
         if (cclear) {
-            iFPGA::aig_network aig = store<iFPGA::aig_network>().current()._storage;
-            store<iFPGA::aig_network>().clear();
-            store<iFPGA::aig_network>().extend();
-            store<iFPGA::aig_network>().current() = aig;
+            history_index = -1;
         }
 
         if (csize) {
-            printf("INFO: the history size is %d\n", (int)store<iFPGA::aig_network>().size() - 1);
+            printf("INFO: the history size is %d\n", history_index+1 ); // current aig are the latest version of optimized AIG, and the previous indexed AIGs are the history AIGs.
         }
-
-        if (cadd) {
-            iFPGA::aig_network aig = store<iFPGA::aig_network>().current()._storage;
-            store<iFPGA::aig_network>().extend(); // extend the current AIG vector
-            store<iFPGA::aig_network>().current() = aig;
-        }
-
-        if (index_replace > (int)store<iFPGA::aig_network>().size()) {
-            printf("WARN: the replace index is out of range, please refer to the command \"history -h\"\n");
-            return;
-        } else {
-            iFPGA::aig_network aig = store<iFPGA::aig_network>().current()._storage;
-            store<iFPGA::aig_network>()[index_replace - 1] = aig; // replace the AIG file
-        }
+        
+        cclear = false;
+        csize = false;
+        cadd = false;
+        index_replace = -1;
+        
         return;
     }
 
 private:
-    uint32_t max_size = 5;
+    int max_size = 5;          // the history AIGs are indexed with {0,1,2,3,4}
+    int history_index = -1;    
     bool cclear = false;
     bool csize = false;
     bool cadd = false;
-    int index_replace = 0;
+    int index_replace = -1;
 };
 ALICE_ADD_COMMAND(history, "Logic optimization");
 }; // namespace alice
