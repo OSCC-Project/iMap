@@ -81,13 +81,15 @@ protected:
 
         if(type == 1) { // mapping with choice
 
-            uint32_t i = 0u;
+            int i = 0;
             iFPGA::choice_miter cm;
             iFPGA::choice_params params_choice;
 
-            for(i = store<iFPGA::aig_network>().size() - 2; i >=0; i--) {
+            for(i = store<iFPGA::aig_network>().size() - 2; i >= 0; i--) {
                 iFPGA::aig_network aig = store<iFPGA::aig_network>()[i]._storage;
-                cm.add_aig( std::make_shared<iFPGA::aig_network>(aig) );
+                if(aig.num_gates() > 0) {
+                    cm.add_aig( std::make_shared<iFPGA::aig_network>(aig) );
+                }
             }
         
             iFPGA::choice_computation cc(params_choice, cm.merge_aigs_to_miter());
